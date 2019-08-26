@@ -5,9 +5,6 @@
 
 import React, { Component } from 'react';
 import {
-  StatusBar
-} from 'react-native';
-import {
   createAppContainer,
   createStackNavigator,
   getActiveChildNavigationOptions,
@@ -38,19 +35,6 @@ const AppMainStackNavigator = createStackNavigator(
   }
 );
 
-// get the current screen from navigation state
-function getCurrentRouteName(navigationState: any) {
-  if (!navigationState) {
-    return null;
-  }
-  const route = navigationState.routes[navigationState.index];
-  // dive into nested navigators
-  if (route.routes) {
-    return getCurrentRouteName(route);
-  }
-  return route.routeName;
-}
-
 class MainStackContainer extends Component {
   constructor(props) {
     super(props);
@@ -67,25 +51,9 @@ class MainStackContainer extends Component {
   }
 
   render() {
-    // 配置状态栏为[light-content]的页面数组
-    const lightContentScreens = [
-      RouterConst.RouterIntroduceScreen,
-    ];
     const AppMainStackContainer = this.dynamicCreateMainStackContainer();
     return (
-      <AppMainStackContainer
-        onNavigationStateChange={(prevState, currentState) => {
-          const previousScene = getCurrentRouteName(prevState);
-          const currentScene = getCurrentRouteName(currentState);
-          if (previousScene !== currentScene) {
-            if (lightContentScreens.indexOf(currentScene) >= 0) {
-              StatusBar.setBarStyle('dark-content');
-            } else {
-              StatusBar.setBarStyle('light-content');
-            }
-          }
-        }}
-      />
+      <AppMainStackContainer />
     );
   }
 }
