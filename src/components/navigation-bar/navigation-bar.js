@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   Text, StatusBar, View, ViewPropTypes, Platform
 } from 'react-native';
 import styles from './navigation-bar.styles';
 
-// 设置状态栏接收的属性
+// 状态栏的属性
 const StatusBarShape = {
   hidden: PropTypes.bool,
   animated: PropTypes.bool,
@@ -14,6 +14,12 @@ const StatusBarShape = {
   barStyle: PropTypes.oneOf(['light-content', 'dark-content', 'default']),
 };
 
+// 标题栏的属性
+const TitleStyleShape = {
+  color: PropTypes.string,
+  fontSize: PropTypes.number,
+  fontWeight: PropTypes.string,
+};
 
 export default class NavigationBar extends Component {
   // 属性类型检查
@@ -22,16 +28,21 @@ export default class NavigationBar extends Component {
     hairline: PropTypes.bool,
     style: ViewPropTypes.style,
     title: PropTypes.string,
-    titleStyle: ViewPropTypes.style,
+    titleStyle: PropTypes.shape(TitleStyleShape),
     titleView: PropTypes.element,
     titleLayoutStyle: ViewPropTypes.style,
     statusBar: PropTypes.shape(StatusBarShape),
-    rightButton: PropTypes.element,
     leftButton: PropTypes.element,
+    rightButton: PropTypes.element,
   };
 
   // 属性默认值
   static defaultProps = {
+    titleStyle: {
+      color: 'black',
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
     statusBar: {
       hidden: false,
       animated: true, // 指定状态栏的变化是否应以动画形式呈现。目前支持这几种样式：backgroundColor,barStyle,hidden
@@ -41,11 +52,6 @@ export default class NavigationBar extends Component {
         ios: true,
         android: false,
       }), // 指定状态栏是否透明。设置为true时，应用会在状态栏之下绘制（即所谓“沉浸式”，被状态栏遮住一部分）。
-    },
-    titleStyle: {
-      color: 'black',
-      fontSize: 18,
-      fontWeight: 'bold',
     },
   };
 
