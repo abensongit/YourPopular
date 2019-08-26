@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import { AsyncStorage, } from 'react-native';
 import { ThemeFlags, ThemeFactory } from '../../resources';

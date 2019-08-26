@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import * as Types from './theme-actions-types';
 import { ThemeFlags, ThemeFactory } from '../../resources';

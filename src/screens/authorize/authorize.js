@@ -1,12 +1,11 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import React, { Component } from 'react';
 import {
-  ActivityIndicator, View
+  ActivityIndicator, AsyncStorage, View
 } from 'react-native';
+import {
+  NavigationService, RouterConst
+} from '../../common';
 import styles from './authorize.styles';
 
 type Props = {};
@@ -25,9 +24,9 @@ export default class AuthorizeScreen extends Component<Props> {
   }
 
   bootstrapAsync = async () => {
-    // const userToken = await AsyncStorage.getItem('userToken');
+    const userToken = await AsyncStorage.getItem('userToken');
     this.timer = setTimeout(() => {
-      // NavigationService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterWelcomeScreen, this.props);
+      NavigationService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterWelcomeScreen, this.props);
     }, 1000);
   };
 

@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import React, { Component } from 'react';
 import {
@@ -13,6 +9,7 @@ import {
   getActiveChildNavigationOptions,
 } from 'react-navigation';
 import { RouterConst } from '../common/index';
+import MainTabRootContainer from './MainTabRootContainer';
 
 // 官网介绍
 import IntroduceScreen from '../screens/introduce/introduce';
@@ -20,6 +17,12 @@ import IntroduceScreen from '../screens/introduce/introduce';
 
 const AppMainStackNavigator = createStackNavigator(
   {
+    RouterMainTabContainer: {
+      screen: MainTabRootContainer,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
     RouterIntroduceScreen: {
       screen: IntroduceScreen,
       navigationOptions: ({ navigation }) => ({
@@ -28,7 +31,7 @@ const AppMainStackNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: RouterConst.RouterIntroduceScreen,
+    initialRouteName: RouterConst.RouterMainTabContainer,
     navigationOptions: ({ navigation, screenProps }) => ({
       ...getActiveChildNavigationOptions(navigation, screenProps),
     }),
@@ -37,7 +40,6 @@ const AppMainStackNavigator = createStackNavigator(
     },
   }
 );
-
 
 // get the current screen from navigation state
 function getCurrentRouteName(navigationState: any) {
@@ -52,14 +54,20 @@ function getCurrentRouteName(navigationState: any) {
   return route.routeName;
 }
 
-
 class MainStackContainer extends Component {
+  /**
+   * 构造函数
+   * @param props
+   */
   constructor(props) {
     super(props);
     console.disableYellowBox = true;
   }
 
-  // 动态创建堆栈容器
+  /**
+   * 动态创建堆栈容器
+   * @returns {NavigationContainer}
+   */
   dynamicCreateMainStackContainer() {
     if (this.mainStackContainer) {
       return this.mainStackContainer;
@@ -68,6 +76,10 @@ class MainStackContainer extends Component {
     return this.mainStackContainer;
   }
 
+  /**
+   * 渲染页面
+   * @returns {*}
+   */
   render() {
     const lightContentScreens = [
       RouterConst.RouterIntroduceScreen,
