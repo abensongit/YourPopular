@@ -51,7 +51,6 @@ function getCurrentRouteName(navigationState: any) {
   return route.routeName;
 }
 
-
 class MainStackContainer extends Component {
   constructor(props) {
     super(props);
