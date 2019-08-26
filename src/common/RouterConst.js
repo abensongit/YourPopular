@@ -21,6 +21,7 @@ export default {
   RouterMyCenterScreen: 'RouterMyCenterScreen', // 我的页面
 
   // MainStackNavigator
+  RouterIntroduceScreen: 'RouterIntroduceScreen', // 官网介绍
   RouterThemeChangeScreen: 'RouterThemeChangeScreen', // 主题切换
 
 };
