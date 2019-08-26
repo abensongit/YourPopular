@@ -53,6 +53,7 @@ module.exports = {
     'class-methods-use-this': OFF,
     'radix': OFF,
     'max-len': OFF,
+    'global-require': OFF,
     'no-unused-expressions': OFF,
 
     // ES6
