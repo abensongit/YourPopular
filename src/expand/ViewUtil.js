@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   StyleSheet, TouchableOpacity, Text, View,
@@ -5,29 +6,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
 export default class ViewUtil {
-  /**
-   * 获取导航栏返回按钮
-   * @param onPressHandle
-   * @returns {XML}
-   */
-  static renderNavBackButton(onPressHandle, color = 'white') {
-    return (
-      <TouchableOpacity
-        style={styles.navButtonBack}
-        onPress={onPressHandle}
-      >
-        <Ionicons
-          name="ios-arrow-back"
-          size={28}
-          style={[styles.navButtonBackIcon, { color }]}
-        />
-        <Text style={[styles.navButtonBackTitle, { color }]}>返回</Text>
-      </TouchableOpacity>
-    );
-  }
-
   /**
    * 获取导航栏分享按钮
    * @param onPressHandle
@@ -113,22 +92,6 @@ export default class ViewUtil {
 
 
 const styles = StyleSheet.create({
-  navButtonBack: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 2,
-    paddingLeft: 0,
-    marginLeft: 10,
-  },
-  navButtonBackIcon: {
-    color: 'white',
-  },
-  navButtonBackTitle: {
-    color: 'white',
-    fontSize: 16,
-    marginLeft: 5,
-  },
   menuItemContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

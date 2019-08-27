@@ -1,8 +1,10 @@
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text, StatusBar, View, ViewPropTypes, Platform
+  Text, StatusBar, View, ViewPropTypes, Platform, TouchableOpacity,
 } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './navigation-bar.styles';
 
 // 状态栏的属性
@@ -32,6 +34,7 @@ export default class NavigationBar extends Component {
     titleView: PropTypes.element,
     titleLayoutStyle: ViewPropTypes.style,
     statusBar: PropTypes.shape(StatusBarShape),
+    returnBackHandle: PropTypes.func,
     leftButton: PropTypes.element,
     rightButton: PropTypes.element,
   };
@@ -55,7 +58,12 @@ export default class NavigationBar extends Component {
     },
   };
 
-  static getButtonElement(data) {
+  /**
+   * 创建按钮元素
+   * @param data
+   * @returns {*}
+   */
+  static renderButtonElement(data) {
     return (
       <View style={styles.navBarButton}>
         {data || null}
@@ -63,6 +71,57 @@ export default class NavigationBar extends Component {
     );
   }
 
+  /**
+   * 创建返回按钮
+   * @param onPressHandle
+   * @returns {XML}
+   */
+  static renderNavBackButton(onPressHandle, color = 'white') {
+    return (
+      <TouchableOpacity
+        style={styles.navButtonBack}
+        onPress={onPressHandle}
+      >
+        <Ionicons
+          name="ios-arrow-back"
+          size={28}
+          style={[styles.navButtonBackIcon, { color }]}
+        />
+        <Text style={[styles.navButtonBackTitle, { color }]}>返回</Text>
+      </TouchableOpacity>
+    );
+  }
+
+  /**
+   * 创建导航按钮 - 左边
+   * @param data
+   * @param handle
+   * @returns {*}
+   */
+  static renderNavButtonElementLeft(data, handle = null) {
+    if (data || !handle) {
+      return NavigationBar.renderButtonElement(data);
+    }
+    return NavigationBar.renderButtonElement(NavigationBar.renderNavBackButton(handle));
+  }
+
+  /**
+   * 创建导航按钮 - 右边
+   * @param data
+   * @param handle
+   * @returns {*}
+   */
+  static renderNavButtonElementRight(data, handle = null) {
+    if (data || !handle) {
+      return NavigationBar.renderButtonElement(data);
+    }
+    return NavigationBar.renderButtonElement(NavigationBar.renderNavBackButton(handle));
+  }
+
+  /**
+   * 渲染界面
+   * @returns {*}
+   */
   render() {
     const statusBar = !this.props.statusBar.hidden
       ? (
@@ -78,11 +137,11 @@ export default class NavigationBar extends Component {
     const content = this.props.hide ? null
       : (
         <View style={styles.navBar}>
-          {NavigationBar.getButtonElement(this.props.leftButton)}
+          {NavigationBar.renderNavButtonElementLeft(this.props.leftButton, this.props.returnBackHandle)}
           <View style={[styles.navBarTitleContainer, this.props.titleLayoutStyle]}>
             {titleView}
           </View>
-          {NavigationBar.getButtonElement(this.props.rightButton)}
+          {NavigationBar.renderNavButtonElementRight(this.props.rightButton)}
         </View>
       );
     const hairline = this.props.hide || this.props.hairline ? null : (<View style={styles.spearatorLine} />);

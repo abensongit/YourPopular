@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import { StyleSheet } from 'react-native';
 import { System } from '../../common';
@@ -18,6 +14,22 @@ export default StyleSheet.create({
   },
   navBarButton: {
     alignItems: 'center'
+  },
+  navButtonBack: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 2,
+    paddingLeft: 0,
+    marginLeft: 10,
+  },
+  navButtonBackIcon: {
+    color: 'white',
+  },
+  navButtonBackTitle: {
+    color: 'white',
+    fontSize: 16,
+    marginLeft: 5,
   },
   navBarTitleContainer: {
     flexDirection: 'column',

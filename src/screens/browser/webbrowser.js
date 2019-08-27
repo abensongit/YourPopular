@@ -5,9 +5,6 @@ import {
 } from 'react-native';
 import WebView from 'react-native-progress-webview';
 import {
-  ViewUtil
-} from '../../expand';
-import {
   NavigationService, BackHandlerComponent
 } from '../../common';
 import {
@@ -103,7 +100,7 @@ class WebBrowserScreen extends Component {
         statusBar={statusBar}
         style={navBar}
         titleStyle={titleStyle}
-        leftButton={ViewUtil.renderNavBackButton(() => this.handlerNavGoBackAction())}
+        returnBackHandle={() => this.handlerNavGoBackAction()}
       />
     );
   }
