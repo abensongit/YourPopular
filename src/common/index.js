@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import BackHandlerComponent from './BackHandlerComponent';
 import * as EventTypes from './EventTypes';

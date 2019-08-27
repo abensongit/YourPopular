@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 import { Dimensions, Platform } from 'react-native';
 

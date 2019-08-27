@@ -1,7 +1,4 @@
 /**
- * React Native
- * https://github.com/facebook/react-native
- *
  * 全局导航路由常量
  */
 

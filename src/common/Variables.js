@@ -1,7 +1,3 @@
-/**
- * React Native
- * https://github.com/facebook/react-native
- */
 
 export const COLOR_DEFAULT = '#2196f3';
 
