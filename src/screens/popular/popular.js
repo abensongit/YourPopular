@@ -16,7 +16,7 @@ import {
   NavigationBar
 } from '../../components';
 import PopularTabScreen from './popular-tab-screen';
-import styles from './popular.styles';
+import styles from './popular-styles';
 
 
 type Props = {};

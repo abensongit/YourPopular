@@ -6,7 +6,7 @@ import {
 import {
   NavigationService, RouterConst
 } from '../../common';
-import styles from './authorize.styles';
+import styles from './authorize-styles';
 
 type Props = {};
 export default class AuthorizeScreen extends Component<Props> {

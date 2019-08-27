@@ -24,7 +24,7 @@ import {
 import {
   NavigationBar,
 } from '../../components';
-import styles from './introduce.styles';
+import styles from './introduce-styles';
 
 type Props = {};
 export default class IntroduceScreen extends Component<Props> {

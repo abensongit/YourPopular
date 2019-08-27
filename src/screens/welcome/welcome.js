@@ -13,7 +13,7 @@ import {
   NavigationBar,
 } from '../../components';
 import { Images } from '../../resources';
-import styles from './welcome.styles';
+import styles from './welcome-styles';
 
 const TIMEOUT_SECOND_VALUE = 5 * 1000;
 

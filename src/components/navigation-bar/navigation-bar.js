@@ -5,7 +5,7 @@ import {
   Text, StatusBar, View, ViewPropTypes, Platform, TouchableOpacity,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './navigation-bar.styles';
+import styles from './navigation-bar-styles';
 
 // 状态栏的属性
 const StatusBarShape = {

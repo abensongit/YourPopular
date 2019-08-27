@@ -10,7 +10,7 @@ import {
 import {
   NavigationBar
 } from '../../components';
-import styles from './webbrowser.styles';
+import styles from './webbrowser-styles';
 
 
 class WebBrowserScreen extends Component {

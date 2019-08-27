@@ -16,7 +16,7 @@ import {
   ViewUtil
 } from '../../expand';
 import actions from '../../redux/actions';
-import styles from './mycenter.styles';
+import styles from './mycenter-styles';
 import MENUS from './mycenter-data';
 
 
