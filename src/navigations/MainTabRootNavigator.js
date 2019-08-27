@@ -19,6 +19,9 @@ import FavouriteScreen from '../screens/favourite/favourite';
 import MyCenterScreen from '../screens/mycenter/mycenter';
 
 
+/**
+ * 配置 Tabbar RouteConfigMap
+ */
 const TAB_ITEM_ARR = {
   RouterPopularScreen: {
     screen: PopularScreen,
@@ -74,7 +77,26 @@ const TAB_ITEM_ARR = {
   },
 };
 
-class MainTabNavigator extends Component {
+
+/**
+ * 创建 TabBarComponent 控件
+ */
+class TabBarComponent extends Component {
+  render() {
+    return (
+      <BottomTabBar
+        {... this.props}
+        activeTintColor={this.props.theme.themeColor}
+      />
+    );
+  }
+}
+
+/**
+ * 创建 MainTabNavigator 控件
+ */
+type Props = {};
+class MainTabNavigator extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -101,7 +123,7 @@ class MainTabNavigator extends Component {
       RouterPopularScreen, RouterTrendingScreen, RouterFavouriteScreen, RouterMyCenterScreen
     };
     const tabNavigator = createBottomTabNavigator(tabItems, {
-      tabBarComponent: props => <TabBarComponent theme={this.props.theme} {...props} />
+      tabBarComponent: props => <TabBarComponent {...props} theme={this.props.theme} />
     });
     // 保存创建底部容器
     this.mainTabContainer = createAppContainer(tabNavigator);
@@ -123,17 +145,6 @@ class MainTabNavigator extends Component {
             to: newState.index
           });
         }}
-      />
-    );
-  }
-}
-
-class TabBarComponent extends Component {
-  render() {
-    return (
-      <BottomTabBar
-        {... this.props}
-        activeTintColor={this.props.theme.themeColor}
       />
     );
   }
