@@ -10,8 +10,8 @@ export default StyleSheet.create({
   modalContainer: {
     flex: 1,
     margin: 10,
-    marginBottom: Platform.OS === System.IOS ? System.window.statusBarHeight : 10,
-    marginTop: Platform.OS === System.IOS ? System.window.statusBarHeight : 10,
+    marginTop: Platform.OS === System.IOS ? System.window.dangerAreaTopHeight : 10,
+    marginBottom: Platform.OS === System.IOS ? System.window.dangerAreaBottomHeight : 10,
     backgroundColor: 'white',
     borderRadius: 3,
     shadowColor: 'gray',

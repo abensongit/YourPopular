@@ -64,6 +64,14 @@ export default {
       ios: IPHONE_TABBAR_DANGER_AREA_HEIGHT,
       android: ANDROID_TABBAR_DANGER_AREA_HEIGHT,
     }),
+    dangerAreaTopHeight: Platform.select({
+      ios: IPHONE_DANGER_AREA_TOP_HEIGHT,
+      android: ANDROID_DANGER_AREA_TOP_HEIGHT,
+    }),
+    dangerAreaBottomHeight: Platform.select({
+      ios: IPHONE_DANGER_AREA_BOTTOM_HEIGHT,
+      android: ANDROID_DANGER_AREA_BOTTOM_HEIGHT,
+    }),
   },
 
   theme: {
