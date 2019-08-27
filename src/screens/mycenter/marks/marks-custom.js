@@ -48,13 +48,13 @@ class MarksCustomScreen extends Component<Props> {
     const { isRemoveKey } = props.navigation.state.params;
     if (isRemoveKey && !original) {
       // 如果state中的marks为空则从props中取
-      return state && state.ckeckkeys && state.ckeckkeys.length !== 0 && state.ckeckkeys || props.marks.marks.map(val => ({
+      return state && state.ckeckkeys && state.ckeckkeys.length !== 0 && state.ckeckkeys || props.marks.map(val => ({
         // 注意：不直接修改props，copy一份
         ...val,
         checked: false
       }));
     }
-    return props.marks.marks;
+    return props.marks;
   }
 
   /**
@@ -310,7 +310,7 @@ class MarksCustomScreen extends Component<Props> {
 
 const AppMapStateToProps = state => ({
   theme: state.theme.theme,
-  marks: state.marks,
+  marks: state.marks.marks,
 });
 
 const AppMapDispatchToProps = dispatch => ({
