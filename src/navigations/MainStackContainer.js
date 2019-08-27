@@ -95,6 +95,7 @@ class MainStackContainer extends Component<Props> {
     const lightContentScreens = [
       RouterConst.RouterIntroduceScreen,
     ];
+    // 动态创建堆栈容器
     const AppMainStackContainer = this.dynamicCreateMainStackContainer();
     return (
       <AppMainStackContainer
