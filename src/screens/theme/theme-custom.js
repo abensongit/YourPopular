@@ -10,7 +10,7 @@ import ThemeFactory, { ThemeFlags } from './theme-factory';
 
 
 type Props = {};
-class CustomThemeDialog extends Component<Props> {
+class CustomThemeScreen extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -122,4 +122,4 @@ const AppMapDispatchToProps = dispatch => ({
   onShowThemeChoiceView: visible => dispatch(actions.onShowThemeChoiceView(visible)),
 });
 
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(CustomThemeDialog);
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(CustomThemeScreen);

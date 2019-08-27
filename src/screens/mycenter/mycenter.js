@@ -42,7 +42,8 @@ class MyCenterScreen extends Component<Props> {
         break;
       }
       case MENUS.PopularSetting: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        routerName = RouterConst.RouterMarksCustomScreen;
+        params.isRemoveKey = false;
         break;
       }
       case MENUS.PopularSortKey: {
@@ -50,7 +51,8 @@ class MyCenterScreen extends Component<Props> {
         break;
       }
       case MENUS.PopularRemoveKey: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        routerName = RouterConst.RouterMarksCustomScreen;
+        params.isRemoveKey = true;
         break;
       }
       case MENUS.LanguageSetting: {

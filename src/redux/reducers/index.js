@@ -3,6 +3,7 @@ import {
   AppRootContainer, AppInitRouteName
 } from '../../navigations/AppNavigator';
 import themeReducer from '../../screens/theme/theme-reducers';
+import marksReducer from '../../screens/mycenter/popular/marks-reducers';
 
 /**
  * 1.指定默认state
@@ -25,6 +26,7 @@ const navReducer = (state = initNavState, action) => {
 const reducers = combineReducers({
   nav: navReducer,
   theme: themeReducer,
+  marks: marksReducer,
 });
 
 export default reducers;

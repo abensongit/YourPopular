@@ -1,12 +1,14 @@
 
-import { AsyncStorage, } from 'react-native';
+import {
+  AsyncStorage
+} from 'react-native';
 import ThemeFactory, { ThemeFlags } from './theme-factory';
 
 const STORAGE_THEME_KEY = 'STORAGE_THEME_KEY';
 
 export default class ThemeDao {
   /**
-   * 获取当前主题
+   * 获取主题
    * @returns {Promise<any> | Promise}
    */
   getTheme() {
@@ -26,7 +28,7 @@ export default class ThemeDao {
   }
 
   /**
-   * 保存主题标识
+   * 保存主题
    * @param themeFlag
    */
   save(themeFlag) {

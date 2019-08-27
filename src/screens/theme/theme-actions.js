@@ -1,6 +1,6 @@
 
-import * as Types from './theme-actions-types';
 import ThemeDao from './theme-dao';
+import * as Types from './theme-actions-types';
 
 /**
  * 初始化主题

@@ -21,5 +21,6 @@ export default {
   RouterIntroduceScreen: 'RouterIntroduceScreen', // 官网介绍
   RouterWebBrowserScreen: 'RouterWebBrowserScreen', // 网页控件
   RouterThemeChangeScreen: 'RouterThemeChangeScreen', // 主题切换
+  RouterMarksCustomScreen: 'RouterMarksCustomScreen', // 最热标签
 
 };
