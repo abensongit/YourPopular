@@ -9,4 +9,15 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: COLOR_BACKGROUND_DEFAULT,
   },
+  tabStyle: {
+
+  },
+  labelStyle: {
+    marginTop: 0,
+    fontSize: 16,
+  },
+  indicatorStyle: {
+    height: 2,
+    backgroundColor: '#ffffff'
+  },
 });
