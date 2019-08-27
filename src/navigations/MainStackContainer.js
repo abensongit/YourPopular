@@ -15,6 +15,9 @@ import MainTabRootContainer from './MainTabRootContainer';
 import IntroduceScreen from '../screens/introduce/introduce';
 
 
+/**
+ * 主导航容器
+ */
 const AppMainStackNavigator = createStackNavigator(
   {
     RouterMainTabContainer: {
@@ -41,7 +44,12 @@ const AppMainStackNavigator = createStackNavigator(
   }
 );
 
-// get the current screen from navigation state
+
+/**
+ * Get the current screen from navigation state
+ * @param navigationState
+ * @returns {*}
+ */
 function getCurrentRouteName(navigationState: any) {
   if (!navigationState) {
     return null;
@@ -54,7 +62,9 @@ function getCurrentRouteName(navigationState: any) {
   return route.routeName;
 }
 
-class MainStackContainer extends Component {
+
+type Props = {};
+class MainStackContainer extends Component<Props> {
   /**
    * 构造函数
    * @param props

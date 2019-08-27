@@ -89,6 +89,7 @@ const AppMapDispatchToProps = dispatch => ({
 
 export default connect(AppMapStateToProps, AppMapDispatchToProps)(MainTabRootContainer);
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
