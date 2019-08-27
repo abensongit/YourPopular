@@ -99,8 +99,8 @@ class MainStackContainer extends Component<Props> {
    * @returns {*}
    */
   render() {
-    // 配置状态栏为[light-content]的页面数组
-    const lightContentScreens = [
+    // 配置状态栏为[dark-content]的页面数组
+    const darkContentScreens = [
       RouterConst.RouterIntroduceScreen,
     ];
     // 动态创建堆栈容器
@@ -111,7 +111,7 @@ class MainStackContainer extends Component<Props> {
           const previousScene = getCurrentRouteName(prevState);
           const currentScene = getCurrentRouteName(currentState);
           if (previousScene !== currentScene) {
-            if (lightContentScreens.indexOf(currentScene) >= 0) {
+            if (darkContentScreens.indexOf(currentScene) >= 0) {
               StatusBar.setBarStyle('dark-content');
             } else {
               StatusBar.setBarStyle('light-content');
