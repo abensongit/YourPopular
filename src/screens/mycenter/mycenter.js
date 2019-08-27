@@ -36,7 +36,9 @@ class MyCenterScreen extends Component<Props> {
         break;
       }
       case MENUS.Tutorial: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        routerName = RouterConst.RouterWebBrowserScreen;
+        params.title = '教程';
+        params.url = 'https://coding.m.imooc.com/classindex.html?cid=304';
         break;
       }
       case MENUS.PopularSetting: {

@@ -13,6 +13,8 @@ import MainTabRootContainer from './MainTabRootContainer';
 
 // 官网介绍
 import IntroduceScreen from '../screens/introduce/introduce';
+// 网页控件
+import WebBrowserScreen from '../screens/browser/webbrowser';
 
 
 /**
@@ -28,6 +30,12 @@ const AppMainStackNavigator = createStackNavigator(
     },
     RouterIntroduceScreen: {
       screen: IntroduceScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterWebBrowserScreen: {
+      screen: WebBrowserScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),
