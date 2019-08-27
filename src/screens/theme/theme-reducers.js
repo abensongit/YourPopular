@@ -1,6 +1,6 @@
 
 import * as Types from './theme-actions-types';
-import { ThemeFlags, ThemeFactory } from '../../resources';
+import ThemeFactory, { ThemeFlags } from './theme-factory';
 
 const defaultState = {
   theme: ThemeFactory.createTheme(ThemeFlags.Default),

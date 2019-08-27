@@ -1,6 +1,6 @@
 
 import { AsyncStorage, } from 'react-native';
-import { ThemeFlags, ThemeFactory } from '../../resources';
+import ThemeFactory, { ThemeFlags } from './theme-factory';
 
 const STORAGE_THEME_KEY = 'STORAGE_THEME_KEY';
 
