@@ -13,7 +13,8 @@ import {
 import styles from './webbrowser-styles';
 
 
-class WebBrowserScreen extends Component {
+type Props = {};
+class WebBrowserScreen extends Component<Props> {
   /**
    * 构造函数
    * @param props

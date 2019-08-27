@@ -12,6 +12,7 @@ import {
 } from '../common';
 import actions from '../redux/actions';
 import MainTabRootNavigator from './MainTabRootNavigator';
+import ThemeCustomScreen from '../screens/theme/theme-custom';
 
 
 type Props = {};
@@ -66,6 +67,20 @@ class MainTabRootContainer extends Component<Props> {
   }
 
   /**
+   * 主题设置
+   * @returns {*}
+   */
+  renderCustomThemeView() {
+    const { themeChoiceViewVisible } = this.props;
+    return (
+      <ThemeCustomScreen
+        {...this.props}
+        visible={themeChoiceViewVisible}
+      />
+    );
+  }
+
+  /**
    * 渲染页面
    * @returns {*}
    */
@@ -74,6 +89,7 @@ class MainTabRootContainer extends Component<Props> {
     return (
       <View style={styles.container}>
         <MainTabRootNavigator />
+        {this.renderCustomThemeView()}
       </View>
     );
   }

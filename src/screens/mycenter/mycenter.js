@@ -62,7 +62,8 @@ class MyCenterScreen extends Component<Props> {
         break;
       }
       case MENUS.ThemeSetting: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        const { onShowThemeChoiceView } = this.props;
+        onShowThemeChoiceView(true);
         break;
       }
       default: {
