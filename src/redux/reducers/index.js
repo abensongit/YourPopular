@@ -3,7 +3,7 @@ import {
   AppRootContainer, AppInitRouteName
 } from '../../navigations/AppNavigator';
 import themeReducer from '../../screens/theme/theme-reducers';
-import marksReducer from '../../screens/mycenter/popular/marks-reducers';
+import marksReducer from '../../screens/mycenter/marks/marks-reducers';
 
 /**
  * 1.指定默认state

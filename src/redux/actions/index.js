@@ -1,4 +1,4 @@
-import { onLoadMarks } from '../../screens/mycenter/popular/marks-actions';
+import { onLoadMarks } from '../../screens/mycenter/marks/marks-actions';
 import { onThemeInit, onThemeChange, onShowThemeChoiceView } from '../../screens/theme/theme-actions';
 
 export default {

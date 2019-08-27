@@ -16,7 +16,7 @@ import IntroduceScreen from '../screens/introduce/introduce';
 // 网页控件
 import WebBrowserScreen from '../screens/browser/webbrowser';
 // 最热标签
-import MarksCustomScreen from '../screens/mycenter/popular/marks-custom';
+import MarksCustomScreen from '../screens/mycenter/marks/marks-custom';
 
 /**
  * 主导航容器
