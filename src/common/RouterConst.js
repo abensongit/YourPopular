@@ -9,7 +9,7 @@ export default {
   // SwitchNavigator
   RouterWelcomeScreen: 'RouterWelcomeScreen', // 欢迎页
   RouterAuthorizeScreen: 'RouterAuthorizeScreen', // 登录验证
-  RouterMainStackNavigator: 'RouterMainStackNavigator', // 主导航器Stack
+  RouterMainStackNavigator: 'RouterMainStackNavigator', // 主导航容器
 
   // MainStackNavigator
   RouterMainTabContainer: 'RouterMainTabContainer', // Stack导航器

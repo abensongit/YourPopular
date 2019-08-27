@@ -81,6 +81,7 @@ class MainStackContainer extends Component {
    * @returns {*}
    */
   render() {
+    // 配置状态栏为[light-content]的页面数组
     const lightContentScreens = [
       RouterConst.RouterIntroduceScreen,
     ];
