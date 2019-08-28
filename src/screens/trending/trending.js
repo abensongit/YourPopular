@@ -22,7 +22,6 @@ import TrendingTimeSpanDialog, { TimeSpanModels } from './trending-timespan-dial
 import TrendingTabScreen from './trending-tab';
 import actions from '../../redux/actions';
 
-
 type Props = {};
 class TrendingScreen extends Component<Props> {
   /**
