@@ -49,6 +49,7 @@ module.exports = {
     'no-unused-vars': [ERROR, {vars: 'local', args: 'none'}],
     'no-mixed-operators': OFF,
     'no-plusplus': OFF,
+    'no-lonely-if': OFF,
     'no-param-reassign': OFF,
     'class-methods-use-this': OFF,
     'radix': OFF,

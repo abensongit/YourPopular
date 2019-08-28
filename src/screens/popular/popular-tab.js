@@ -86,16 +86,6 @@ class PopularTabScreen extends Component<Props> {
     });
   };
 
-  // 收藏/取消收藏
-  onFavouriteAction(item, isFavourite) {
-    const key = item.id.toString();
-    if (isFavourite) {
-      POPULAR_FAVOURITE_DAO.saveFavouriteItem(key, JSON.stringify(item));
-    } else {
-      POPULAR_FAVOURITE_DAO.removeFavouriteItem(key);
-    }
-  }
-
   // 渲染表格
   keyExtractor = (item: any, index: number) => index.toString();
 
@@ -104,17 +94,16 @@ class PopularTabScreen extends Component<Props> {
     <PopularTabItem
       projectModel={rowData.item}
       onSelect={(callback) => {
-        // NavigationService.navigate(
-        //   RouterConst.RouterDetailWebViewScreen,
-        //   {
-        //     projectModel: rowData.item,
-        //     flag: FLAG_STORAGE.FLAG_POPULEAR,
-        //     callback
-        //   }
-        // );
+        NavigationService.navigate(
+          RouterConst.RouterPopularTabDetaiScreen,
+          {
+            projectModel: rowData.item,
+            callback
+          }
+        );
       }}
       onFavourite={(item, isFavourite) => {
-        this.onFavouriteAction(item, isFavourite);
+        SysUtil.onFavouritePopular(item, isFavourite, POPULAR_FAVOURITE_DAO);
       }}
     />
   );

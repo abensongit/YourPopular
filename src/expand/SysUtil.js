@@ -32,7 +32,7 @@ export default class SysUtil {
   }
 
   /**
-   * 收藏回调函数
+   * 收藏函数
    * @param item
    * @param isFavourite
    * @param favouriteDao
@@ -45,4 +45,35 @@ export default class SysUtil {
       favouriteDao.removeFavouriteItem(key);
     }
   }
+
+  /**
+   * 收藏函数 - 最热
+   * @param item
+   * @param isFavourite
+   * @param favouriteDao
+   */
+  static onFavouritePopular(item, isFavourite, favouriteDao) {
+    const key = item.id.toString();
+    if (isFavourite) {
+      favouriteDao.saveFavouriteItem(key, JSON.stringify(item));
+    } else {
+      favouriteDao.removeFavouriteItem(key);
+    }
+  }
+
+  /**
+   * 收藏函数 - 趋势
+   * @param item
+   * @param isFavourite
+   * @param favouriteDao
+   */
+  static onFavouriteTrending(item, isFavourite, favouriteDao) {
+    const key = item.fullName;
+    if (isFavourite) {
+      favouriteDao.saveFavouriteItem(key, JSON.stringify(item));
+    } else {
+      favouriteDao.removeFavouriteItem(key);
+    }
+  }
+
 }

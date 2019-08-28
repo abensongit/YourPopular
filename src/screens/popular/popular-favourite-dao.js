@@ -101,11 +101,12 @@ export default class PopularFavouriteDao {
             try {
               stores.map((result, i, store) => {
                 // get at each store's key/value so you can work with it
-                const key = store[i][0];
+                // const key = store[i][0];
                 const value = store[i][1];
                 if (value) {
                   items.push(JSON.parse(value));
                 }
+                return store;
               });
               resolve(items);
             } catch (error) {

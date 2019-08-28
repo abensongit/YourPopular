@@ -25,4 +25,5 @@ export default {
   RouterMarksSortedScreen: 'RouterMarksSortedScreen', // 标签排序
   RouterLanguagesCustomScreen: 'RouterLanguagesCustomScreen', // 语言设置
   RouterLanguagesSortedScreen: 'RouterLanguagesSortedScreen', // 语言排序
+  RouterPopularTabDetaiScreen: 'RouterPopularTabDetaiScreen', // 最热详情
 };

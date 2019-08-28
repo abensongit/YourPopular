@@ -22,6 +22,8 @@ import MarksSortedScreen from '../screens/mycenter/marks/marks-sorted';
 import LanguagesCustomScreen from '../screens/mycenter/langus/langus-custom';
 // 语言排序
 import LanguagesSortedScreen from '../screens/mycenter/langus/langus-sorted';
+// 最热详情
+import PopularTabDetaiScreen from '../screens/popular/popular-tab-detail';
 
 
 /**
@@ -67,6 +69,12 @@ const AppMainStackNavigator = createStackNavigator(
     },
     RouterLanguagesSortedScreen: {
       screen: LanguagesSortedScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterPopularTabDetaiScreen: {
+      screen: PopularTabDetaiScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),
