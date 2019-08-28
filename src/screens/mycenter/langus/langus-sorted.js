@@ -13,14 +13,14 @@ import {
 import {
   ArrayUtil
 } from '../../../expand';
-import MarksDao from './marks-dao';
-import SortedTableCell from './marks-sorted-cell';
-import * as actions from './marks-actions';
-import styles from './marks-sorted-styles';
+import LangusDao from './langus-dao';
+import SortedTableCell from './langus-sorted-cell';
+import * as actions from './langus-actions';
+import styles from './langus-sorted-styles';
 
 
 type Props = {};
-class MarksSortedScreen extends Component<Props> {
+class LangusSortedScreen extends Component<Props> {
   /**
    * 获取state
    * @param nextProps
@@ -30,12 +30,12 @@ class MarksSortedScreen extends Component<Props> {
   static getDerivedStateFromProps(nextProps, prevState) {
     // 在 getDerivedStateFromProps 中进行 state 的改变
     // 当传入 checkedArray 发生变化时，更新 state
-    if (prevState.checkedArray !== MarksSortedScreen.getCheckedMarks(nextProps, prevState)) {
+    if (prevState.checkedArray !== LangusSortedScreen.getCheckedMarks(nextProps, prevState)) {
       return {
-        checkedArray: MarksSortedScreen.getCheckedMarks(nextProps, prevState),
+        checkedArray: LangusSortedScreen.getCheckedMarks(nextProps, prevState),
       };
     }
-    // 否则，对于state不进行任何操作
+    // 否则，对于 state 不进行任何操作
     return null;
   }
 
@@ -52,7 +52,7 @@ class MarksSortedScreen extends Component<Props> {
       return state.checkedArray;
     }
     // 否则，从原始数据中获取 checkedArray
-    const dataArray = props.marks || [];
+    const dataArray = props.languages || [];
     const marks = [];
     for (let i = 0, len = dataArray.length; i < len; i++) {
       const data = dataArray[i];
@@ -71,9 +71,9 @@ class MarksSortedScreen extends Component<Props> {
     super(props);
     this.params = this.props.navigation.state.params;
     this.backPressComponent = new BackHandlerComponent({ hardwareBackPressAction: this.onHardwareBackPressAction });
-    this.marksDao = new MarksDao();
+    this.langusDao = new LangusDao();
     this.state = {
-      checkedArray: MarksSortedScreen.getCheckedMarks(this.props),
+      checkedArray: LangusSortedScreen.getCheckedMarks(this.props),
     };
   }
 
@@ -84,9 +84,9 @@ class MarksSortedScreen extends Component<Props> {
     // 处理 Android 中的物理返回键
     this.backPressComponent.componentDidMount();
     // 如果 props 中标签为空，则从本地存储中获取标签
-    if (MarksSortedScreen.getCheckedMarks(this.props).length === 0) {
-      const { onLoadMarks } = this.props;
-      onLoadMarks();
+    if (LangusSortedScreen.getCheckedMarks(this.props).length === 0) {
+      const { onLoadLanguages } = this.props;
+      onLoadLanguages();
     }
   }
 
@@ -110,7 +110,7 @@ class MarksSortedScreen extends Component<Props> {
    * 导航返回按钮
    */
   onNaviBackPressAction() {
-    if (!ArrayUtil.isEqual(MarksSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
+    if (!ArrayUtil.isEqual(LangusSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
       Alert.alert('提示', '要保存修改吗？',
         [
           {
@@ -136,14 +136,14 @@ class MarksSortedScreen extends Component<Props> {
    */
   getSortedResult() {
     // 从原始数据中复制一份数据出来，以便对这份数据进行进行排序，包括未显示的数据
-    const sortResultArray = ArrayUtil.clone(this.props.marks);
+    const sortResultArray = ArrayUtil.clone(this.props.languages);
     // 获取排序之前的排列顺序，只包括显示的数据
-    const originalCheckedArray = MarksSortedScreen.getCheckedMarks(this.props);
+    const originalCheckedArray = LangusSortedScreen.getCheckedMarks(this.props);
     // 遍历排序之前的数据，用排序后的数据 checkedArray 进行替换
     for (let i = 0, len = originalCheckedArray.length; i < len; i++) {
       const item = originalCheckedArray[i];
       // 找到要替换的元素所在位置
-      const index = this.props.marks.indexOf(item);
+      const index = this.props.languages.indexOf(item);
       // 进行替换
       sortResultArray.splice(index, 1, this.state.checkedArray[i]);
     }
@@ -156,17 +156,17 @@ class MarksSortedScreen extends Component<Props> {
   doSave(hasChecked) {
     if (!hasChecked) {
       // 如果没有排序则直接返回
-      if (ArrayUtil.isEqual(MarksSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
+      if (ArrayUtil.isEqual(LangusSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
         NavigationService.goBack(this.props.navigation);
         return;
       }
     }
     // 保存排序后的数据
-    this.marksDao.save(this.getSortedResult());
+    this.langusDao.save(this.getSortedResult());
 
     // 重新加载排序后的标签，以便其他页面能够及时更新
-    const { onLoadMarks } = this.props;
-    onLoadMarks();
+    const { onLoadLanguages } = this.props;
+    onLoadLanguages();
     // 返回上级页面
     NavigationService.goBack(this.props.navigation);
   }
@@ -204,7 +204,7 @@ class MarksSortedScreen extends Component<Props> {
     const titleStyle = {
       color: 'white',
     };
-    const title = '标签排序';
+    const title = '语言排序';
     return (
       <NavigationBar
         title={title}
@@ -243,11 +243,11 @@ class MarksSortedScreen extends Component<Props> {
 
 const AppMapStateToProps = state => ({
   theme: state.theme.theme,
-  marks: state.marks.marks,
+  languages: state.langus.languages,
 });
 
 const AppMapDispatchToProps = dispatch => ({
-  onLoadMarks: () => dispatch(actions.onLoadMarks()),
+  onLoadLanguages: () => dispatch(actions.onLoadLanguages()),
 });
 
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(MarksSortedScreen);
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(LangusSortedScreen);

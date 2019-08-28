@@ -24,5 +24,5 @@ export default {
   RouterMarksCustomScreen: 'RouterMarksCustomScreen', // 标签设置
   RouterMarksSortedScreen: 'RouterMarksSortedScreen', // 标签排序
   RouterLanguagesCustomScreen: 'RouterLanguagesCustomScreen', // 语言设置
-
+  RouterLanguagesSortedScreen: 'RouterLanguagesSortedScreen', // 语言排序
 };

@@ -3,7 +3,7 @@ import {
   Text, TouchableHighlight, View
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import styles from './marks-sorted-styles';
+import styles from './langus-sorted-styles';
 
 type Props = {};
 export default class SortedTableCell extends Component<Props> {
