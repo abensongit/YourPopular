@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import {
   View
 } from 'react-native';
-import WebView from 'react-native-progress-webview';
 import {
   NavigationService, BackHandlerComponent
 } from '../../common';
 import {
-  NavigationBar
+  NavigationBar, ProgressWebView
 } from '../../components';
 import styles from './webbrowser-styles';
 
@@ -115,7 +114,7 @@ class WebBrowserScreen extends Component<Props> {
     return (
       <View style={styles.container}>
         {navigationBar}
-        <WebView
+        <ProgressWebView
           source={{ uri: this.state.url }}
           ref={(webView) => { this.webView = webView; }}
           color="red"

@@ -5373,13 +5373,6 @@ react-native-gesture-handler@^1.4.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-progress-webview@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-progress-webview/-/react-native-progress-webview-1.1.2.tgz#b9430804320ff414836d6d1b036731ae221bacd7"
-  integrity sha512-sBh+r2Mqh7G2/97Hh1GjVyuU7kV+5hIQakfYvJ+nuwvHR/fFb8xP40bjRs7CD0Al0PBLfYlSI3PqDmd+RwCHhg==
-  dependencies:
-    prop-types "^15.7.2"
-
 react-native-reanimated@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.2.0.tgz#9219227a52a5dfa4d34c324596d6726ccd874293"
