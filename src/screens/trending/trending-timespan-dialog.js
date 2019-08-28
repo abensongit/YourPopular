@@ -4,9 +4,11 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
+  System
+} from '../../common';
+import {
   TimeSpanModel
 } from '../../general';
-import { System } from '../../common';
 
 export const TimeSpanModels = [
   new TimeSpanModel('今天', 'since=daily'),

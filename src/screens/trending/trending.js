@@ -18,7 +18,7 @@ import {
 import {
   ArrayUtil
 } from '../../expand';
-import TrendingTimeSpanDialog, { TimeSpanModels } from './trending-time-span';
+import TrendingTimeSpanDialog, { TimeSpanModels } from './trending-timespan-dialog';
 import TrendingTabScreen from './trending-tab';
 import actions from '../../redux/actions';
 
