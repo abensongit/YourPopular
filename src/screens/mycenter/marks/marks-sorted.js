@@ -23,27 +23,45 @@ import styles from './marks-storted-styles';
 type Props = {};
 class MarksSortedScreen extends Component<Props> {
   /**
+   * 获取state
+   * @param nextProps
+   * @param prevState
+   * @returns {*}
+   */
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // 在getDerivedStateFromProps中进行state的改变
+    // 当传入checkedArray发生变化时，更新state
+    if (prevState.checkedArray !== MarksSortedScreen.getCheckedMarks(nextProps, prevState)) {
+      return {
+        checkedArray: MarksSortedScreen.getCheckedMarks(nextProps, prevState),
+      };
+    }
+    // 否则，对于state不进行任何操作
+    return null;
+  }
+
+  /**
    * 获取显示标签
    * @param props
    * @param state
    * @returns {*}
    * @private
    */
-  static getCheckedKeys(props, state) {
+  static getCheckedMarks(props, state) {
     // 如果 state 中有 checkedArray，则使用 state 中的 checkedArray
     if (state && state.checkedArray && state.checkedArray.length) {
       return state.checkedArray;
     }
     // 否则，从原始数据中获取 checkedArray
     const dataArray = props.marks || [];
-    const keys = [];
+    const marks = [];
     for (let i = 0, len = dataArray.length; i < len; i++) {
       const data = dataArray[i];
       if (data.checked) {
-        keys.push(data);
+        marks.push(data);
       }
     }
-    return keys;
+    return marks;
   }
 
   /**
@@ -56,7 +74,7 @@ class MarksSortedScreen extends Component<Props> {
     this.backPressComponent = new BackHandlerComponent({ hardwareBackPressAction: this.onHardwareBackPressAction });
     this.marksDao = new MarksDao();
     this.state = {
-      checkedArray: MarksSortedScreen.getCheckedKeys(this.props),
+      checkedArray: MarksSortedScreen.getCheckedMarks(this.props),
     };
   }
 
@@ -67,7 +85,7 @@ class MarksSortedScreen extends Component<Props> {
     // 处理 Android 中的物理返回键
     this.backPressComponent.componentDidMount();
     // 如果 props 中标签为空，则从本地存储中获取标签
-    if (MarksSortedScreen.getCheckedKeys(this.props).length === 0) {
+    if (MarksSortedScreen.getCheckedMarks(this.props).length === 0) {
       const { onLoadMarks } = this.props;
       onLoadMarks();
     }
@@ -93,7 +111,7 @@ class MarksSortedScreen extends Component<Props> {
    * 导航返回按钮
    */
   onNaviBackPressAction() {
-    if (!ArrayUtil.isEqual(MarksSortedScreen.getCheckedKeys(this.props), this.state.checkedArray)) {
+    if (!ArrayUtil.isEqual(MarksSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
       Alert.alert('提示', '要保存修改吗？',
         [
           {
@@ -121,7 +139,7 @@ class MarksSortedScreen extends Component<Props> {
     // 从原始数据中复制一份数据出来，以便对这份数据进行进行排序，包括未显示的数据
     const sortResultArray = ArrayUtil.clone(this.props.marks);
     // 获取排序之前的排列顺序，只包括显示的数据
-    const originalCheckedArray = MarksSortedScreen.getCheckedKeys(this.props);
+    const originalCheckedArray = MarksSortedScreen.getCheckedMarks(this.props);
     // 遍历排序之前的数据，用排序后的数据 checkedArray 进行替换
     for (let i = 0, len = originalCheckedArray.length; i < len; i++) {
       const item = originalCheckedArray[i];
@@ -139,7 +157,7 @@ class MarksSortedScreen extends Component<Props> {
   doSave(hasChecked) {
     if (!hasChecked) {
       // 如果没有排序则直接返回
-      if (ArrayUtil.isEqual(MarksSortedScreen.getCheckedKeys(this.props), this.state.checkedArray)) {
+      if (ArrayUtil.isEqual(MarksSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
         NavigationService.goBack(this.props.navigation);
         return;
       }
@@ -164,7 +182,7 @@ class MarksSortedScreen extends Component<Props> {
         style={{ alignItems: 'center', }}
         onPress={callBack}
       >
-        <Text style={{ fontSize: 16, color: '#FFFFFF', marginRight: 10 }}>{title}</Text>
+        <Text style={{ fontSize: 16, color: '#ffffff', marginRight: 10 }}>{title}</Text>
       </TouchableOpacity>
     );
   }
