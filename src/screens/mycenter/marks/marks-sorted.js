@@ -29,8 +29,8 @@ class MarksSortedScreen extends Component<Props> {
    * @returns {*}
    */
   static getDerivedStateFromProps(nextProps, prevState) {
-    // 在getDerivedStateFromProps中进行state的改变
-    // 当传入checkedArray发生变化时，更新state
+    // 在 getDerivedStateFromProps 中进行 state 的改变
+    // 当传入 checkedArray 发生变化时，更新 state
     if (prevState.checkedArray !== MarksSortedScreen.getCheckedMarks(nextProps, prevState)) {
       return {
         checkedArray: MarksSortedScreen.getCheckedMarks(nextProps, prevState),
