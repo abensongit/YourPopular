@@ -1,4 +1,3 @@
-
 import BackHandlerComponent from './BackHandlerComponent';
 import * as EventTypes from './EventTypes';
 import NavigationService from './NavigationService';

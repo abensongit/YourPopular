@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 import {
   COLOR_BACKGROUND_WHITE, COLOR_BACKGROUND_LIGHT

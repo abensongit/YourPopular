@@ -1,4 +1,3 @@
-
 import * as Types from './theme-actions-types';
 import ThemeFactory, { ThemeFlags } from './theme-factory';
 

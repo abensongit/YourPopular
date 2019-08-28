@@ -1,4 +1,3 @@
-
 import ThemeDao from './theme-dao';
 import * as Types from './theme-actions-types';
 

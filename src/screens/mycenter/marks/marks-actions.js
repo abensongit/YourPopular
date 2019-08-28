@@ -1,4 +1,3 @@
-
 import MarksDao from './marks-dao';
 import * as Types from './marks-actions-types';
 
