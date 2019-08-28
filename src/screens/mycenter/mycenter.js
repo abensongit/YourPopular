@@ -68,6 +68,12 @@ class MyCenterScreen extends Component<Props> {
         onShowThemeChoiceView(true);
         break;
       }
+      case MENUS.CodePush: {
+        routerName = RouterConst.RouterWebBrowserScreen;
+        params.title = '热更新';
+        params.url = 'https://github.com/reactnativecn/react-native-pushy/blob/master/README.md';
+        break;
+      }
       default: {
         routerName = RouterConst.RouterIntroduceScreen;
         break;
@@ -219,16 +225,17 @@ class MyCenterScreen extends Component<Props> {
 
           {/* 设置 */}
           <Text style={styles.groupTitle}>设置</Text>
-          {/* 自定义主题 */}
+          {/* 设置主题 */}
           {this.renderMenu(MENUS.ThemeSetting)}
           {/* 关于作者 */}
           <View style={styles.spearatorLine} />
           {this.renderMenu(MENUS.AboutAuthor)}
           <View style={styles.spearatorLine} />
+          {/* 热更新 */}
+          {this.renderMenu(MENUS.CodePush)}
+          <View style={styles.spearatorLine} />
           {/* 反馈 */}
           {this.renderMenu(MENUS.FeedbackInfo)}
-          <View style={styles.spearatorLine} />
-          {this.renderMenu(MENUS.CodePush)}
 
         </ScrollView>
       </View>
