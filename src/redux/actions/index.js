@@ -1,5 +1,5 @@
 import { onLoadMarks } from '../../screens/mycenter/marks/marks-actions';
-import { onThemeInit, onThemeChange, onShowThemeChoiceView } from '../../screens/theme/theme-actions';
+import { onThemeInit, onThemeChange, onShowThemeChoiceView } from '../../screens/mycenter/theme/theme-actions';
 
 export default {
   // 主题

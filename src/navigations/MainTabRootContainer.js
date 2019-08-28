@@ -12,7 +12,7 @@ import {
 } from '../common';
 import actions from '../redux/actions';
 import MainTabRootNavigator from './MainTabRootNavigator';
-import ThemeCustomScreen from '../screens/theme/theme-custom';
+import ThemeCustomScreen from '../screens/mycenter/theme/theme-custom';
 
 
 type Props = {};

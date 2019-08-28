@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import {
   AppRootContainer, AppInitRouteName
 } from '../../navigations/AppNavigator';
-import themeReducer from '../../screens/theme/theme-reducers';
+import themeReducer from '../../screens/mycenter/theme/theme-reducers';
 import marksReducer from '../../screens/mycenter/marks/marks-reducers';
 
 /**
