@@ -13,7 +13,7 @@ import {
   SysUtil
 } from '../../expand';
 import actions from '../../redux/actions';
-import PopularTabItem from './popular-tab-cell';
+import PopularTabCell from './popular-tab-cell';
 import PopularFavouriteDao from './popular-favourite-dao';
 
 const PAGE_SIZE = 10;
@@ -91,7 +91,7 @@ class PopularTabScreen extends Component<Props> {
 
   // 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
   renderItem = (rowData: Object) => (
-    <PopularTabItem
+    <PopularTabCell
       projectModel={rowData.item}
       onSelect={(callback) => {
         NavigationService.navigate(

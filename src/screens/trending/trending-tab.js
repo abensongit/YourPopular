@@ -16,7 +16,7 @@ import {
   SysUtil
 } from '../../expand';
 import actions from '../../redux/actions';
-import TrendingTabItem from './trending-tab-cell';
+import TrendingTabCell from './trending-tab-cell';
 import TrendingFavouriteDao from './trending-favourite-dao';
 
 const PAGE_SIZE = 10;
@@ -109,7 +109,7 @@ class TrendingTabScreen extends Component<Props> {
 
   // 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
   renderItem = (rowData: Object) => (
-    <TrendingTabItem
+    <TrendingTabCell
       projectModel={rowData.item}
       onSelect={(callback) => {
         NavigationService.navigate(
