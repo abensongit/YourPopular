@@ -47,7 +47,7 @@ class MyCenterScreen extends Component<Props> {
         break;
       }
       case MENUS.PopularSortKey: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        routerName = RouterConst.RouterMarksSortedScreen;
         break;
       }
       case MENUS.PopularRemoveKey: {

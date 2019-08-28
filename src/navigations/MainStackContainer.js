@@ -15,8 +15,11 @@ import MainTabRootContainer from './MainTabRootContainer';
 import IntroduceScreen from '../screens/introduce/introduce';
 // 网页控件
 import WebBrowserScreen from '../screens/browser/webbrowser';
-// 最热标签
+// 标签设置
 import MarksCustomScreen from '../screens/mycenter/marks/marks-custom';
+// 标签排序
+import MarksSortedScreen from '../screens/mycenter/marks/marks-sorted';
+
 
 /**
  * 主导航容器
@@ -43,6 +46,12 @@ const AppMainStackNavigator = createStackNavigator(
     },
     RouterMarksCustomScreen: {
       screen: MarksCustomScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterMarksSortedScreen: {
+      screen: MarksSortedScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),
