@@ -4,6 +4,7 @@ import {
 } from '../../navigations/AppNavigator';
 import themeReducer from '../../screens/mycenter/theme/theme-reducers';
 import marksReducer from '../../screens/mycenter/marks/marks-reducers';
+import langusReducer from '../../screens/mycenter/langus/langus-reducers';
 
 /**
  * 1.指定默认state
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   nav: navReducer,
   theme: themeReducer,
   marks: marksReducer,
+  langus: langusReducer,
 });
 
 export default reducers;

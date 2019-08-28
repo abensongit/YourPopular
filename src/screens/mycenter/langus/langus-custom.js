@@ -14,13 +14,13 @@ import {
 import {
   ArrayUtil
 } from '../../../expand';
-import MarksDao from './marks-dao';
-import * as actions from './marks-actions';
-import styles from './marks-custom-styles';
+import LangusDao from './langus-dao';
+import * as actions from './langus-actions';
+import styles from './langus-custom-styles';
 
 
 type Props = {};
-class MarksCustomScreen extends Component<Props> {
+class LangusCustomScreen extends Component<Props> {
   /**
    * 获取state
    * @param nextProps
@@ -28,33 +28,33 @@ class MarksCustomScreen extends Component<Props> {
    * @returns {*}
    */
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.ckeckkeys !== MarksCustomScreen.getMarks(nextProps, null, prevState)) {
+    if (prevState.ckeckkeys !== LangusCustomScreen.getLanguages(nextProps, null, prevState)) {
       return {
-        ckeckkeys: MarksCustomScreen.getMarks(nextProps, null, prevState),
+        ckeckkeys: LangusCustomScreen.getLanguages(nextProps, null, prevState),
       };
     }
     return null;
   }
 
   /**
-   * 获取标签
+   * 获取语言
    * @param props
-   * @param original 移除标签时使用，是否从props获取原始对的标签
-   * @param state 移除标签时使用
+   * @param original 移除语言时使用，是否从props获取原始对的语言
+   * @param state 移除语言时使用
    * @returns {*}
    * @private
    */
-  static getMarks(props, original, state) {
+  static getLanguages(props, original, state) {
     const { isRemoveKey } = props.navigation.state.params;
     if (isRemoveKey && !original) {
-      // 如果 state 中的 marks 为空则从 props 中取
-      return state && state.ckeckkeys && state.ckeckkeys.length !== 0 && state.ckeckkeys || props.marks.map(val => ({
+      // 如果 state 中的 languages 为空则从 props 中取
+      return state && state.ckeckkeys && state.ckeckkeys.length !== 0 && state.ckeckkeys || props.languages.map(val => ({
         // 注意：不直接修改props，copy一份
         ...val,
         checked: false
       }));
     }
-    return props.marks;
+    return props.languages;
   }
 
   /**
@@ -65,7 +65,7 @@ class MarksCustomScreen extends Component<Props> {
     super(props);
     this.params = this.props.navigation.state.params;
     this.backPressComponent = new BackHandlerComponent({ hardwareBackPressAction: this.onHardwareBackPressAction });
-    this.marksDao = new MarksDao();
+    this.langusDao = new LangusDao();
     this.isRemoveKey = this.params.isRemoveKey;
     this.changeValues = [];
     this.state = {
@@ -79,13 +79,13 @@ class MarksCustomScreen extends Component<Props> {
   componentDidMount() {
     // 处理 Android 中的物理返回键
     this.backPressComponent.componentDidMount();
-    // 如果props中标签为空，则从本地存储中获取标签
-    if (MarksCustomScreen.getMarks(this.props).length === 0) {
-      const { onLoadMarks } = this.props;
-      onLoadMarks();
+    // 如果 props 中标签为空，则从本地存储中获取标签
+    if (LangusCustomScreen.getLanguages(this.props).length === 0) {
+      const { onLoadLanguages } = this.props;
+      onLoadLanguages();
     }
     this.setState({
-      ckeckkeys: MarksCustomScreen.getMarks(this.props),
+      ckeckkeys: LangusCustomScreen.getLanguages(this.props),
     });
   }
 
@@ -169,16 +169,16 @@ class MarksCustomScreen extends Component<Props> {
     }
     let ckeckkeys;
     if (this.isRemoveKey) {
-      // 移除标签的特殊处理
+      // 移除语言的特殊处理
       for (let i = 0, l = this.changeValues.length; i < l; i++) {
-        ArrayUtil.remove(ckeckkeys = MarksCustomScreen.getMarks(this.props, true), this.changeValues[i], 'name');
+        ArrayUtil.remove(ckeckkeys = LangusCustomScreen.getLanguages(this.props, true), this.changeValues[i], 'name');
       }
     }
     // 更新本地数据
-    this.marksDao.save(ckeckkeys || this.state.ckeckkeys);
-    const { onLoadMarks } = this.props;
+    this.langusDao.save(ckeckkeys || this.state.ckeckkeys);
+    const { onLoadLanguages } = this.props;
     // 更新store
-    onLoadMarks();
+    onLoadLanguages();
     NavigationService.goBack(this.props.navigation);
   }
 
@@ -277,7 +277,7 @@ class MarksCustomScreen extends Component<Props> {
     const titleStyle = {
       color: 'white',
     };
-    const title = this.isRemoveKey ? '标签移除' : '标签配置';
+    const title = this.isRemoveKey ? '语言移除' : '语言配置';
     const rightButtonTitle = this.isRemoveKey ? '移除' : '保存';
     return (
       <NavigationBar
@@ -310,11 +310,11 @@ class MarksCustomScreen extends Component<Props> {
 
 const AppMapStateToProps = state => ({
   theme: state.theme.theme,
-  marks: state.marks.marks,
+  languages: state.langus.languages,
 });
 
 const AppMapDispatchToProps = dispatch => ({
-  onLoadMarks: () => dispatch(actions.onLoadMarks()),
+  onLoadLanguages: () => dispatch(actions.onLoadLanguages()),
 });
 
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(MarksCustomScreen);
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(LangusCustomScreen);

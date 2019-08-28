@@ -1,25 +1,25 @@
 import {
   AsyncStorage,
 } from 'react-native';
-import { JsonMarks } from '../../../resources';
+import { JsonLangus } from '../../../resources';
 
-const STORAGE_MARKS_KEY = 'STORAGE_MARKS_KEY';
+const STORAGE_LANGUAGES_KEY = 'STORAGE_LANGUAGES_KEY';
 
 export default class MarksDao {
   /**
-   * 获取标签
+   * 获取语言
    * @returns {Promise<any> | Promise}
    */
   fetch() {
     return new Promise((resolve, reject) => {
-      AsyncStorage.getItem(STORAGE_MARKS_KEY, (error, result) => {
+      AsyncStorage.getItem(STORAGE_LANGUAGES_KEY, (error, result) => {
         if (error) {
           reject(error);
           return;
         }
         if (!result) {
-          this.save(JsonMarks);
-          resolve(JsonMarks);
+          this.save(JsonLangus);
+          resolve(JsonLangus);
         } else {
           try {
             resolve(JSON.parse(result));
@@ -32,12 +32,12 @@ export default class MarksDao {
   }
 
   /**
-   * 保存标签
+   * 保存语言
    * @param objectData
    */
   save(objectData) {
     const stringData = JSON.stringify(objectData);
-    AsyncStorage.setItem(STORAGE_MARKS_KEY, stringData, ((error) => {
+    AsyncStorage.setItem(STORAGE_LANGUAGES_KEY, stringData, ((error) => {
 
     }));
   }

@@ -55,7 +55,8 @@ class MyCenterScreen extends Component<Props> {
         break;
       }
       case MENUS.LanguageSetting: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        routerName = RouterConst.RouterLanguagesCustomScreen;
+        params.isRemoveKey = false;
         break;
       }
       case MENUS.LanguageSortKey: {

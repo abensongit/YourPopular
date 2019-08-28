@@ -18,6 +18,9 @@ import WebBrowserScreen from '../screens/browser/webbrowser';
 import MarksCustomScreen from '../screens/mycenter/marks/marks-custom';
 // 标签排序
 import MarksSortedScreen from '../screens/mycenter/marks/marks-sorted';
+// 语言设置
+import LanguagesCustomScreen from '../screens/mycenter/langus/langus-custom';
+
 
 
 /**
@@ -51,6 +54,12 @@ const AppMainStackNavigator = createStackNavigator(
     },
     RouterMarksSortedScreen: {
       screen: MarksSortedScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterLanguagesCustomScreen: {
+      screen: LanguagesCustomScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),
