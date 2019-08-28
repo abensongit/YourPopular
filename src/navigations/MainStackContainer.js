@@ -24,6 +24,8 @@ import LanguagesCustomScreen from '../screens/mycenter/langus/langus-custom';
 import LanguagesSortedScreen from '../screens/mycenter/langus/langus-sorted';
 // 最热详情
 import PopularTabDetaiScreen from '../screens/popular/popular-tab-detail';
+// 趋势详情
+import TrendingTabDetaiScreen from '../screens/trending/trending-tab-detail';
 
 
 /**
@@ -75,6 +77,12 @@ const AppMainStackNavigator = createStackNavigator(
     },
     RouterPopularTabDetaiScreen: {
       screen: PopularTabDetaiScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterTrendingTabDetaiScreen: {
+      screen: TrendingTabDetaiScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),

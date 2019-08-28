@@ -10,6 +10,12 @@ import {
   onLoadMorePopular,
   onFlushPopularFavourite
 } from '../../screens/popular/popular-actions';
+import {
+  onRefreshTrending,
+  onLoadMoreTrending,
+  onFlushTrendingFavourite
+} from '../../screens/trending/trending-actions';
+
 
 export default {
   // 主题
@@ -26,4 +32,9 @@ export default {
   onRefreshPopular,
   onLoadMorePopular,
   onFlushPopularFavourite,
+
+  // 趋势
+  onRefreshTrending,
+  onLoadMoreTrending,
+  onFlushTrendingFavourite,
 };

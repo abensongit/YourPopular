@@ -14,10 +14,12 @@ import {
 import {
   SysUtil
 } from '../../expand';
-import PopularFavouriteDao from './popular-favourite-dao';
+import PopularFavouriteDao from './trending-favourite-dao';
+
+const TRENDING_URL = 'https://github.com/';
 
 type Props = {};
-class PopularTabDetaiScreen extends Component<Props> {
+class TrendingTabDetaiScreen extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -28,7 +30,7 @@ class PopularTabDetaiScreen extends Component<Props> {
     const { projectModel } = this.params;
     this.favouriteDao = new PopularFavouriteDao();
     const itemName = projectModel.item.full_name || projectModel.item.fullName;
-    this.webSource = projectModel.item.html_url;
+    this.webSource = TRENDING_URL + projectModel.item.fullName;
     this.state = {
       title: itemName,
       webSource: this.webSource,
@@ -89,7 +91,7 @@ class PopularTabDetaiScreen extends Component<Props> {
     this.setState({
       isFavourite,
     });
-    SysUtil.onFavouritePopular(projectModel.item, isFavourite, this.favouriteDao);
+    SysUtil.onFavouriteTrending(projectModel.item, isFavourite, this.favouriteDao);
   }
 
   /**
@@ -190,7 +192,7 @@ const AppMapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(PopularTabDetaiScreen);
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(TrendingTabDetaiScreen);
 
 
 const styles = StyleSheet.create({
