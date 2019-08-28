@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   Easing, Image, Platform, ScrollView, Text, TouchableOpacity, View

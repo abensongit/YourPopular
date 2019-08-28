@@ -3,6 +3,9 @@ import {
   Modal, ScrollView, TouchableHighlight, Text, View
 } from 'react-native';
 import { connect } from 'react-redux';
+import {
+  NavigationBar,
+} from '../../../components';
 import ThemeDao from './theme-dao';
 import * as actions from './theme-actions';
 import styles from './theme-custom-styles';
@@ -100,6 +103,23 @@ class CustomThemeScreen extends Component<Props> {
   }
 
   /**
+   * 创建导航条控件
+   * @returns {*}
+   */
+  renderNavigationBar() {
+    const statusBar = {
+      barStyle: 'light-content',
+      backgroundColor: this.props.theme.themeColor,
+    };
+    return (
+      <NavigationBar
+        hide
+        statusBar={statusBar}
+      />
+    );
+  }
+
+  /**
    * 渲染界面
    * @returns {*}
    */
@@ -107,6 +127,7 @@ class CustomThemeScreen extends Component<Props> {
     return this.props.visible
       ? (
         <View style={styles.container}>
+          {this.renderNavigationBar()}
           {this.renderContentView()}
         </View>
       ) : null;
@@ -114,7 +135,7 @@ class CustomThemeScreen extends Component<Props> {
 }
 
 const AppMapStateToProps = state => ({
-
+  theme: state.theme.theme,
 });
 
 const AppMapDispatchToProps = dispatch => ({
