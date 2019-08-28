@@ -22,12 +22,56 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import {
-  NavigationBar,
+  NavigationService, BackHandlerComponent
+} from '../../common';
+import {
+  NavigationBar
 } from '../../components';
 import styles from './introduce-styles';
 
+
 type Props = {};
 export default class IntroduceScreen extends Component<Props> {
+  /**
+   * 构造函数
+   * @param props
+   */
+  constructor(props) {
+    super(props);
+    this.backPressComponent = new BackHandlerComponent({ hardwareBackPressAction: this.onHardwareBackPressAction });
+  }
+
+  /**
+   * 组件渲染完成
+   */
+  componentDidMount() {
+    // 处理 Android 中的物理返回键
+    this.backPressComponent.componentDidMount();
+  }
+
+  /**
+   * 组件将要销毁
+   */
+  componentWillUnmount() {
+    // 处理 Android 中的物理返回键
+    this.backPressComponent.componentWillUnmount();
+  }
+
+  /**
+   * 处理 Android 中的物理返回键
+   */
+  onHardwareBackPressAction = () => {
+    this.handlerNavGoBackAction();
+    return true;
+  };
+
+  /**
+   * 导航栏返回按钮事件
+   */
+  handlerNavGoBackAction() {
+    NavigationService.goBack(this.props.navigation);
+  }
+
   /**
    * 创建导航条控件
    * @returns {*}
@@ -38,10 +82,21 @@ export default class IntroduceScreen extends Component<Props> {
       barStyle: 'dark-content',
       backgroundColor: '#ffffff',
     };
+    // 导航条
+    const navBar = {
+      backgroundColor: '#ffffff',
+    };
+    // 标题头
+    const titleStyle = {
+      color: 'black',
+    };
     return (
       <NavigationBar
-        hide
+        title="React Native"
         statusBar={statusBar}
+        style={navBar}
+        titleStyle={titleStyle}
+        returnBackHandle={() => this.handlerNavGoBackAction()}
       />
     );
   }

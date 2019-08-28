@@ -73,7 +73,8 @@ export default class NavigationBar extends Component {
   /**
    * 创建返回按钮
    * @param onPressHandle
-   * @returns {XML}
+   * @param color
+   * @returns {*}
    */
   static renderNavBackButton(onPressHandle, color = 'white') {
     return (
@@ -95,26 +96,23 @@ export default class NavigationBar extends Component {
    * 创建导航按钮 - 左边
    * @param data
    * @param handle
+   * @param color
    * @returns {*}
    */
-  static renderNavButtonElementLeft(data, handle = null) {
+  static renderNavButtonElementLeft(data, handle = null, color = 'black') {
     if (data || !handle) {
       return NavigationBar.renderButtonElement(data);
     }
-    return NavigationBar.renderButtonElement(NavigationBar.renderNavBackButton(handle));
+    return NavigationBar.renderButtonElement(NavigationBar.renderNavBackButton(handle, color));
   }
 
   /**
    * 创建导航按钮 - 右边
    * @param data
-   * @param handle
    * @returns {*}
    */
-  static renderNavButtonElementRight(data, handle = null) {
-    if (data || !handle) {
-      return NavigationBar.renderButtonElement(data);
-    }
-    return NavigationBar.renderButtonElement(NavigationBar.renderNavBackButton(handle));
+  static renderNavButtonElementRight(data) {
+    return NavigationBar.renderButtonElement(data);
   }
 
   /**
@@ -136,7 +134,7 @@ export default class NavigationBar extends Component {
     const content = this.props.hide ? null
       : (
         <View style={styles.navBar}>
-          {NavigationBar.renderNavButtonElementLeft(this.props.leftButton, this.props.returnBackHandle)}
+          {NavigationBar.renderNavButtonElementLeft(this.props.leftButton, this.props.returnBackHandle, this.props.titleStyle.color)}
           <View style={[styles.navBarTitleContainer, this.props.titleLayoutStyle]}>
             {titleView}
           </View>
