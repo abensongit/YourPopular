@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  View, TouchableOpacity
+  StyleSheet, View, TouchableOpacity
 } from 'react-native';
 import {
   createAppContainer,
@@ -14,9 +14,11 @@ import {
 import {
   NavigationBar
 } from '../../components';
-import PopularTabScreen from './popular-tab-screen';
-import styles from './popular-styles';
-
+import {
+  ArrayUtil,
+} from '../../expand';
+import PopularTabScreen from './popular-tab';
+import actions from '../../redux/actions';
 
 type Props = {};
 class PopularScreen extends Component<Props> {
@@ -26,6 +28,8 @@ class PopularScreen extends Component<Props> {
    */
   constructor(props) {
     super(props);
+    const { onLoadMarks } = this.props;
+    onLoadMarks();
     this.preTabItems = [];
   }
 
@@ -34,16 +38,17 @@ class PopularScreen extends Component<Props> {
    */
   routeConfigMaterialTopTabItemScreens() {
     const tabs = {};
-    const { theme } = this.props;
-    const tabItems = ['ALL', 'iOS', 'Android', 'Java'];
+    const { tabItems, theme } = this.props;
     this.preTabItems = tabItems;
     tabItems.forEach((item, index) => {
-      tabs[`tab${index}`] = {
-        screen: props => <PopularTabScreen {...props} tabLabel={item} theme={theme} />,
-        navigationOptions: {
-          title: item
-        },
-      };
+      if (item.checked) {
+        tabs[`tab${index}`] = {
+          screen: props => <PopularTabScreen {...props} tabLabel={item.name} theme={theme} />,
+          navigationOptions: {
+            title: item.name
+          },
+        };
+      }
     });
     return tabs;
   }
@@ -53,7 +58,7 @@ class PopularScreen extends Component<Props> {
    * @returns {NavigationContainer}
    */
   renderMaterialTopTabNavigator() {
-    if (this.props.theme !== this.theme || !this.topTabNavigator) {
+    if (this.props.theme !== this.theme || !this.topTabNavigator || !ArrayUtil.isEqual(this.preTabItems, this.props.tabItems)) {
       const routeConfigMap = this.routeConfigMaterialTopTabItemScreens();
       this.theme = this.props.theme;
       this.topTabNavigator = Object.keys(routeConfigMap).length
@@ -150,8 +155,33 @@ class PopularScreen extends Component<Props> {
   }
 }
 
+
 const AppMapStateToProps = state => ({
   theme: state.theme.theme,
+  tabItems: state.marks.marks,
 });
 
-export default connect(AppMapStateToProps)(PopularScreen);
+const AppMapDispatchToProps = dispatch => ({
+  onLoadMarks: () => dispatch(actions.onLoadMarks())
+});
+
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(PopularScreen);
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#e9e9ee',
+  },
+  tabStyle: {
+
+  },
+  labelStyle: {
+    marginTop: 0,
+    fontSize: 16,
+  },
+  indicatorStyle: {
+    height: 2,
+    backgroundColor: '#ffffff'
+  },
+});

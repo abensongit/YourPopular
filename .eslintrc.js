@@ -85,6 +85,7 @@ module.exports = {
     'react/sort-comp': OFF,
     'react/prop-types': OFF,
     'react/no-multi-comp': OFF,
+    'react/forbid-prop-types': OFF,
     'react/jsx-filename-extension': OFF,
     'react/prefer-stateless-function': OFF,
     'react/require-default-props': OFF,

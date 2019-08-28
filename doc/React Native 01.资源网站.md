@@ -8,3 +8,12 @@ https://github.com/facebook/react-native
 2.第三方库查找
 https://js.coach/?collection=React+Native
 ```
+
+
+####【知识点】
+
+``` 
+1.生命周期
+
+2.
+```
