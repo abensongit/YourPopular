@@ -7,6 +7,7 @@ import marksReducer from '../../screens/mycenter/marks/marks-reducers';
 import langusReducer from '../../screens/mycenter/langus/langus-reducers';
 import popularReducer from '../../screens/popular/popular-reducers';
 import trendingReducer from '../../screens/trending/trending-reducers';
+import favouriteReducer from '../../screens/favourite/favourite-reducers';
 
 /**
  * 1.指定默认state
@@ -33,6 +34,7 @@ const reducers = combineReducers({
   langus: langusReducer,
   popular: popularReducer,
   trending: trendingReducer,
+  favourite: favouriteReducer,
 });
 
 export default reducers;

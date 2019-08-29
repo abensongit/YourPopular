@@ -12,7 +12,7 @@ import {
 import {
   SysUtil
 } from '../../expand';
-import actions from '../../redux/actions';
+import * as actions from './popular-actions';
 import PopularTabCell from './popular-tab-cell';
 import PopularFavouriteDao from './popular-favourite-dao';
 

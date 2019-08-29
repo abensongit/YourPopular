@@ -1,5 +1,9 @@
-import { ACTION_MARKS_LOAD_SUCCESS } from '../../screens/mycenter/marks/marks-actions-types';
-import { ACTION_LANGUAGES_LOAD_SUCCESS } from '../../screens/mycenter/langus/langus-actions-types';
+import {
+  ACTION_MARKS_LOAD_SUCCESS
+} from '../../screens/mycenter/marks/marks-actions-types';
+import {
+  ACTION_LANGUAGES_LOAD_SUCCESS
+} from '../../screens/mycenter/langus/langus-actions-types';
 import {
   ACTION_THEME_INIT,
   ACTION_THEME_CHANGE,
@@ -27,7 +31,17 @@ import {
   ACTION_TRENDING_NO_MORE_DATA,
   ACTION_TRENDING_EMPTY_DATA
 } from '../../screens/trending/trending-actions-types';
-
+import {
+  ACTION_FAVOURITE_REFRESH,
+  ACTION_FAVOURITE_REFRESH_FAIL,
+  ACTION_FAVOURITE_REFRESH_SUCCESS,
+  ACTION_FAVOURITE_LOAD_MORE,
+  ACTION_FAVOURITE_LOAD_MORE_FAIL,
+  ACTION_FAVOURITE_LOAD_MORE_SUCCESS,
+  ACTION_FAVOURITE_FLUSH_FAVOURITE,
+  ACTION_FAVOURITE_NO_MORE_DATA,
+  ACTION_FAVOURITE_EMPTY_DATA
+} from '../../screens/favourite/favourite-actions-types';
 
 export default {
   // 主题
@@ -61,4 +75,15 @@ export default {
   ACTION_TRENDING_FLUSH_FAVOURITE,
   ACTION_TRENDING_NO_MORE_DATA,
   ACTION_TRENDING_EMPTY_DATA,
+
+  // 收藏
+  ACTION_FAVOURITE_REFRESH,
+  ACTION_FAVOURITE_REFRESH_FAIL,
+  ACTION_FAVOURITE_REFRESH_SUCCESS,
+  ACTION_FAVOURITE_LOAD_MORE,
+  ACTION_FAVOURITE_LOAD_MORE_FAIL,
+  ACTION_FAVOURITE_LOAD_MORE_SUCCESS,
+  ACTION_FAVOURITE_FLUSH_FAVOURITE,
+  ACTION_FAVOURITE_NO_MORE_DATA,
+  ACTION_FAVOURITE_EMPTY_DATA,
 };

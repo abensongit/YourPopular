@@ -1,5 +1,9 @@
-import { onLoadMarks } from '../../screens/mycenter/marks/marks-actions';
-import { onLoadLanguages } from '../../screens/mycenter/langus/langus-actions';
+import {
+  onLoadMarks
+} from '../../screens/mycenter/marks/marks-actions';
+import {
+  onLoadLanguages
+} from '../../screens/mycenter/langus/langus-actions';
 import {
   onThemeInit,
   onThemeChange,
@@ -15,6 +19,11 @@ import {
   onLoadMoreTrending,
   onFlushTrendingFavourite
 } from '../../screens/trending/trending-actions';
+import {
+  onRefreshFavourite,
+  onLoadMoreFavourite,
+  onFlushFavourite
+} from '../../screens/favourite/favourite-actions';
 
 
 export default {
@@ -37,4 +46,9 @@ export default {
   onRefreshTrending,
   onLoadMoreTrending,
   onFlushTrendingFavourite,
+
+  // 收藏
+  onRefreshFavourite,
+  onLoadMoreFavourite,
+  onFlushFavourite,
 };

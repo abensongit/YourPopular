@@ -32,21 +32,6 @@ export default class SysUtil {
   }
 
   /**
-   * 收藏函数
-   * @param item
-   * @param isFavourite
-   * @param favouriteDao
-   */
-  static onFavourite(item, isFavourite, favouriteDao) {
-    const key = flag === FLAG_STORAGE.FLAG_TRENDING ? item.fullName : item.id.toString();
-    if (isFavourite) {
-      favouriteDao.saveFavouriteItem(key, JSON.stringify(item));
-    } else {
-      favouriteDao.removeFavouriteItem(key);
-    }
-  }
-
-  /**
    * 收藏函数 - 最热
    * @param item
    * @param isFavourite

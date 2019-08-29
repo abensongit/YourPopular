@@ -15,7 +15,7 @@ import {
 import {
   SysUtil
 } from '../../expand';
-import actions from '../../redux/actions';
+import * as actions from './trending-actions';
 import TrendingTabCell from './trending-tab-cell';
 import TrendingFavouriteDao from './trending-favourite-dao';
 
