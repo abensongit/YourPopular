@@ -18,7 +18,7 @@ export default StyleSheet.create({
   checkBox: {
     flex: 1,
     paddingHorizontal: 15,
-    paddingVertical: 12,
+    paddingVertical: 13,
   },
   checkEmpty: {
     width: System.window.width * 0.5,
