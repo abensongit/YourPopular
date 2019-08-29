@@ -33,90 +33,89 @@ static clear([callback]: ?(error: ?Error) => void)
 
 #### 四、如何使用 AsyncStorage
 
-``` 
-  /**
-   * 保存
-   * @returns {Promise.<void>}
-   */
-  async doSave(key, value, callback) {
-    // 用法一
-    AsyncStorage.setItem(key, JSON.stringify(value), (error) => {
-      error && console.log(error.toString());
-    });
+```
+/**
+ * 保存
+ * @returns {Promise.<void>}
+ */
+async doSave(key, value, callback) {
+  // 用法一
+  AsyncStorage.setItem(key, JSON.stringify(value), (error) => {
+    error && console.log(error.toString());
+  });
 
-    // 用法二
-    AsyncStorage.setItem(key, JSON.stringify(value)).then((error) => {
-      error && console.log(error.toString());
-    });
+  // 用法二
+  AsyncStorage.setItem(key, JSON.stringify(value)).then((error) => {
+    error && console.log(error.toString());
+  });
 
-    // 用法三
-    try {
-      await AsyncStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      error && console.log(error.toString());
-    }
+  // 用法三
+  try {
+    await AsyncStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    error && console.log(error.toString());
   }
-  
-  /**
-   * 获取
-   * @returns {Promise.<void>}
-   */
-  async doGet(key) {
-    // 用法一
-    AsyncStorage.getItem(key, (error, value) => {
+}
+
+/**
+ * 获取
+ * @returns {Promise.<void>}
+ */
+async doGet(key) {
+  // 用法一
+  AsyncStorage.getItem(key, (error, value) => {
+    this.setSate({
+      data: value
+    });
+    console.log(value);
+    error && console.log(error.toString());
+  });
+
+  // 用法二
+  AsyncStorage.getItem(key)
+    .then((value) => {
       this.setSate({
         data: value
       });
       console.log(value);
+    })
+    .catch((error) => {
       error && console.log(error.toString());
     });
 
-    // 用法二
-    AsyncStorage.getItem(key)
-      .then((value) => {
-        this.setSate({
-          data: value
-        });
-        console.log(value);
-      })
-      .catch((error) => {
-        error && console.log(error.toString());
-      });
-
-    // 用法三
-    try {
-      const value = await AsyncStorage.getItem(key);
-      this.setSate({
-        data: value
-      });
-      console.log(value);
-    } catch (error) {
-      error && console.log(error.toString());
-    }
+  // 用法三
+  try {
+    const value = await AsyncStorage.getItem(key);
+    this.setSate({
+      data: value
+    });
+    console.log(value);
+  } catch (error) {
+    error && console.log(error.toString());
   }
+}
 
-  /**
-   * 删除
-   * @returns {Promise.<void>}
-   */
-  async doRemove(key) {
-    // 用法一
-    AsyncStorage.removeItem(key, (error) => {
+/**
+ * 删除
+ * @returns {Promise.<void>}
+ */
+async doRemove(key) {
+  // 用法一
+  AsyncStorage.removeItem(key, (error) => {
+    error && console.log(error.toString());
+  });
+
+  // 用法二
+  AsyncStorage.removeItem(key)
+    .catch((error) => {
       error && console.log(error.toString());
     });
 
-    // 用法二
-    AsyncStorage.removeItem(key)
-      .catch((error) => {
-        error && console.log(error.toString());
-      });
-
-    // 用法三
-    try {
-      await AsyncStorage.removeItem(key);
-    } catch (error) {
-      error && console.log(error.toString());
-    }
+  // 用法三
+  try {
+    await AsyncStorage.removeItem(key);
+  } catch (error) {
+    error && console.log(error.toString());
   }
-
+}
 ```
