@@ -7,8 +7,12 @@ import {
   createStackNavigator,
   getActiveChildNavigationOptions,
 } from 'react-navigation';
+import {
+  StackViewStyleInterpolator
+} from 'react-navigation-stack';
 import { RouterConst } from '../common/index';
 import MainTabRootContainer from './MainTabRootContainer';
+
 
 // 官网介绍
 import IntroduceScreen from '../screens/introduce/introduce';
@@ -90,12 +94,15 @@ const AppMainStackNavigator = createStackNavigator(
   },
   {
     initialRouteName: RouterConst.RouterMainTabContainer,
-    navigationOptions: ({ navigation, screenProps }) => ({
-      ...getActiveChildNavigationOptions(navigation, screenProps),
-    }),
     defaultNavigationOptions: {
       headerBackTitle: '返回',
     },
+    navigationOptions: ({ navigation, screenProps }) => ({
+      ...getActiveChildNavigationOptions(navigation, screenProps),
+    }),
+    transitionConfig: () => ({ // 修改页面跳转动画
+      screenInterpolator: StackViewStyleInterpolator.forHorizontal,
+    })
   }
 );
 
