@@ -209,7 +209,7 @@ class LangusCustomScreen extends Component<Props> {
   renderCheckBox(data, index) {
     return (
       <CheckBox
-        style={{ flex: 1, paddingHorizontal: 15, paddingVertical: 12, }}
+        style={styles.checkBox}
         leftText={data.name}
         isChecked={data.checked}
         onClick={() => this.onClickCheckBox(data, index)}
@@ -236,6 +236,7 @@ class LangusCustomScreen extends Component<Props> {
           <View style={styles.item}>
             {this.renderCheckBox(dataArray[i], i)}
             {i + 1 < len && this.renderCheckBox(dataArray[i + 1], i + 1)}
+            {i + 1 >= len && <View style={styles.checkEmpty} />}
           </View>
           <View style={styles.spearatorLine} />
         </View>
