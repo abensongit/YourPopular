@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, ScrollView, Text, TouchableOpacity, View
+  Alert, AsyncStorage, ScrollView, Text, TouchableOpacity, View,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -9,7 +9,7 @@ import {
   NavigationService, RouterConst
 } from '../../common';
 import {
-  NavigationBar
+  NavigationBar, TouchableOpacityButton
 } from '../../components';
 import {
   ViewUtil
@@ -22,7 +22,7 @@ import MENUS from './mycenter-data';
 type Props = {};
 class MyCenterScreen extends Component<Props> {
   /**
-   * 点击表格事件
+   * 事件处理 - 点击表格事件
    * @param menu
    */
   onClickMenuItem(menu) {
@@ -83,6 +83,27 @@ class MyCenterScreen extends Component<Props> {
       NavigationService.navigate(routerName, params);
     }
   }
+
+  /**
+   * 事件处理 - 退出登录
+   * @param completeHandle
+   */
+  onHandleLoginOutAction = (completeHandle) => {
+    this.timer = setTimeout(() => {
+      completeHandle();
+      Alert.alert('退出成功', '', [{ text: '取消' }, { text: '确定' }]);
+      this.doWithLoginOutAction();
+    }, 1000);
+  };
+
+  /**
+   * 事件处理 - 退出登录
+   * @returns {Promise<void>}
+   */
+  doWithLoginOutAction = async () => {
+    await AsyncStorage.clear();
+    NavigationService.navigate(RouterConst.RouterLoginAuthorizeScreen, this.props);
+  };
 
   /**
    * 创建导航条按钮（右侧）
@@ -236,6 +257,16 @@ class MyCenterScreen extends Component<Props> {
           <View style={styles.spearatorLine} />
           {/* 反馈 */}
           {this.renderMenu(MENUS.FeedbackInfo)}
+
+          {/* 退出 */}
+          <View style={styles.buttonLoginOut}>
+            <TouchableOpacityButton
+              title="退 出"
+              subTitle="正在退出..."
+              backgroundColor={theme.themeColor}
+              onPress={this.onHandleLoginOutAction}
+            />
+          </View>
 
         </ScrollView>
       </View>

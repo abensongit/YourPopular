@@ -32,4 +32,10 @@ export default StyleSheet.create({
     opacity: 0.5,
     backgroundColor: 'darkgray',
   },
+  buttonLoginOut: {
+    marginHorizontal: 15,
+    marginTop: 15,
+    marginBottom: 15,
+    height: 45,
+  }
 });
