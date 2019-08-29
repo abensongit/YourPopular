@@ -102,7 +102,7 @@ const AppMainStackNavigator = createStackNavigator(
     }),
     transitionConfig: () => ({ // 修改页面跳转动画
       screenInterpolator: StackViewStyleInterpolator.forHorizontal,
-    })
+    }),
   }
 );
 
