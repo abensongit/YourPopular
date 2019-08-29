@@ -98,7 +98,7 @@ class PopularTabScreen extends Component<Props> {
           RouterConst.RouterPopularTabDetaiScreen,
           {
             projectModel: rowData.item,
-            callback
+            callback, // 详情页面更新 ItemCell 的收藏状态
           }
         );
       }}
