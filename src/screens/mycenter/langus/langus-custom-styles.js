@@ -3,16 +3,17 @@ import {
   System
 } from '../../../common';
 import {
-  COLOR_BACKGROUND_WHITE
+  COLOR_BACKGROUND_DEFAULT, COLOR_BACKGROUND_WHITE
 } from '../../../common/Variables';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLOR_BACKGROUND_WHITE,
+    backgroundColor: COLOR_BACKGROUND_DEFAULT,
   },
   item: {
     flexDirection: 'row',
+    backgroundColor: COLOR_BACKGROUND_WHITE,
   },
   checkBox: {
     flex: 1,
