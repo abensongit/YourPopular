@@ -209,7 +209,11 @@ class MarksCustomScreen extends Component<Props> {
   renderCheckBox(data, index) {
     return (
       <CheckBox
-        style={{ flex: 1, paddingHorizontal: 15, paddingVertical: 12, }}
+        style={{
+          flex: 1,
+          paddingHorizontal: 15,
+          paddingVertical: 12,
+        }}
         leftText={data.name}
         isChecked={data.checked}
         onClick={() => this.onClickCheckBox(data, index)}
