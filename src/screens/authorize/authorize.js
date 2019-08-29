@@ -9,15 +9,25 @@ import styles from './authorize-styles';
 
 type Props = {};
 export default class AuthorizeScreen extends Component<Props> {
+  /**
+   * 构造函数
+   * @param props
+   */
   constructor() {
     super();
     console.disableYellowBox = true;
   }
 
+  /**
+   * 组件渲染完成
+   */
   componentDidMount() {
     this.bootstrapAsync();
   }
 
+  /**
+   * 组件将要销毁
+   */
   componentWillUnmount() {
     this.timer && clearTimeout(this.timer);
   }
@@ -25,10 +35,14 @@ export default class AuthorizeScreen extends Component<Props> {
   bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     this.timer = setTimeout(() => {
-      NavigationService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterWelcomeScreen, this.props);
-    }, 1000);
+      NavigationService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterLoginAuthorizeScreen, this.props);
+    }, 500);
   };
 
+  /**
+   * 渲染页面
+   * @returns {*}
+   */
   render() {
     return (
       <View style={styles.container}>

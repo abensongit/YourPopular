@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Easing, Image, Platform, ScrollView, Text, TouchableOpacity, View
+  Easing, Image, Platform, ScrollView, StatusBar, Text, TouchableOpacity, View
 } from 'react-native';
 import {
   AnimatedCircularProgress
@@ -31,24 +31,31 @@ export default class WelcomeScreen extends Component<Props> {
   }
 
   /**
-   * 加载完成
+   * 组件渲染完成
    */
   componentDidMount() {
     // 倒计时定时器
     this.timer = setTimeout(() => {
       NavigationService.navigate(
-        RouterConst.RouterMainStackNavigator,
+        RouterConst.RouterAuthorizeScreen,
         this.props
       );
     }, TIMEOUT_SECOND_VALUE);
     // 倒计时圆形条
     this.circularProgress.animate(100, TIMEOUT_SECOND_VALUE, Easing.linear);
+    // 状态栏的颜色
+    this.navListener = this.props.navigation.addListener('didFocus', () => {
+      Platform.OS === 'android' ? StatusBar.setTranslucent(false) : ''; // 设置状态栏透明
+      // Platform.OS === 'android' ? StatusBar.setBackgroundColor('rgba(0,0,0,0)', false) : ''; // 设置背景色透明
+      StatusBar.setBarStyle('dark-content', true);
+    });
   }
 
   /**
-   * 将要销毁
+   * 组件将要销毁
    */
   componentWillUnmount() {
+    this.navListener.remove();
     this.timer && clearTimeout(this.timer);
   }
 
@@ -57,7 +64,7 @@ export default class WelcomeScreen extends Component<Props> {
    * @returns {Promise<void>}
    */
   doJumpOutAsync = async () => {
-    await NavigationService.navigate(RouterConst.RouterMainStackNavigator, this.props);
+    await NavigationService.navigate(RouterConst.RouterAuthorizeScreen, this.props);
   };
 
   /**

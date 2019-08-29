@@ -12,6 +12,7 @@ import {
 import { RouterConst } from '../common';
 import WelcomeScreen from '../screens/welcome/welcome';
 import AuthorizeScreen from '../screens/authorize/authorize';
+import LoginAuthorizeScreen from '../screens/authorize/login-authorize';
 import MainStackContainer from './MainStackContainer';
 
 /**
@@ -24,6 +25,9 @@ export const AppRootNavigator = createSwitchNavigator(
     },
     RouterAuthorizeScreen: {
       screen: AuthorizeScreen
+    },
+    RouterLoginAuthorizeScreen: {
+      screen: LoginAuthorizeScreen
     },
     RouterMainStackNavigator: {
       screen: MainStackContainer
