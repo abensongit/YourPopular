@@ -230,19 +230,19 @@ class MarksCustomScreen extends Component<Props> {
     }
     const len = dataArray.length;
     const views = [];
-    for (let i = 0, l = len; i < l; i += 2) {
+    for (let i = 0, l = len; i < l; i++) {
       views.push(
-        <View key={i}>
-          <View style={styles.item}>
-            {this.renderCheckBox(dataArray[i], i)}
-            {i + 1 < len && this.renderCheckBox(dataArray[i + 1], i + 1)}
-            {i + 1 >= len && <View style={styles.checkEmpty} />}
-          </View>
+        <View key={i} style={styles.item}>
+          {this.renderCheckBox(dataArray[i], i)}
           <View style={styles.spearatorLine} />
         </View>
       );
     }
-    return views;
+    return (
+      <View style={styles.items}>
+        {views}
+      </View>
+    );
   }
 
   /**

@@ -11,17 +11,20 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: COLOR_BACKGROUND_DEFAULT,
   },
-  item: {
+  items: {
+    flex: 1,
     flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  item: {
     backgroundColor: COLOR_BACKGROUND_WHITE,
+    width: System.window.width * 0.5,
+    height: 50,
   },
   checkBox: {
     flex: 1,
+    justifyContent: 'center',
     paddingHorizontal: 15,
-    paddingVertical: 12,
-  },
-  checkEmpty: {
-    width: System.window.width * 0.5,
   },
   spearatorLine: {
     height: 0.5,
