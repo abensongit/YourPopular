@@ -4,7 +4,7 @@ import {
   ActivityIndicator, AsyncStorage, Platform, View,
 } from 'react-native';
 import {
-  NavigationService, RouterConst, System,
+  NavigationPopularService, RouterConst, System,
 } from '../../common';
 import {
   NavigationBar,
@@ -39,7 +39,7 @@ class AuthorizeScreen extends Component<Props> {
   bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     this.timer = setTimeout(() => {
-      NavigationService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterLoginAuthorizeScreen, this.props);
+      NavigationPopularService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterLoginAuthorizeScreen, this.props);
     }, 0);
   };
 

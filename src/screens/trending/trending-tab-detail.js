@@ -6,7 +6,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {
-  NavigationService, BackHandlerComponent
+  NavigationPopularService, BackHandlerComponent
 } from '../../common';
 import {
   NavigationBar, ProgressWebView
@@ -76,7 +76,7 @@ class TrendingTabDetaiScreen extends Component<Props> {
     if (this.state.webCanGoBack) {
       this.webView.goBack();
     } else {
-      NavigationService.goBack(this.props.navigation);
+      NavigationPopularService.goBack(this.props.navigation);
     }
   }
 

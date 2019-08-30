@@ -22,7 +22,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import {
-  NavigationService, BackHandlerComponent
+  NavigationPopularService, BackHandlerComponent
 } from '../../common';
 import {
   NavigationBar
@@ -69,7 +69,7 @@ export default class IntroduceScreen extends Component<Props> {
    * 导航栏返回按钮事件
    */
   handlerNavGoBackAction() {
-    NavigationService.goBack(this.props.navigation);
+    NavigationPopularService.goBack(this.props.navigation);
   }
 
   /**

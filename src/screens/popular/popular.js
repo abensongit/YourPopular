@@ -9,7 +9,7 @@ import {
 } from 'react-navigation';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationService, RouterConst
+  NavigationPopularService, RouterConst
 } from '../../common';
 import {
   NavigationBar
@@ -94,7 +94,7 @@ class PopularScreen extends Component<Props> {
             paddingTop: 2, paddingLeft: 5, paddingRight: 10, marginRight: 0
           }}
           onPress={() => {
-            NavigationService.navigate(RouterConst.RouterIntroduceScreen);
+            NavigationPopularService.navigate(RouterConst.RouterIntroduceScreen);
           }}
         >
           <Feather

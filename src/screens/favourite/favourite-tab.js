@@ -7,7 +7,7 @@ import Toast from 'react-native-root-toast';
 import EventBus from 'react-native-event-bus';
 import RefreshListView, { RefreshState } from '../../components/refresh-list-view/refresh-list-view';
 import {
-  NavigationService, RouterConst, EventTypes
+  NavigationPopularService, RouterConst, EventTypes
 } from '../../common';
 import {
   SysUtil
@@ -130,7 +130,7 @@ class FavouriteTabScreen extends Component<Props> {
       <TabItem
         projectModel={rowData.item}
         onSelect={(callback) => {
-          NavigationService.navigate(routerScreen, {
+          NavigationPopularService.navigate(routerScreen, {
             projectModel: rowData.item,
             flag: this.storeName,
             callback

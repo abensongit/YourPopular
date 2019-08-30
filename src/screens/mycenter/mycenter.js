@@ -6,7 +6,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
-  NavigationService, RouterConst
+  NavigationMainService, NavigationPopularService, RouterConst
 } from '../../common';
 import {
   NavigationBar, TouchableOpacityButton
@@ -80,7 +80,7 @@ class MyCenterScreen extends Component<Props> {
       }
     }
     if (routerName) {
-      NavigationService.navigate(routerName, params);
+      NavigationPopularService.navigate(routerName, params);
     }
   }
 
@@ -91,9 +91,8 @@ class MyCenterScreen extends Component<Props> {
   onPressLoginOutAction = (completeHandle) => {
     this.timer = setTimeout(() => {
       completeHandle();
-      Alert.alert('退出成功', '', [{ text: '取消' }, { text: '确定' }]);
       this.doWithLoginOutAction();
-    }, 300);
+    }, 500);
   };
 
   /**
@@ -102,7 +101,7 @@ class MyCenterScreen extends Component<Props> {
    */
   doWithLoginOutAction = async () => {
     await AsyncStorage.removeItem('userToken'); // 清除token
-    NavigationService.navigate(RouterConst.RouterLoginAuthorizeScreen, this.props);
+    NavigationMainService.navigate(RouterConst.RouterLoginAuthorizeScreen, this.props);
   };
 
   /**

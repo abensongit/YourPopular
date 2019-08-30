@@ -6,7 +6,7 @@ import {
 import { NavigationActions } from 'react-navigation';
 import {
   RouterConst,
-  NavigationService,
+  NavigationPopularService,
   BackHandlerComponent,
 } from '../common';
 import MainTabRootNavigator from './MainTabRootNavigator';
@@ -73,7 +73,7 @@ class MainTabRootContainer extends Component<Props> {
    * @returns {*}
    */
   render() {
-    NavigationService.topLevelNavigator = this.props.navigation;
+    NavigationPopularService.topLevelNavigator = this.props.navigation;
     return (
       <View style={styles.container}>
         <MainTabRootNavigator />

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import SortableListView from 'react-native-sortable-listview';
 import {
-  BackHandlerComponent, NavigationService
+  BackHandlerComponent, NavigationPopularService
 } from '../../../common';
 import {
   NavigationBar
@@ -116,7 +116,7 @@ class LangusSortedScreen extends Component<Props> {
           {
             text: '否',
             onPress: () => {
-              NavigationService.goBack(this.props.navigation);
+              NavigationPopularService.goBack(this.props.navigation);
             }
           }, {
           text: '是',
@@ -126,7 +126,7 @@ class LangusSortedScreen extends Component<Props> {
         }
         ]);
     } else {
-      NavigationService.goBack(this.props.navigation);
+      NavigationPopularService.goBack(this.props.navigation);
     }
   }
 
@@ -157,7 +157,7 @@ class LangusSortedScreen extends Component<Props> {
     if (!hasChecked) {
       // 如果没有排序则直接返回
       if (ArrayUtil.isEqual(LangusSortedScreen.getCheckedMarks(this.props), this.state.checkedArray)) {
-        NavigationService.goBack(this.props.navigation);
+        NavigationPopularService.goBack(this.props.navigation);
         return;
       }
     }
@@ -168,7 +168,7 @@ class LangusSortedScreen extends Component<Props> {
     const { onLoadLanguages } = this.props;
     onLoadLanguages();
     // 返回上级页面
-    NavigationService.goBack(this.props.navigation);
+    NavigationPopularService.goBack(this.props.navigation);
   }
 
   /**

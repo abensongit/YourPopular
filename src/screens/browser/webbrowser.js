@@ -4,7 +4,7 @@ import {
   View
 } from 'react-native';
 import {
-  NavigationService, BackHandlerComponent
+  NavigationPopularService, BackHandlerComponent
 } from '../../common';
 import {
   NavigationBar, ProgressWebView
@@ -72,7 +72,7 @@ class WebBrowserScreen extends Component<Props> {
     if (this.state.canGoBack) {
       this.webView.goBack();
     } else {
-      NavigationService.goBack(this.props.navigation);
+      NavigationPopularService.goBack(this.props.navigation);
     }
   }
 

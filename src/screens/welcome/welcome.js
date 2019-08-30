@@ -7,7 +7,7 @@ import {
   AnimatedCircularProgress
 } from 'react-native-circular-progress';
 import {
-  NavigationService, RouterConst, System
+  NavigationPopularService, RouterConst, System
 } from '../../common';
 import {
   NavigationBar,
@@ -40,7 +40,7 @@ class WelcomeScreen extends Component<Props> {
   componentDidMount() {
     // 倒计时定时器
     this.timer = setTimeout(() => {
-      NavigationService.navigate(
+      NavigationPopularService.navigate(
         RouterConst.RouterAuthorizeScreen,
         this.props
       );
@@ -76,7 +76,7 @@ class WelcomeScreen extends Component<Props> {
    * @returns {Promise<void>}
    */
   doJumpOutAsync = async () => {
-    await NavigationService.navigate(RouterConst.RouterAuthorizeScreen, this.props);
+    await NavigationPopularService.navigate(RouterConst.RouterAuthorizeScreen, this.props);
   };
 
   /**

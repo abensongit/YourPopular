@@ -6,7 +6,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CheckBox from 'react-native-check-box';
 import {
-  BackHandlerComponent, NavigationService
+  BackHandlerComponent, NavigationPopularService
 } from '../../../common';
 import {
   NavigationBar
@@ -130,7 +130,7 @@ class MarksCustomScreen extends Component<Props> {
                 ckeckkeys
               });
               // 返回上一个页面
-              NavigationService.goBack(this.props.navigation);
+              NavigationPopularService.goBack(this.props.navigation);
             }
           }, {
           text: '是',
@@ -140,7 +140,7 @@ class MarksCustomScreen extends Component<Props> {
         }
         ]);
     } else {
-      NavigationService.goBack(this.props.navigation);
+      NavigationPopularService.goBack(this.props.navigation);
     }
   }
 
@@ -164,7 +164,7 @@ class MarksCustomScreen extends Component<Props> {
    */
   doSave() {
     if (this.changeValues.length === 0) {
-      NavigationService.goBack(this.props.navigation);
+      NavigationPopularService.goBack(this.props.navigation);
       return;
     }
     let ckeckkeys;
@@ -179,7 +179,7 @@ class MarksCustomScreen extends Component<Props> {
     const { onLoadMarks } = this.props;
     // 更新store
     onLoadMarks();
-    NavigationService.goBack(this.props.navigation);
+    NavigationPopularService.goBack(this.props.navigation);
   }
 
   /**

@@ -8,7 +8,7 @@ import EventBus from 'react-native-event-bus';
 import RefreshListView, { RefreshState } from '../../components/refresh-list-view/refresh-list-view';
 import {
   RouterConst,
-  NavigationService,
+  NavigationPopularService,
   EventTypes,
   EventDeviceTypes,
 } from '../../common';
@@ -112,7 +112,7 @@ class TrendingTabScreen extends Component<Props> {
     <TrendingTabCell
       projectModel={rowData.item}
       onSelect={(callback) => {
-        NavigationService.navigate(
+        NavigationPopularService.navigate(
           RouterConst.RouterTrendingTabDetaiScreen,
           {
             projectModel: rowData.item,

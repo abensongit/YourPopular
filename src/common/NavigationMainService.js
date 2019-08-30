@@ -2,14 +2,14 @@
  * 全局导航跳转工具类
  */
 
-export default class NavigationService {
+export default class NavigationMainService {
   /**
    * 跳转至指定页面
    * @param page
    * @param params
    */
   static navigate(page, params = {}) {
-    const { topLevelNavigator } = NavigationService;
+    const { topLevelNavigator } = NavigationMainService;
     if (!topLevelNavigator) {
       const { navigation } = params;
       if (!navigation) {
@@ -33,7 +33,7 @@ export default class NavigationService {
    * @param params
    */
   static push(page, params = {}) {
-    const { topLevelNavigator } = NavigationService;
+    const { topLevelNavigator } = NavigationMainService;
     if (!topLevelNavigator) {
       const { navigation } = params;
       if (!navigation) {
@@ -59,7 +59,7 @@ export default class NavigationService {
     if (navigation) {
       navigation.goBack();
     } else {
-      const { topLevelNavigator } = NavigationService;
+      const { topLevelNavigator } = NavigationMainService;
       if (!topLevelNavigator) {
         console.log('navigation can not be null');
         return;

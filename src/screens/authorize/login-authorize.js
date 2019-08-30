@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Images } from '../../resources';
 import {
-  NavigationService, RouterConst, System,
+  NavigationMainService, RouterConst, System,
 } from '../../common';
 import {
   NavigationBar, TouchableOpacityButton
@@ -34,18 +34,17 @@ class LoginAuthorizeScreen extends Component<Props> {
 
   signInAsync = async () => {
     await AsyncStorage.setItem('userToken', 'UserTokenValue');
-    NavigationService.navigate(RouterConst.RouterMainStackNavigator, this.props);
+    NavigationMainService.navigate(RouterConst.RouterMainStackNavigator, this.props);
   };
 
   registerAsync = async () => {
     await AsyncStorage.setItem('userToken', 'UserTokenValue');
-    NavigationService.navigate(RouterConst.RouterMainStackNavigator, this.props);
+    NavigationMainService.navigate(RouterConst.RouterMainStackNavigator, this.props);
   };
 
   handleLoginAction = (completeHandle) => {
     this.timer = setTimeout(() => {
       completeHandle();
-      Alert.alert('登录成功', '', [{ text: '确定' }]);
       this.signInAsync();
     }, 500);
   };

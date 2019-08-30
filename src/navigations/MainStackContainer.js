@@ -10,7 +10,9 @@ import {
 import {
   StackViewStyleInterpolator
 } from 'react-navigation-stack';
-import { RouterConst } from '../common/index';
+import {
+  NavigationMainService, RouterConst,
+} from '../common/index';
 import MainTabRootContainer from './MainTabRootContainer';
 
 
@@ -153,6 +155,8 @@ class MainStackContainer extends Component<Props> {
    * @returns {*}
    */
   render() {
+    // 程序主根导航容器
+    NavigationMainService.topLevelNavigator = this.props.navigation;
     // 配置状态栏为[dark-content]的页面数组
     const darkContentScreens = [
       RouterConst.RouterIntroduceScreen,
