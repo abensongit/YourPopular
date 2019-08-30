@@ -3,33 +3,18 @@ import {
   connect
 } from 'react-redux';
 import {
-  SafeAreaView, ScrollView,
+  SafeAreaView, ScrollView, View,
 } from 'react-native';
 import {
   createAppContainer,
-  createStackNavigator,
   createDrawerNavigator,
   DrawerItems,
 } from 'react-navigation';
 import IconOfAntDesign from 'react-native-vector-icons/AntDesign';
+import {
+  NavigationBar,
+} from '../components';
 import MainPopularStackContainer from './MainPopularStackContainer';
-import ThemeCustomModalScreen from '../screens/mycenter/theme/theme-custom-modal';
-
-
-/**
- * 栈导航器[Popular]
- * @type {NavigationContainer}
- */
-const MainPopularStackNavigator = createStackNavigator(
-  {
-    RouterMainPopularStackContainer: MainPopularStackContainer,
-    RouterThemeCustomModalScreen: ThemeCustomModalScreen,
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
-  }
-);
 
 
 type Props = {};
@@ -50,10 +35,11 @@ class MainDrawerContainer extends Component<Props> {
   dynamicCreateMainDrawerContainer() {
     if (!this.mainDrawerContainer || this.props.theme !== this.theme) {
       this.theme = this.props.theme;
+      const navigationBar = this.renderNavigationBar();
       this.mainDrawerContainer = createAppContainer(createDrawerNavigator(
         {
           RouterDrawerPopularNavigator: {
-            screen: MainPopularStackNavigator,
+            screen: MainPopularStackContainer,
             navigationOptions: {
               drawerLabel: '主页',
               drawerIcon: ({ tintColor }) => (
@@ -70,16 +56,49 @@ class MainDrawerContainer extends Component<Props> {
             activeTintColor: this.props.theme.themeColor,
           },
           contentComponent: props => (
-            <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
-              <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
-                <DrawerItems {...props} />
-              </SafeAreaView>
-            </ScrollView>
+            <View style={{ backgroundColor: '#e9e9ee', flex: 1 }}>
+              {navigationBar}
+              <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
+                <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+                  <DrawerItems {...props} />
+                </SafeAreaView>
+              </ScrollView>
+            </View>
           ),
         }
       ));
     }
     return this.mainDrawerContainer;
+  }
+
+
+  /**
+   * 创建导航条控件
+   * @returns {*}
+   */
+  renderNavigationBar() {
+    // 状态栏
+    const statusBar = {
+      barStyle: 'light-content',
+      backgroundColor: this.props.theme.themeColor,
+    };
+    // 导航条
+    const navBar = {
+      backgroundColor: this.props.theme.themeColor,
+    };
+    // 标题头
+    const titleStyle = {
+      color: 'white',
+    };
+    return (
+      <NavigationBar
+        title="常用组件"
+        hairline
+        statusBar={statusBar}
+        style={navBar}
+        titleStyle={titleStyle}
+      />
+    );
   }
 
   /**

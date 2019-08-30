@@ -9,7 +9,7 @@ import {
 } from 'react-navigation';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationPopularService, RouterConst
+  NavigationMainService, NavigationPopularService, RouterConst
 } from '../../common';
 import {
   NavigationBar
@@ -83,6 +83,31 @@ class PopularScreen extends Component<Props> {
   }
 
   /**
+   * 创建导航条按钮（左侧）
+   * @returns {*}
+   */
+  renderNavBarLeftButton() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity
+          style={{
+            paddingTop: 2, paddingLeft: 10, paddingRight: 5, marginLeft: 0
+          }}
+          onPress={() => {
+            NavigationMainService.openDrawer();
+          }}
+        >
+          <Feather
+            name="menu"
+            size={23}
+            style={{ alignSelf: 'center', color: 'white', }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  /**
    * 创建导航条按钮（右侧）
    * @returns {*}
    */
@@ -94,7 +119,7 @@ class PopularScreen extends Component<Props> {
             paddingTop: 2, paddingLeft: 5, paddingRight: 10, marginRight: 0
           }}
           onPress={() => {
-            NavigationPopularService.navigate(RouterConst.RouterIntroduceScreen);
+            NavigationPopularService.navigate(RouterConst.RouterThemeCustomModalScreen);
           }}
         >
           <Feather
@@ -132,6 +157,7 @@ class PopularScreen extends Component<Props> {
         statusBar={statusBar}
         style={navBar}
         titleStyle={titleStyle}
+        leftButton={this.renderNavBarLeftButton()}
         rightButton={this.renderNavBarRightButton()}
       />
     );

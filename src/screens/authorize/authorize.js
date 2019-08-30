@@ -39,7 +39,7 @@ class AuthorizeScreen extends Component<Props> {
   bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     this.timer = setTimeout(() => {
-      NavigationMainService.navigate(userToken ? RouterConst.RouterMainDrawerNavigator : RouterConst.RouterLoginAuthorizeScreen, this.props);
+      NavigationMainService.navigate(userToken ? RouterConst.RouterMainDrawerContainer : RouterConst.RouterLoginAuthorizeScreen, this.props);
     }, 0);
   };
 

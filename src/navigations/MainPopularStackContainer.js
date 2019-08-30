@@ -11,10 +11,13 @@ import {
   StackViewStyleInterpolator
 } from 'react-navigation-stack';
 import {
+  NavigationMainService,
+  NavigationPopularService,
+  NavigationMeiTuanService,
   RouterConst,
 } from '../common';
 import MainTabRootContainer from './MainPopularTabRootContainer';
-
+import ThemeCustomModalScreen from '../screens/mycenter/theme/theme-custom-modal';
 
 // 官网介绍
 import IntroduceScreen from '../screens/introduce/introduce';
@@ -110,6 +113,22 @@ const AppMainStackNavigator = createStackNavigator(
 
 
 /**
+ * 栈导航器[Popular]
+ * @type {NavigationContainer}
+ */
+const MainPopularStackNavigator = createStackNavigator(
+  {
+    RouterMainPopularStackContainer: AppMainStackNavigator,
+    RouterThemeCustomModalScreen: ThemeCustomModalScreen,
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+);
+
+
+/**
  * Get the current screen from navigation state
  * @param navigationState
  * @returns {*}
@@ -146,7 +165,7 @@ class MainPopularStackContainer extends Component<Props> {
     if (this.mainStackContainer) {
       return this.mainStackContainer;
     }
-    this.mainStackContainer = createAppContainer(AppMainStackNavigator);
+    this.mainStackContainer = createAppContainer(MainPopularStackNavigator);
     return this.mainStackContainer;
   }
 
@@ -155,6 +174,10 @@ class MainPopularStackContainer extends Component<Props> {
    * @returns {*}
    */
   render() {
+    // 保存抽屉导航容器
+    NavigationMainService.topDrawerNavigator = this.props.navigation;
+    NavigationPopularService.topDrawerNavigator = this.props.navigation;
+    NavigationMeiTuanService.topDrawerNavigator = this.props.navigation;
     // 配置状态栏为[dark-content]的页面数组
     const darkContentScreens = [
       RouterConst.RouterIntroduceScreen,

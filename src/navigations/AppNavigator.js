@@ -31,7 +31,7 @@ export const AppRootNavigator = createSwitchNavigator(
     RouterLoginAuthorizeScreen: {
       screen: LoginAuthorizeScreen
     },
-    RouterMainDrawerNavigator: {
+    RouterMainDrawerContainer: {
       screen: MainDrawerContainer
     },
   },

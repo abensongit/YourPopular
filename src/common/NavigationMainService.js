@@ -66,4 +66,24 @@ export default class NavigationMainService {
       topLevelNavigator.goBack();
     }
   }
+
+  /**
+   * 打开抽屉页面
+   * @param params
+   */
+  static openDrawer(params = {}) {
+    const { topDrawerNavigator } = NavigationMainService;
+    if (!topDrawerNavigator) {
+      const { navigation } = params;
+      if (!navigation) {
+        console.log('navigation can not be null');
+        return;
+      }
+      navigation.openDrawer();
+      return;
+    }
+    if (topDrawerNavigator) {
+      topDrawerNavigator.openDrawer();
+    }
+  }
 }

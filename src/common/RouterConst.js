@@ -7,7 +7,7 @@ export default {
   RouterWelcomeScreen: 'RouterWelcomeScreen', // 欢迎页
   RouterAuthorizeScreen: 'RouterAuthorizeScreen', // 登录验证
   RouterLoginAuthorizeScreen: 'RouterLoginAuthorizeScreen', // 登录页面
-  RouterMainDrawerNavigator: 'RouterMainDrawerNavigator', // 抽屉导航器
+  RouterMainDrawerContainer: 'RouterMainDrawerContainer', // 抽屉导航容器
 
   // SwitchNavigator -> DrawerNavigator
   RouterDrawerPopularNavigator: 'RouterDrawerPopularNavigator', // 最热栈导航器
