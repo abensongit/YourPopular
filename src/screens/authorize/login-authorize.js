@@ -5,10 +5,10 @@ import {
 } from 'react-native';
 import { Images } from '../../resources';
 import {
-  NavigationService, RouterConst
+  NavigationService, RouterConst, System,
 } from '../../common';
 import {
-  TouchableOpacityButton
+  NavigationBar, TouchableOpacityButton
 } from '../../components';
 import styles from './login-authorize-styles';
 
@@ -59,13 +59,34 @@ class LoginAuthorizeScreen extends Component<Props> {
   };
 
   /**
+   * 创建导航条控件
+   * @returns {*}
+   */
+  renderNavigationBar() {
+    const statusBar = {
+      barStyle: 'dark-content',
+      backgroundColor: '#ffffff',
+    };
+    const navigationBar = Platform.OS === System.IOS ? null
+      : (
+        <NavigationBar
+          hairline
+          statusBar={statusBar}
+        />
+      );
+    return navigationBar;
+  }
+
+  /**
    * 渲染页面
    * @returns {*}
    */
   render() {
     const { theme } = this.props;
+    const navigationBar = this.renderNavigationBar();
     return (
       <ScrollView style={styles.scroll} contentContainerStyle={{ alignItems: 'stretch' }}>
+        {navigationBar}
         <View style={styles.container}>
           <View style={styles.logo}>
             <Image
@@ -76,7 +97,7 @@ class LoginAuthorizeScreen extends Component<Props> {
           <View style={styles.button_login}>
             <TouchableOpacityButton
               title="登 录"
-              subTitle="正在登录..."
+              subTitle="正在登录"
               backgroundColor={theme.themeColor}
               onPress={this.handleLoginAction}
             />
@@ -84,7 +105,7 @@ class LoginAuthorizeScreen extends Component<Props> {
           <View style={styles.button_register}>
             <TouchableOpacityButton
               title="注 册"
-              subTitle="正在注册..."
+              subTitle="正在注册"
               backgroundColor={theme.themeColor}
               onPress={this.handleRegisterAction}
             />

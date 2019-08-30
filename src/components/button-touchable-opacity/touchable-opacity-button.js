@@ -65,16 +65,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#f4511e',
   },
   buttonNormalText: {
-    padding: 15,
+    padding: 13,
     fontSize: 16,
-    color: '#FFFFFF',
+    color: '#ffffff',
   },
   buttonSelectText: {
-    padding: 15,
+    padding: 13,
     fontSize: 16,
-    color: '#333333',
+    color: '#ffffff',
   },
   disabled: {
-    backgroundColor: '#DEDEDE',
+    backgroundColor: '#dedede',
   },
 });

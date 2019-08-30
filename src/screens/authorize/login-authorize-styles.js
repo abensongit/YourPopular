@@ -24,8 +24,8 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   icon_logo: {
-    width: 110,
-    height: 110,
+    width: 100,
+    height: 100,
   },
   button_login: {
     marginTop: 40,

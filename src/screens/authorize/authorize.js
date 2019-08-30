@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  ActivityIndicator, AsyncStorage, View
+  ActivityIndicator, AsyncStorage, Platform, View,
 } from 'react-native';
 import {
-  NavigationService, RouterConst
+  NavigationService, RouterConst, System,
 } from '../../common';
+import {
+  NavigationBar,
+} from '../../components';
 import styles from './authorize-styles';
 
 type Props = {};
@@ -37,8 +40,27 @@ class AuthorizeScreen extends Component<Props> {
     const userToken = await AsyncStorage.getItem('userToken');
     this.timer = setTimeout(() => {
       NavigationService.navigate(userToken ? RouterConst.RouterMainStackNavigator : RouterConst.RouterLoginAuthorizeScreen, this.props);
-    }, 100);
+    }, 0);
   };
+
+  /**
+   * 创建导航条控件
+   * @returns {*}
+   */
+  renderNavigationBar() {
+    const statusBar = {
+      barStyle: 'dark-content',
+      backgroundColor: '#ffffff',
+    };
+    const navigationBar = Platform.OS === System.IOS ? null
+      : (
+        <NavigationBar
+          hide
+          statusBar={statusBar}
+        />
+      );
+    return navigationBar;
+  }
 
   /**
    * 渲染页面
@@ -46,8 +68,10 @@ class AuthorizeScreen extends Component<Props> {
    */
   render() {
     const { theme } = this.props;
+    const navigationBar = this.renderNavigationBar();
     return (
       <View style={styles.container}>
+        {navigationBar}
         <ActivityIndicator size="large" color={theme.themeColor} />
       </View>
     );
