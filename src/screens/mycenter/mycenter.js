@@ -25,7 +25,7 @@ class MyCenterScreen extends Component<Props> {
    * 事件处理 - 点击表格事件
    * @param menu
    */
-  onClickMenuItem(menu) {
+  onPressMenuItem(menu) {
     const { theme } = this.props;
     let routerName;
     const params = { theme };
@@ -88,7 +88,7 @@ class MyCenterScreen extends Component<Props> {
    * 事件处理 - 退出登录
    * @param completeHandle
    */
-  onHandleLoginOutAction = (completeHandle) => {
+  onPressLoginOutAction = (completeHandle) => {
     this.timer = setTimeout(() => {
       completeHandle();
       Alert.alert('退出成功', '', [{ text: '取消' }, { text: '确定' }]);
@@ -181,7 +181,7 @@ class MyCenterScreen extends Component<Props> {
    */
   renderMenu(itemMenu) {
     const { theme } = this.props;
-    return ViewUtil.renderMenuItem(itemMenu, theme.themeColor, () => this.onClickMenuItem(itemMenu));
+    return ViewUtil.renderMenuItem(itemMenu, theme.themeColor, () => this.onPressMenuItem(itemMenu));
   }
 
   /**
@@ -198,7 +198,7 @@ class MyCenterScreen extends Component<Props> {
           {/* 关于 */}
           <TouchableOpacity
             style={styles.menuItemAbout}
-            onPress={() => this.onClickMenuItem(MENUS.About)}
+            onPress={() => this.onPressMenuItem(MENUS.About)}
           >
             <View style={styles.menuItemAboutLeft}>
               <Ionicons
@@ -264,7 +264,7 @@ class MyCenterScreen extends Component<Props> {
               title="退 出"
               subTitle="正在退出..."
               backgroundColor={theme.themeColor}
-              onPress={this.onHandleLoginOutAction}
+              onPress={this.onPressLoginOutAction}
             />
           </View>
 
