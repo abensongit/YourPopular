@@ -64,7 +64,7 @@ export default class LoginAuthorizeScreen extends Component<Props> {
    */
   render() {
     return (
-      <ScrollView style={styles.rootview} contentContainerStyle={{ alignItems: 'stretch' }}>
+      <ScrollView style={styles.scroll} contentContainerStyle={{ alignItems: 'stretch' }}>
         <View style={styles.container}>
           <View style={styles.logo}>
             <Image

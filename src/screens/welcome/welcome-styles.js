@@ -4,6 +4,8 @@ import {
 } from '../../common/Variables';
 import { System } from '../../common';
 
+const LOGO_SIZE = 110;
+
 export default StyleSheet.create({
   scrollView: {
     flex: 1,
@@ -34,9 +36,9 @@ export default StyleSheet.create({
     paddingLeft: 2,
   },
   logo: {
-    width: 80,
-    height: 80,
-    marginTop: System.window.height / 2 - 100 - System.window.statusBarHeight,
-    marginRight: System.window.width / 2 - 40,
+    width: LOGO_SIZE,
+    height: LOGO_SIZE,
+    marginTop: System.window.height * 0.5 - LOGO_SIZE * 0.5 - 100,
+    marginRight: System.window.width * 0.5 - LOGO_SIZE * 0.5,
   },
 });

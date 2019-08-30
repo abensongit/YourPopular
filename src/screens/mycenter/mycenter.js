@@ -262,7 +262,7 @@ class MyCenterScreen extends Component<Props> {
           <View style={styles.buttonLoginOut}>
             <TouchableOpacityButton
               title="退 出"
-              subTitle="正在退出..."
+              subTitle="正在退出"
               backgroundColor={theme.themeColor}
               onPress={this.onPressLoginOutAction}
             />
