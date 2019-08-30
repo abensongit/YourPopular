@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 import {
   AppRootContainer, AppInitRouteName
 } from '../../navigations/AppNavigator';
-import themeReducer from '../../screens/mycenter/theme/theme-reducers';
-import marksReducer from '../../screens/mycenter/marks/marks-reducers';
-import langusReducer from '../../screens/mycenter/langus/langus-reducers';
-import popularReducer from '../../screens/popular/popular-reducers';
-import trendingReducer from '../../screens/trending/trending-reducers';
-import favouriteReducer from '../../screens/favourite/favourite-reducers';
+import themeReducer from '../../screens/githubpopular/mycenter/theme/theme-reducers';
+import marksReducer from '../../screens/githubpopular/mycenter/marks/marks-reducers';
+import langusReducer from '../../screens/githubpopular/mycenter/langus/langus-reducers';
+import popularReducer from '../../screens/githubpopular/popular/popular-reducers';
+import trendingReducer from '../../screens/githubpopular/trending/trending-reducers';
+import favouriteReducer from '../../screens/githubpopular/favourite/favourite-reducers';
 
 /**
  * 1.指定默认state

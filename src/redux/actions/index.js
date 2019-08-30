@@ -1,29 +1,29 @@
 import {
   onLoadMarks
-} from '../../screens/mycenter/marks/marks-actions';
+} from '../../screens/githubpopular/mycenter/marks/marks-actions';
 import {
   onLoadLanguages
-} from '../../screens/mycenter/langus/langus-actions';
+} from '../../screens/githubpopular/mycenter/langus/langus-actions';
 import {
   onThemeInit,
   onThemeChange,
   onShowThemeChoiceView
-} from '../../screens/mycenter/theme/theme-actions';
+} from '../../screens/githubpopular/mycenter/theme/theme-actions';
 import {
   onRefreshPopular,
   onLoadMorePopular,
   onFlushPopularFavourite
-} from '../../screens/popular/popular-actions';
+} from '../../screens/githubpopular/popular/popular-actions';
 import {
   onRefreshTrending,
   onLoadMoreTrending,
   onFlushTrendingFavourite
-} from '../../screens/trending/trending-actions';
+} from '../../screens/githubpopular/trending/trending-actions';
 import {
   onRefreshFavourite,
   onLoadMoreFavourite,
   onFlushFavourite
-} from '../../screens/favourite/favourite-actions';
+} from '../../screens/githubpopular/favourite/favourite-actions';
 
 
 export default {

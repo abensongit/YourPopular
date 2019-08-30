@@ -12,10 +12,10 @@ import IconOfMaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import EventBus from 'react-native-event-bus';
 import * as EventTypes from '../common/EventTypes';
 
-import PopularScreen from '../screens/popular/popular';
-import TrendingScreen from '../screens/trending/trending';
-import FavouriteScreen from '../screens/favourite/favourite';
-import MyCenterScreen from '../screens/mycenter/mycenter';
+import PopularScreen from '../screens/githubpopular/popular/popular';
+import TrendingScreen from '../screens/githubpopular/trending/trending';
+import FavouriteScreen from '../screens/githubpopular/favourite/favourite';
+import MyCenterScreen from '../screens/githubpopular/mycenter/mycenter';
 
 
 /**

@@ -12,9 +12,9 @@ import {
 import {
   RouterConst
 } from '../common';
-import WelcomeScreen from '../screens/welcome/welcome';
-import AuthorizeScreen from '../screens/authorize/authorize';
-import LoginAuthorizeScreen from '../screens/authorize/login-authorize';
+import WelcomeScreen from '../screens/githubpopular/welcome/welcome';
+import AuthorizeScreen from '../screens/githubpopular/authorize/authorize';
+import LoginAuthorizeScreen from '../screens/githubpopular/authorize/login-authorize';
 import MainDrawerContainer from './MainDrawerContainer';
 
 /**

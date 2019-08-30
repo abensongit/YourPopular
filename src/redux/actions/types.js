@@ -1,14 +1,14 @@
 import {
   ACTION_MARKS_LOAD_SUCCESS
-} from '../../screens/mycenter/marks/marks-actions-types';
+} from '../../screens/githubpopular/mycenter/marks/marks-actions-types';
 import {
   ACTION_LANGUAGES_LOAD_SUCCESS
-} from '../../screens/mycenter/langus/langus-actions-types';
+} from '../../screens/githubpopular/mycenter/langus/langus-actions-types';
 import {
   ACTION_THEME_INIT,
   ACTION_THEME_CHANGE,
   ACTION_THEME_SHOW_CHOICE_VIEW
-} from '../../screens/mycenter/theme/theme-actions-types';
+} from '../../screens/githubpopular/mycenter/theme/theme-actions-types';
 import {
   ACTION_POPULAR_REFRESH,
   ACTION_POPULAR_REFRESH_FAIL,
@@ -19,7 +19,7 @@ import {
   ACTION_POPULAR_FLUSH_FAVOURITE,
   ACTION_POPULAR_NO_MORE_DATA,
   ACTION_POPULAR_EMPTY_DATA
-} from '../../screens/popular/popular-actions-types';
+} from '../../screens/githubpopular/popular/popular-actions-types';
 import {
   ACTION_TRENDING_REFRESH,
   ACTION_TRENDING_REFRESH_FAIL,
@@ -30,7 +30,7 @@ import {
   ACTION_TRENDING_FLUSH_FAVOURITE,
   ACTION_TRENDING_NO_MORE_DATA,
   ACTION_TRENDING_EMPTY_DATA
-} from '../../screens/trending/trending-actions-types';
+} from '../../screens/githubpopular/trending/trending-actions-types';
 import {
   ACTION_FAVOURITE_REFRESH,
   ACTION_FAVOURITE_REFRESH_FAIL,
@@ -41,7 +41,7 @@ import {
   ACTION_FAVOURITE_FLUSH_FAVOURITE,
   ACTION_FAVOURITE_NO_MORE_DATA,
   ACTION_FAVOURITE_EMPTY_DATA
-} from '../../screens/favourite/favourite-actions-types';
+} from '../../screens/githubpopular/favourite/favourite-actions-types';
 
 export default {
   // 主题

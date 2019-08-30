@@ -17,24 +17,24 @@ import {
   RouterConst,
 } from '../common';
 import MainTabRootContainer from './MainPopularTabRootContainer';
-import ThemeCustomModalScreen from '../screens/mycenter/theme/theme-custom-modal';
+import ThemeCustomModalScreen from '../screens/githubpopular/mycenter/theme/theme-custom-modal';
 
 // 官网介绍
-import IntroduceScreen from '../screens/introduce/introduce';
+import IntroduceScreen from '../screens/githubpopular/introduce/introduce';
 // 网页控件
-import WebBrowserScreen from '../screens/browser/webbrowser';
+import WebBrowserScreen from '../screens/githubpopular/browser/webbrowser';
 // 标签设置
-import MarksCustomScreen from '../screens/mycenter/marks/marks-custom';
+import MarksCustomScreen from '../screens/githubpopular/mycenter/marks/marks-custom';
 // 标签排序
-import MarksSortedScreen from '../screens/mycenter/marks/marks-sorted';
+import MarksSortedScreen from '../screens/githubpopular/mycenter/marks/marks-sorted';
 // 语言设置
-import LanguagesCustomScreen from '../screens/mycenter/langus/langus-custom';
+import LanguagesCustomScreen from '../screens/githubpopular/mycenter/langus/langus-custom';
 // 语言排序
-import LanguagesSortedScreen from '../screens/mycenter/langus/langus-sorted';
+import LanguagesSortedScreen from '../screens/githubpopular/mycenter/langus/langus-sorted';
 // 最热详情
-import PopularTabDetaiScreen from '../screens/popular/popular-tab-detail';
+import PopularTabDetaiScreen from '../screens/githubpopular/popular/popular-tab-detail';
 // 趋势详情
-import TrendingTabDetaiScreen from '../screens/trending/trending-tab-detail';
+import TrendingTabDetaiScreen from '../screens/githubpopular/trending/trending-tab-detail';
 
 
 /**

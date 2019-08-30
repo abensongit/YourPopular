@@ -10,7 +10,7 @@ import {
   createDrawerNavigator,
   DrawerItems,
 } from 'react-navigation';
-import IconOfAntDesign from 'react-native-vector-icons/AntDesign';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
   NavigationBar,
 } from '../components';
@@ -42,9 +42,9 @@ class MainDrawerContainer extends Component<Props> {
             screen: MainPopularStackContainer,
             navigationOptions: {
               drawerLabel: '主页',
-              drawerIcon: ({ tintColor }) => (
-                <IconOfAntDesign
-                  name="zhihu"
+              drawerIcon: ({ tintColor, focused }) => (
+                <AntDesign
+                  name={focused ? 'github' : 'zhihu'}
                   size={24}
                   style={{ color: tintColor }}
                 />
@@ -52,9 +52,12 @@ class MainDrawerContainer extends Component<Props> {
             },
           },
         }, {
+          overlayColor: 'rgba(0,0,0,0.6)',
           contentOptions: {
             activeTintColor: this.props.theme.themeColor,
           },
+          useNativeAnimations: true,
+          drawerLockMode: 'locked-closed',
           contentComponent: props => (
             <View style={{ backgroundColor: '#e9e9ee', flex: 1 }}>
               {navigationBar}
