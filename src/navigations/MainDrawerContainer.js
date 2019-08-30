@@ -15,6 +15,7 @@ import {
   NavigationBar,
 } from '../components';
 import MainPopularStackContainer from './MainPopularStackContainer';
+import MainMeiTuanStackContainer from './MainMeiTuanStackContainer';
 
 
 type Props = {};
@@ -42,6 +43,19 @@ class MainDrawerContainer extends Component<Props> {
             screen: MainPopularStackContainer,
             navigationOptions: {
               drawerLabel: '主页',
+              drawerIcon: ({ tintColor, focused }) => (
+                <AntDesign
+                  name={focused ? 'github' : 'zhihu'}
+                  size={24}
+                  style={{ color: tintColor }}
+                />
+              ),
+            },
+          },
+          RouterDrawerMeiTuanNavigator: {
+            screen: MainMeiTuanStackContainer,
+            navigationOptions: {
+              drawerLabel: '美团',
               drawerIcon: ({ tintColor, focused }) => (
                 <AntDesign
                   name={focused ? 'github' : 'zhihu'}

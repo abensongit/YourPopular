@@ -19,7 +19,7 @@ export default {
   RouterThemeCustomModalScreen: 'RouterThemeCustomModalScreen', // 主题页面
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
-  RouterMainTabContainer: 'RouterMainTabContainer', // Stack导航器
+  RouterMainPopularTabContainer: 'RouterMainPopularTabContainer', // Tab导航器
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator -> MainPopularTabNavigator
   RouterPopularScreen: 'RouterPopularScreen', // 最热页面
   RouterTrendingScreen: 'RouterTrendingScreen', // 趋势页面
@@ -35,4 +35,10 @@ export default {
   RouterLanguagesSortedScreen: 'RouterLanguagesSortedScreen', // 语言排序
   RouterPopularTabDetaiScreen: 'RouterPopularTabDetaiScreen', // 最热详情
   RouterTrendingTabDetaiScreen: 'RouterTrendingTabDetaiScreen', // 趋势详情
+
+
+  // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
+  RouterMainMeiTuanTabContainer: 'RouterMainMeiTuanTabContainer', // Tab导航器
+
+
 };

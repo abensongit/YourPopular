@@ -13,10 +13,9 @@ import {
 import {
   NavigationMainService,
   NavigationPopularService,
-  NavigationMeiTuanService,
   RouterConst,
 } from '../common';
-import MainTabRootContainer from './MainPopularTabRootContainer';
+import MainPopularTabRootContainer from './MainPopularTabRootContainer';
 import ThemeCustomModalScreen from '../screens/githubpopular/mycenter/theme/theme-custom-modal';
 
 // 官网介绍
@@ -42,8 +41,8 @@ import TrendingTabDetaiScreen from '../screens/githubpopular/trending/trending-t
  */
 const AppMainStackNavigator = createStackNavigator(
   {
-    RouterMainTabContainer: {
-      screen: MainTabRootContainer,
+    RouterMainPopularTabContainer: {
+      screen: MainPopularTabRootContainer,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),
@@ -98,7 +97,7 @@ const AppMainStackNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: RouterConst.RouterMainTabContainer,
+    initialRouteName: RouterConst.RouterMainPopularTabContainer,
     defaultNavigationOptions: {
       headerBackTitle: '返回',
     },
@@ -177,7 +176,6 @@ class MainPopularStackContainer extends Component<Props> {
     // 保存抽屉导航容器
     NavigationMainService.topDrawerNavigator = this.props.navigation;
     NavigationPopularService.topDrawerNavigator = this.props.navigation;
-    NavigationMeiTuanService.topDrawerNavigator = this.props.navigation;
     // 配置状态栏为[dark-content]的页面数组
     const darkContentScreens = [
       RouterConst.RouterIntroduceScreen,

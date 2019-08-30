@@ -1,0 +1,47 @@
+import React, { Component } from 'react';
+import {
+  Text, StyleSheet, TouchableOpacity, Image, ViewPropTypes
+} from 'react-native';
+
+type Props = {
+  icon?: any,
+  iconStyle?: ViewPropTypes.style,
+  titleStyle?: ViewPropTypes.style,
+  title?: string,
+  onPress?: Function,
+}
+
+export default class NavigationBarItem extends Component<Props> {
+  render() {
+    const icon = this.props.icon
+      && <Image style={[styles.icon, this.props.iconStyle]} source={this.props.icon} />;
+
+    const title = this.props.title
+      && <Text style={[styles.title, this.props.titleStyle]}>{this.props.title}</Text>;
+    return (
+      <TouchableOpacity style={styles.container} onPress={this.props.onPress}>
+        {icon}
+        {title}
+      </TouchableOpacity>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    width: 27,
+    height: 27,
+    margin: 8,
+  },
+  title: {
+    fontSize: 15,
+    color: '#000',
+    margin: 8,
+  }
+});

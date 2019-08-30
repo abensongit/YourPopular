@@ -5,10 +5,12 @@ import {
 } from 'react-native';
 import Toast from 'react-native-root-toast';
 import EventBus from 'react-native-event-bus';
-import RefreshListView, { RefreshState } from '../../../components/refresh-list-view/refresh-list-view';
 import {
   NavigationPopularService, RouterConst, EventTypes
 } from '../../../common';
+import {
+  RefreshListView, RefreshState
+} from '../../../components';
 import {
   SysUtil
 } from '../../../expand';
