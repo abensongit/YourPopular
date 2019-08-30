@@ -9,7 +9,6 @@ import {
   NavigationService,
   BackHandlerComponent,
 } from '../common';
-import actions from '../redux/actions';
 import MainTabRootNavigator from './MainTabRootNavigator';
 import ThemeCustomScreen from '../screens/mycenter/theme/theme-custom';
 
@@ -24,8 +23,6 @@ class MainTabRootContainer extends Component<Props> {
     super(props);
     console.disableYellowBox = true;
     this.backPressComponent = new BackHandlerComponent({ hardwareBackPressAction: this.onHardwareBackPressAction });
-    // 初始化主题
-    this.onThemeInit();
   }
 
   /**
@@ -56,14 +53,6 @@ class MainTabRootContainer extends Component<Props> {
     }
     return true;
   };
-
-  /**
-   * 主题初始化
-   */
-  onThemeInit() {
-    const { onThemeInit } = this.props;
-    onThemeInit();
-  }
 
   /**
    * 主题设置
@@ -101,7 +90,7 @@ const AppMapStateToProps = state => ({
 });
 
 const AppMapDispatchToProps = dispatch => ({
-  onThemeInit: () => dispatch(actions.onThemeInit()),
+
 });
 
 export default connect(AppMapStateToProps, AppMapDispatchToProps)(MainTabRootContainer);

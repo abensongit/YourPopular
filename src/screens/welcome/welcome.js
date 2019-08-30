@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Easing, Image, Platform, ScrollView, StatusBar, Text, TouchableOpacity, View
 } from 'react-native';
@@ -13,11 +14,12 @@ import {
 } from '../../components';
 import { Images } from '../../resources';
 import styles from './welcome-styles';
+import actions from '../../redux/actions';
 
 const TIMEOUT_SECOND_VALUE = 5 * 1000;
 
 type Props = {};
-export default class WelcomeScreen extends Component<Props> {
+class WelcomeScreen extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -28,6 +30,8 @@ export default class WelcomeScreen extends Component<Props> {
     this.state = {
       fill: '跳过'
     };
+    // 初始化主题
+    this.onThemeInit();
   }
 
   /**
@@ -57,6 +61,14 @@ export default class WelcomeScreen extends Component<Props> {
   componentWillUnmount() {
     this.navListener.remove();
     this.timer && clearTimeout(this.timer);
+  }
+
+  /**
+   * 事件 - 初始化主题
+   */
+  onThemeInit() {
+    const { onThemeInit } = this.props;
+    onThemeInit();
   }
 
   /**
@@ -109,9 +121,9 @@ export default class WelcomeScreen extends Component<Props> {
               size={38}
               width={2}
               fill={this.state.fill}
-              tintColor="#DB3529"
+              tintColor={this.props.theme.themeColor}
               ref={(ref) => { this.circularProgress = ref; }}
-              backgroundColor="#F5F6F6"
+              backgroundColor="#f5f6f6"
               onAnimationComplete={
                 () => console.log('onAnimationComplete')
               }
@@ -139,3 +151,14 @@ export default class WelcomeScreen extends Component<Props> {
     );
   }
 }
+
+
+const AppMapStateToProps = state => ({
+  theme: state.theme.theme,
+});
+
+const AppMapDispatchToProps = dispatch => ({
+  onThemeInit: () => dispatch(actions.onThemeInit()),
+});
+
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(WelcomeScreen);

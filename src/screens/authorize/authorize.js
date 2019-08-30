@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   ActivityIndicator, AsyncStorage, View
 } from 'react-native';
@@ -6,9 +7,10 @@ import {
   NavigationService, RouterConst
 } from '../../common';
 import styles from './authorize-styles';
+import actions from '../../redux/actions';
 
 type Props = {};
-export default class AuthorizeScreen extends Component<Props> {
+class AuthorizeScreen extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -44,10 +46,22 @@ export default class AuthorizeScreen extends Component<Props> {
    * @returns {*}
    */
   render() {
+    const { theme } = this.props;
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color="#f4511e" />
+        <ActivityIndicator size="large" color={theme.themeColor} />
       </View>
     );
   }
 }
+
+
+const AppMapStateToProps = state => ({
+  theme: state.theme.theme,
+});
+
+const AppMapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(AuthorizeScreen);

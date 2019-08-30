@@ -1,5 +1,5 @@
-
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Alert, AsyncStorage, Image, ScrollView, StatusBar, View
 } from 'react-native';
@@ -11,9 +11,10 @@ import {
   TouchableOpacityButton
 } from '../../components';
 import styles from './login-authorize-styles';
+import actions from '../../redux/actions';
 
 type Props = {};
-export default class LoginAuthorizeScreen extends Component<Props> {
+class LoginAuthorizeScreen extends Component<Props> {
   /**
    * 组件渲染完成
    */
@@ -63,6 +64,7 @@ export default class LoginAuthorizeScreen extends Component<Props> {
    * @returns {*}
    */
   render() {
+    const { theme } = this.props;
     return (
       <ScrollView style={styles.scroll} contentContainerStyle={{ alignItems: 'stretch' }}>
         <View style={styles.container}>
@@ -76,7 +78,7 @@ export default class LoginAuthorizeScreen extends Component<Props> {
             <TouchableOpacityButton
               title="登 录"
               subTitle="正在登录..."
-              backgroundColor="#f4511e"
+              backgroundColor={theme.themeColor}
               onPress={this.handleLoginAction}
             />
           </View>
@@ -84,7 +86,7 @@ export default class LoginAuthorizeScreen extends Component<Props> {
             <TouchableOpacityButton
               title="注 册"
               subTitle="正在注册..."
-              backgroundColor="#f4511e"
+              backgroundColor={theme.themeColor}
               onPress={this.handleRegisterAction}
             />
           </View>
@@ -93,3 +95,14 @@ export default class LoginAuthorizeScreen extends Component<Props> {
     );
   }
 }
+
+
+const AppMapStateToProps = state => ({
+  theme: state.theme.theme,
+});
+
+const AppMapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(LoginAuthorizeScreen);
