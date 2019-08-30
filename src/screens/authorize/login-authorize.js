@@ -11,7 +11,6 @@ import {
   TouchableOpacityButton
 } from '../../components';
 import styles from './login-authorize-styles';
-import actions from '../../redux/actions';
 
 type Props = {};
 class LoginAuthorizeScreen extends Component<Props> {
@@ -48,7 +47,7 @@ class LoginAuthorizeScreen extends Component<Props> {
       completeHandle();
       Alert.alert('登录成功', '', [{ text: '确定' }]);
       this.signInAsync();
-    }, 1500);
+    }, 500);
   };
 
   handleRegisterAction = (completeHandle) => {
@@ -56,7 +55,7 @@ class LoginAuthorizeScreen extends Component<Props> {
       completeHandle();
       Alert.alert('注册成功', '', [{ text: '取消' }, { text: '确定' }]);
       this.registerAsync();
-    }, 1500);
+    }, 500);
   };
 
   /**

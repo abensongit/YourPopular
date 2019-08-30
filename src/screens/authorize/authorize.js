@@ -7,7 +7,6 @@ import {
   NavigationService, RouterConst
 } from '../../common';
 import styles from './authorize-styles';
-import actions from '../../redux/actions';
 
 type Props = {};
 class AuthorizeScreen extends Component<Props> {

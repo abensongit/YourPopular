@@ -93,7 +93,7 @@ class MyCenterScreen extends Component<Props> {
       completeHandle();
       Alert.alert('退出成功', '', [{ text: '取消' }, { text: '确定' }]);
       this.doWithLoginOutAction();
-    }, 1000);
+    }, 300);
   };
 
   /**
@@ -101,7 +101,7 @@ class MyCenterScreen extends Component<Props> {
    * @returns {Promise<void>}
    */
   doWithLoginOutAction = async () => {
-    await AsyncStorage.clear();
+    await AsyncStorage.removeItem('userToken'); // 清除token
     NavigationService.navigate(RouterConst.RouterLoginAuthorizeScreen, this.props);
   };
 
