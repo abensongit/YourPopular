@@ -9,12 +9,12 @@ import {
   NavigationPopularService,
   BackHandlerComponent,
 } from '../common';
-import MainTabRootNavigator from './MainTabRootNavigator';
+import MainTabRootNavigator from './MainPopularTabRootNavigator';
 import ThemeCustomScreen from '../screens/mycenter/theme/theme-custom';
 
 
 type Props = {};
-class MainTabRootContainer extends Component<Props> {
+class MainPopularTabRootContainer extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -93,7 +93,7 @@ const AppMapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(MainTabRootContainer);
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(MainPopularTabRootContainer);
 
 
 const styles = StyleSheet.create({

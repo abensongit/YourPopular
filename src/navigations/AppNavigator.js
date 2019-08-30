@@ -9,11 +9,13 @@ import {
   createReduxContainer,
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
-import { RouterConst } from '../common';
+import {
+  RouterConst
+} from '../common';
 import WelcomeScreen from '../screens/welcome/welcome';
 import AuthorizeScreen from '../screens/authorize/authorize';
 import LoginAuthorizeScreen from '../screens/authorize/login-authorize';
-import MainStackContainer from './MainStackContainer';
+import MainDrawerContainer from './MainDrawerContainer';
 
 /**
  * 1.创建导航器
@@ -29,8 +31,8 @@ export const AppRootNavigator = createSwitchNavigator(
     RouterLoginAuthorizeScreen: {
       screen: LoginAuthorizeScreen
     },
-    RouterMainStackNavigator: {
-      screen: MainStackContainer
+    RouterMainDrawerNavigator: {
+      screen: MainDrawerContainer
     },
   },
   {

@@ -11,9 +11,9 @@ import {
   StackViewStyleInterpolator
 } from 'react-navigation-stack';
 import {
-  NavigationMainService, RouterConst,
-} from '../common/index';
-import MainTabRootContainer from './MainTabRootContainer';
+  RouterConst,
+} from '../common';
+import MainTabRootContainer from './MainPopularTabRootContainer';
 
 
 // 官网介绍
@@ -128,7 +128,7 @@ function getCurrentRouteName(navigationState: any) {
 
 
 type Props = {};
-class MainStackContainer extends Component<Props> {
+class MainPopularStackContainer extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -155,8 +155,6 @@ class MainStackContainer extends Component<Props> {
    * @returns {*}
    */
   render() {
-    // 程序主根导航容器
-    NavigationMainService.topLevelNavigator = this.props.navigation;
     // 配置状态栏为[dark-content]的页面数组
     const darkContentScreens = [
       RouterConst.RouterIntroduceScreen,
@@ -181,4 +179,4 @@ class MainStackContainer extends Component<Props> {
   }
 }
 
-export default MainStackContainer;
+export default MainPopularStackContainer;

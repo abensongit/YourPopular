@@ -34,12 +34,12 @@ class LoginAuthorizeScreen extends Component<Props> {
 
   signInAsync = async () => {
     await AsyncStorage.setItem('userToken', 'UserTokenValue');
-    NavigationMainService.navigate(RouterConst.RouterMainStackNavigator, this.props);
+    NavigationMainService.navigate(RouterConst.RouterMainDrawerNavigator, this.props);
   };
 
   registerAsync = async () => {
     await AsyncStorage.setItem('userToken', 'UserTokenValue');
-    NavigationMainService.navigate(RouterConst.RouterMainStackNavigator, this.props);
+    NavigationMainService.navigate(RouterConst.RouterMainDrawerNavigator, this.props);
   };
 
   handleLoginAction = (completeHandle) => {
