@@ -238,6 +238,11 @@ class MarksCustomScreen extends Component<Props> {
         </View>
       );
     }
+    if (len % 2 > 0) {
+      views.push(
+        <View key={len} style={styles.item} />
+      );
+    }
     return (
       <View style={styles.items}>
         {views}
