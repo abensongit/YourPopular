@@ -27,7 +27,7 @@ const TabHomeStackNavigator = createStackNavigator(
   {
     initialRouteName: RouterConst.RouterMeiTuanTabHomeStackContainer,
     defaultNavigationOptions: {
-      headerBackTitle: System.theme.navBar.backTitle,
+      headerBackTitle: System.theme.navBar.buttonBackTitle,
     },
     navigationOptions: ({ navigation, screenProps }) => ({
       ...getActiveChildNavigationOptions(navigation, screenProps),

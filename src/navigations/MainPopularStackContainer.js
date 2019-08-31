@@ -100,7 +100,7 @@ const AppMainStackNavigator = createStackNavigator(
   {
     initialRouteName: RouterConst.RouterMainPopularTabContainer,
     defaultNavigationOptions: {
-      headerBackTitle: System.theme.navBar.backTitle,
+      headerBackTitle: System.theme.navBar.buttonBackTitle,
     },
     navigationOptions: ({ navigation, screenProps }) => ({
       ...getActiveChildNavigationOptions(navigation, screenProps),

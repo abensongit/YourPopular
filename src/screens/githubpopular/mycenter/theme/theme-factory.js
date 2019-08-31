@@ -39,19 +39,23 @@ export default class ThemeFactory {
       themeColor: themeFlag,
       navBar: {
         tintColor: themeFlag,
-        backTitle: System.theme.navBar.backTitle,
         backgroundColor: themeFlag,
+        buttonBackTitle: System.theme.navBar.buttonBackTitle,
+        buttonTextColor: System.theme.navBar.buttonTextColor,
+        buttonTextFontSize: System.theme.navBar.buttonTextFontSize,
+        buttonTextFontWeight: System.theme.navBar.buttonTextFontWeight,
         titleColor: System.theme.navBar.titleColor,
         titleFontSize: System.theme.navBar.titleFontSize,
         titleFontWeight: System.theme.navBar.titleFontWeight,
       },
       tabBar: {
         tintColor: themeFlag,
+        backgroundColor: System.theme.tabBar.backgroundColor,
         textNormalColor: System.theme.tabBar.textNormalColor,
+        textFontSize: System.theme.tabBar.textFontSize,
         textSelectColor: themeFlag,
         iconNormalColor: System.theme.tabBar.iconNormalColor,
         iconSelectColor: themeFlag,
-        backgroundColor: System.theme.tabBar.backgroundColor,
       },
       styles: StyleSheet.create({
         navBar: {

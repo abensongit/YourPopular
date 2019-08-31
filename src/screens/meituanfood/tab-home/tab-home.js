@@ -13,6 +13,9 @@ import {
 import {
   COLOR_BACKGROUND_DEFAULT
 } from '../../../common/Variables';
+import {
+  Images
+} from '../../../resources';
 
 
 type Props = {}
@@ -23,26 +26,54 @@ class TabHomeMainScreen extends Component<Props> {
    * @returns {{*:*}}
    */
   static navigationOptions = ({ navigation, navigationOptions }) => {
-    const headerTitleColor = navigation.getParam('headerTitleColor', System.theme.navBar.titleColor);
-    const headerBackgroundColor = navigation.getParam('headerBackgroundColor', System.theme.navBar.backgroundColor);
+    const navBarButtonTextColor = navigation.getParam('navBarButtonTextColor', System.theme.navBar.titleColor);
+    const navBarButtonTextFontSize = navigation.getParam('navBarButtonTextFontSize', System.theme.navBar.buttonTextFontSize);
+    const navBarButtonTextFontWeight = navigation.getParam('navBarButtonTextFontWeight', System.theme.navBar.buttonTextFontWeight);
+    const navBarBackgroundColor = navigation.getParam('navBarBackgroundColor', System.theme.navBar.backgroundColor);
     return {
       headerStyle: {
-        backgroundColor: headerBackgroundColor,
+        backgroundColor: navBarBackgroundColor,
       },
       headerTitle: (
         <TouchableOpacity
           style={styles.searchBar}
           onPress={() => {
-            Alert.alert('搜索');
+            Alert.alert('搜索', '', [{ text: '取消' }, { text: '确定' }]);
           }}
         />
       ),
       headerLeft: (
         <NavigationBarItem
           title="福州"
-          titleStyle={{ color: headerTitleColor }}
+          titleStyle={{
+            paddingLeft: 5,
+            color: navBarButtonTextColor,
+            fontSize: navBarButtonTextFontSize,
+            fontWeight: navBarButtonTextFontWeight,
+          }}
           onPress={() => {
-            Alert.alert('定位');
+            Alert.alert(
+              '定位',
+              null,
+              [
+                {
+                  text: '取消',
+                  onPress: () => { console.log('Cancel Pressed'); },
+                },
+                {
+                  text: '确定',
+                  onPress: () => { console.log('Confirm Pressed'); },
+                }],
+              { cancelable: false }
+            );
+          }}
+        />
+      ),
+      headerRight: (
+        <NavigationBarItem
+          icon={Images.home.ic_nav_message}
+          onPress={() => {
+            NavigationMeiTuanService.navigate(RouterConst.RouterMainMeiTuanTabContainer);
           }}
         />
       ),
@@ -57,8 +88,10 @@ class TabHomeMainScreen extends Component<Props> {
     super(props);
     const { theme } = this.props;
     this.props.navigation.setParams({
-      headerBackgroundColor: theme.tintColor,
-      headerTitleColor: theme.navBar.titleColor,
+      navBarButtonTextColor: theme.navBar.buttonTextColor,
+      navBarButtonTextFontSize: theme.navBar.buttonTextFontSize,
+      navBarButtonTextFontWeight: theme.navBar.buttonTextFontWeight,
+      navBarBackgroundColor: theme.navBar.backgroundColor,
     });
   }
 
