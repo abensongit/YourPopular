@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import {
   View, Text,
 } from 'react-native';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
-
-import IconOfIonicons from 'react-native-vector-icons/Ionicons';
+import IconOfOcticons from 'react-native-vector-icons/Octicons';
 import IconOfAntDesign from 'react-native-vector-icons/AntDesign';
 import IconOfFontAwesome from 'react-native-vector-icons/FontAwesome';
-import IconOfMaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { Images } from '../resources';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import {
   ScrollableTabbar,
 } from '../components';
@@ -30,8 +27,8 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
     super(props);
     this.state = {
       tabNames: ['团购', '附近', '订单', '我的'],
-      tabIconTypes: [IconOfAntDesign, IconOfIonicons, IconOfMaterialIcons, IconOfFontAwesome],
-      tabIconNames: ['github', 'md-trending-up', 'favorite', 'user-circle'],
+      tabIconTypes: [IconOfAntDesign, IconOfOcticons, IconOfOcticons, IconOfFontAwesome],
+      tabIconNames: ['home', 'location', 'list-unordered', 'user-circle'],
     };
   }
 
