@@ -4,13 +4,18 @@ import {
   View, Text,
 } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import {
-  COLOR_BACKGROUND_WHITE,
-} from '../common/Variables';
+
+import IconOfIonicons from 'react-native-vector-icons/Ionicons';
+import IconOfAntDesign from 'react-native-vector-icons/AntDesign';
+import IconOfFontAwesome from 'react-native-vector-icons/FontAwesome';
+import IconOfMaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Images } from '../resources';
 import {
   ScrollableTabbar,
 } from '../components';
-import { Images } from '../resources';
+import {
+  COLOR_BACKGROUND_DEFAULT,
+} from '../common/Variables';
 
 import TabHomeScreen from '../screens/meituanfood/tab-home/tab-home';
 
@@ -25,18 +30,8 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
     super(props);
     this.state = {
       tabNames: ['团购', '附近', '订单', '我的'],
-      tabIconNormalNames: [
-        Images.tabBar.ic_home_normal,
-        Images.tabBar.ic_nearby_normal,
-        Images.tabBar.ic_order_normal,
-        Images.tabBar.ic_mine_normal,
-      ],
-      tabIconSelectNames: [
-        Images.tabBar.ic_home_select,
-        Images.tabBar.ic_nearby_select,
-        Images.tabBar.ic_order_select,
-        Images.tabBar.ic_mine_select,
-      ],
+      tabIconTypes: [IconOfAntDesign, IconOfIonicons, IconOfMaterialIcons, IconOfFontAwesome],
+      tabIconNames: ['github', 'md-trending-up', 'favorite', 'user-circle'],
     };
   }
 
@@ -45,17 +40,18 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
    * @returns {*}
    */
   render() {
-    const { tabNames } = this.state;
-    const { tabIconNormalNames } = this.state;
-    const { tabIconSelectNames } = this.state;
+    const { theme } = this.props;
+    const { tabNames, tabIconTypes, tabIconNames } = this.state;
     return (
       <ScrollableTabView
-        style={{ flex: 1, backgroundColor: COLOR_BACKGROUND_WHITE, }}
+        style={{ flex: 1, backgroundColor: COLOR_BACKGROUND_DEFAULT, }}
         renderTabBar={() => (
           <ScrollableTabbar
             tabNames={tabNames}
-            tabIconNormalNames={tabIconNormalNames}
-            tabIconSelectNames={tabIconSelectNames}
+            tabIconTypes={tabIconTypes}
+            tabIconNames={tabIconNames}
+            activeTextColor={theme.themeColor}
+            inactiveTextColor="#979797"
           />
         )}
         locked={false}

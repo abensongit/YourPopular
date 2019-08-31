@@ -1,24 +1,50 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, TouchableOpacity, Text, Image
+  StyleSheet, View, TouchableOpacity, Text, Image,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import SeparatorLineView from '../spearator-line-view/spearator-line-view';
 import { System } from '../../common';
 
 type Props = {
-  goToPage: Function, // 跳转到对应tab的方法
-  activeTab: Number, // 当前被选中的tab下标
-  tabs: Array<Object>, // 所有Tabs集合
-  tabNames: Array<String>, // 保存Tab名称
-  tabIconNormalNames: Array<Object>, // 保存Tab图标
-  tabIconSelectNames: Array<Object>, // 保存Tab图标
+  goToPage: PropTypes.func, // 跳转到对应tab的方法
+  activeTab: PropTypes.number, // 当前被选中的tab下标
+  backgroundColor: PropTypes.string,
+  activeTextColor: PropTypes.string,
+  inactiveTextColor: PropTypes.string,
+  tabs: PropTypes.array, // 所有Tabs集合
+  tabNames: PropTypes.array, // 保存Tab名称
+  tabIconTypes: PropTypes.array, // 保存Tab图标类型
+  tabIconNames: PropTypes.array, // 保存Tab图标名称
 }
 
 export default class ScrollableTabbar extends Component<Props> {
+  // 属性类型检查
+  static propTypes = {
+    goToPage: PropTypes.func, // 跳转到对应tab的方法
+    activeTab: PropTypes.number, // 当前被选中的tab下标
+    backgroundColor: PropTypes.string,
+    activeTextColor: PropTypes.string,
+    inactiveTextColor: PropTypes.string,
+    tabs: PropTypes.array, // 所有Tabs集合
+    tabNames: PropTypes.array, // 保存Tab名称
+    tabIconTypes: PropTypes.array, // 保存Tab图标
+    tabIconNames: PropTypes.array, // 保存Tab图标
+  };
+
+  // 属性默认值
+  static defaultProps = {
+    backgroundColor: 'white',
+    activeTextColor: 'navy',
+    inactiveTextColor: 'black',
+  };
+
   // 处理TabBar的颜色和字体及图标
   renderTabItem(tab, index) {
-    const color = this.props.activeTab === index ? '#06c1ae' : '#979797'; // 判断i是否是当前选中的tab，设置不同的颜色
-    const source = this.props.activeTab === index ? this.props.tabIconSelectNames[index] : this.props.tabIconNormalNames[index];
+    const { activeTextColor, inactiveTextColor } = this.props;
+    const IconTypes = this.props.tabIconTypes[index];
+    const IconNames = this.props.tabIconNames[index];
+    const color = this.props.activeTab === index ? activeTextColor : inactiveTextColor; // 判断i是否是当前选中的tab，设置不同的颜色
     return (
       <TouchableOpacity
         key={`tabItem${index}`}
@@ -26,11 +52,25 @@ export default class ScrollableTabbar extends Component<Props> {
         onPress={() => this.props.goToPage(index)}
       >
         <View style={styles.tabItem}>
-          <Image
-            style={styles.icon}
-            source={source}
-          />
-          <Text style={{ color, fontSize: 11, }}>
+          {IconTypes && IconNames
+            ? (
+              <IconTypes
+                name={IconNames}
+                size={26}
+                style={{ color }}
+              />
+            )
+            : (
+              <View style={{
+                width: 26,
+                height: 26,
+                borderRadius: 13,
+                backgroundColor: color,
+              }}
+              />
+            )
+          }
+          <Text style={{ color, fontSize: 11, paddingTop: 5, }}>
             {this.props.tabNames[index]}
           </Text>
         </View>
@@ -39,8 +79,9 @@ export default class ScrollableTabbar extends Component<Props> {
   }
 
   render() {
+    const { backgroundColor } = this.props;
     return (
-      <View>
+      <View style={{ backgroundColor }}>
         <SeparatorLineView />
         <View style={styles.tabs}>
           {this.props.tabs.map((tab, index) => this.renderTabItem(tab, index))}
@@ -62,13 +103,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabItem: {
+    paddingTop: 3,
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  icon: {
-    width: 25,
-    height: 25,
-    marginTop: 4,
-    marginBottom: 3,
   },
 });
