@@ -51,9 +51,10 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
             inactiveTextColor="#979797"
           />
         )}
-        locked={false}
+        locked
         initialPage={0}
         tabBarPosition="bottom"
+        scrollWithoutAnimation
         prerenderingSiblingsNumber={1}
       >
 
