@@ -70,7 +70,7 @@ export default class ScrollableTabbar extends Component<Props> {
               />
             )
           }
-          <Text style={{ color, fontSize: 11, paddingTop: 5, }}>
+          <Text style={{ color, fontSize: 11, paddingTop: 3, }}>
             {this.props.tabNames[index]}
           </Text>
         </View>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabItem: {
-    paddingTop: 3,
+    paddingTop: 2,
     flexDirection: 'column',
     alignItems: 'center',
   },
