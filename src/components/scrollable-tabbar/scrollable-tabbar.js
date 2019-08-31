@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, TouchableOpacity, Text, Image,
+  StyleSheet, View, TouchableOpacity, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import SeparatorLineView from '../spearator-line-view/spearator-line-view';
