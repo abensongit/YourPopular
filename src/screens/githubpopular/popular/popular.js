@@ -99,7 +99,7 @@ class PopularScreen extends Component<Props> {
         >
           <Feather
             name="menu"
-            size={23}
+            size={24}
             style={{ alignSelf: 'center', color: 'white', }}
           />
         </TouchableOpacity>

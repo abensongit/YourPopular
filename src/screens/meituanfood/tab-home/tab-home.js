@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, StyleSheet, TouchableOpacity, View,
+  Alert, Image, StyleSheet, TouchableOpacity, View,
 } from 'react-native';
-
+import Feather from 'react-native-vector-icons/Feather';
 import {
   NavigationMeiTuanService, RouterConst, System,
 } from '../../../common';
 import {
-  NavigationBarItem
+  NavigationBarItem,
 } from '../../../components';
 import {
   COLOR_BACKGROUND_DEFAULT
@@ -40,7 +40,9 @@ class TabHomeMainScreen extends Component<Props> {
           onPress={() => {
             Alert.alert('搜索', '', [{ text: '取消' }, { text: '确定' }]);
           }}
-        />
+        >
+          <Image source={Images.home.ic_nav_search} style={styles.searchIcon} />
+        </TouchableOpacity>
       ),
       headerLeft: (
         <NavigationBarItem
@@ -71,9 +73,12 @@ class TabHomeMainScreen extends Component<Props> {
       ),
       headerRight: (
         <NavigationBarItem
-          icon={Images.home.ic_nav_message}
+          iconType={Feather}
+          iconName="menu"
+          iconSize={24}
+          iconStyle={{ alignSelf: 'center', color: 'white', }}
           onPress={() => {
-            NavigationMeiTuanService.navigate(RouterConst.RouterMainMeiTuanTabContainer);
+            NavigationMeiTuanService.openDrawer();
           }}
         />
       ),
@@ -125,12 +130,17 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: System.window.width * 0.7,
-    height: 30,
-    borderRadius: 19,
+    height: System.window.navigationBarHeight * 0.64,
+    borderRadius: System.window.navigationBarHeight * 0.32,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
     alignSelf: 'center',
+  },
+  searchIcon: {
+    width: System.window.navigationBarHeight * 0.448,
+    height: System.window.navigationBarHeight * 0.448,
+    margin: 5,
   },
 });

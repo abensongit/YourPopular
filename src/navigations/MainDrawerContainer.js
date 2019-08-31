@@ -45,7 +45,7 @@ class MainDrawerContainer extends Component<Props> {
               drawerLabel: '主页',
               drawerIcon: ({ tintColor, focused }) => (
                 <AntDesign
-                  name={focused ? 'github' : 'zhihu'}
+                  name={focused ? 'github' : 'github'}
                   size={24}
                   style={{ color: tintColor }}
                 />

@@ -15,7 +15,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     width: System.window.width,
-    height: System.window.height,
+    height: System.window.height + System.window.tabBarDangerHeight,
     backgroundColor: COLOR_BACKGROUND_WHITE,
   },
   logo: {

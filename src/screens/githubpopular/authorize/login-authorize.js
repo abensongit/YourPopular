@@ -69,6 +69,7 @@ class LoginAuthorizeScreen extends Component<Props> {
     const navigationBar = Platform.OS === System.IOS ? null
       : (
         <NavigationBar
+          hide
           hairline
           statusBar={statusBar}
         />

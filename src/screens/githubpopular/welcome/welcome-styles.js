@@ -20,7 +20,7 @@ export default StyleSheet.create({
     width: System.window.width,
     height: Platform.select({
       ios: System.window.height,
-      android: System.window.height + System.window.navigationBarHeight
+      android: System.window.height + System.window.tabBarDangerHeight
     }),
   },
   circleButton: {
