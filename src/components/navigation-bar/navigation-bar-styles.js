@@ -1,9 +1,15 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { System } from '../../common';
 
 export default StyleSheet.create({
   container: {
     backgroundColor: 'white'
+  },
+  statusBar: {
+    height: Platform.select({
+      ios: System.window.statusBarHeight,
+      android: 0,
+    }),
   },
   navBar: {
     flexDirection: 'row',
@@ -44,9 +50,6 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-  },
-  statusBar: {
-    height: System.window.statusBarHeight,
   },
   spearatorLine: {
     height: 0.5,

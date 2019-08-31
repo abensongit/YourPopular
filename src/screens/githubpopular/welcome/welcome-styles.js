@@ -5,6 +5,7 @@ import {
 import { System } from '../../../common';
 
 const LOGO_SIZE = 110;
+const CIRCLE_BUTTON_OFFSET = 20;
 
 export default StyleSheet.create({
   scrollView: {
@@ -20,11 +21,14 @@ export default StyleSheet.create({
     width: System.window.width,
     height: Platform.select({
       ios: System.window.height,
-      android: System.window.height + System.window.tabBarDangerHeight
+      android: System.window.height - System.window.statusBarHeight
     }),
   },
   circleButton: {
-    marginTop: System.window.statusBarHeight + 20,
+    marginTop: Platform.select({
+      ios: System.window.statusBarHeight + CIRCLE_BUTTON_OFFSET,
+      android: CIRCLE_BUTTON_OFFSET
+    }),
     marginRight: 15,
   },
   circleProgress: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, Image, StyleSheet, TouchableOpacity, View,
+  Alert, Image, TouchableOpacity, View,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {
@@ -11,11 +11,9 @@ import {
   NavigationBarItem,
 } from '../../../components';
 import {
-  COLOR_BACKGROUND_DEFAULT
-} from '../../../common/Variables';
-import {
   Images
 } from '../../../resources';
+import styles from './tab-home-styles';
 
 
 type Props = {}
@@ -121,26 +119,3 @@ const AppMapDispatchToProps = dispatch => ({
 });
 
 export default connect(AppMapStateToProps, AppMapDispatchToProps)(TabHomeMainScreen);
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLOR_BACKGROUND_DEFAULT,
-  },
-  searchBar: {
-    width: System.window.width * 0.7,
-    height: System.window.navigationBarHeight * 0.64,
-    borderRadius: System.window.navigationBarHeight * 0.32,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    alignSelf: 'center',
-  },
-  searchIcon: {
-    width: System.window.navigationBarHeight * 0.448,
-    height: System.window.navigationBarHeight * 0.448,
-    margin: 5,
-  },
-});

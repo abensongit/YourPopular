@@ -10,7 +10,7 @@ import {
   NavigationMainService, RouterConst, System
 } from '../../../common';
 import {
-  NavigationBar,
+  NavigationStatusBar,
 } from '../../../components';
 import { Images } from '../../../resources';
 import styles from './welcome-styles';
@@ -90,8 +90,7 @@ class WelcomeScreen extends Component<Props> {
     };
     const navigationBar = Platform.OS === System.IOS ? null
       : (
-        <NavigationBar
-          hide
+        <NavigationStatusBar
           statusBar={statusBar}
         />
       );

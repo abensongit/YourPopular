@@ -15,7 +15,10 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     width: System.window.width,
-    height: System.window.height + System.window.tabBarDangerHeight,
+    height: Platform.select({
+      ios: System.window.height,
+      android: System.window.height - System.window.statusBarHeight
+    }),
     backgroundColor: COLOR_BACKGROUND_WHITE,
   },
   logo: {

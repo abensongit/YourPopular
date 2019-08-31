@@ -8,7 +8,7 @@ import {
   NavigationMainService, RouterConst, System,
 } from '../../../common';
 import {
-  NavigationBar, TouchableOpacityButton
+  NavigationStatusBar, TouchableOpacityButton
 } from '../../../components';
 import styles from './login-authorize-styles';
 
@@ -68,9 +68,7 @@ class LoginAuthorizeScreen extends Component<Props> {
     };
     const navigationBar = Platform.OS === System.IOS ? null
       : (
-        <NavigationBar
-          hide
-          hairline
+        <NavigationStatusBar
           statusBar={statusBar}
         />
       );
