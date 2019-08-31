@@ -14,6 +14,7 @@ import {
   NavigationMainService,
   NavigationPopularService,
   RouterConst,
+  System
 } from '../common';
 import MainPopularTabRootContainer from './MainPopularTabRootContainer';
 import ThemeCustomModalScreen from '../screens/githubpopular/mycenter/theme/theme-custom-modal';
@@ -99,7 +100,7 @@ const AppMainStackNavigator = createStackNavigator(
   {
     initialRouteName: RouterConst.RouterMainPopularTabContainer,
     defaultNavigationOptions: {
-      headerBackTitle: '返回',
+      headerBackTitle: System.theme.navBar.backTitle,
     },
     navigationOptions: ({ navigation, screenProps }) => ({
       ...getActiveChildNavigationOptions(navigation, screenProps),

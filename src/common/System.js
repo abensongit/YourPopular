@@ -75,17 +75,21 @@ export default {
 
   theme: {
     tintColor: COLOR_DEFAULT,
-    nav: {
-      headerBackTitle: '返回',
-      headerBackgroundColor: COLOR_DEFAULT,
-      headerTintColor: '#FEFDFD',
-      headerTitleFontWeight: 'bold',
-    },
-    tab: {
+    navBar: {
       tintColor: COLOR_DEFAULT,
-      tabIconDefault: '#ccc',
-      tabIconSelected: COLOR_DEFAULT,
-      tabBar: '#fefefe',
+      backTitle: '返回',
+      backgroundColor: COLOR_DEFAULT,
+      titleColor: '#FFFFFF',
+      titleFontSize: 11,
+      titleFontWeight: 'bold',
+    },
+    tabBar: {
+      tintColor: COLOR_DEFAULT,
+      textNormalColor: '#8E8E93',
+      textSelectColor: COLOR_DEFAULT,
+      iconNormalColor: '#8E8E93',
+      iconSelectColor: COLOR_DEFAULT,
+      backgroundColor: '#FFFFFF',
     },
   },
 

@@ -14,6 +14,7 @@ import {
   NavigationMainService,
   NavigationMeiTuanService,
   RouterConst,
+  System
 } from '../common';
 import MainMeiTuanTabRootContainer from './MainMeiTuanTabRootContainer';
 
@@ -34,7 +35,7 @@ const AppMainMeiTuanStackNavigator = createStackNavigator(
   {
     initialRouteName: RouterConst.RouterMainMeiTuanTabContainer,
     defaultNavigationOptions: {
-      headerBackTitle: '返回',
+      headerBackTitle: System.theme.navBar.backTitle,
     },
     navigationOptions: ({ navigation, screenProps }) => ({
       ...getActiveChildNavigationOptions(navigation, screenProps),

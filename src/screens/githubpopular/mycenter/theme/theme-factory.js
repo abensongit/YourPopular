@@ -1,4 +1,7 @@
 import { StyleSheet, } from 'react-native';
+import {
+  System,
+} from '../../../../common';
 
 export const ThemeFlags = {
   Default: '#54B1DE',
@@ -32,17 +35,28 @@ export default class ThemeFactory {
    */
   static createTheme(themeFlag) {
     return {
+      tintColor: themeFlag,
       themeColor: themeFlag,
+      navBar: {
+        tintColor: themeFlag,
+        backTitle: System.theme.navBar.backTitle,
+        backgroundColor: themeFlag,
+        titleColor: System.theme.navBar.titleColor,
+        titleFontSize: System.theme.navBar.titleFontSize,
+        titleFontWeight: System.theme.navBar.titleFontWeight,
+      },
+      tabBar: {
+        tintColor: themeFlag,
+        textNormalColor: System.theme.tabBar.textNormalColor,
+        textSelectColor: themeFlag,
+        iconNormalColor: System.theme.tabBar.iconNormalColor,
+        iconSelectColor: themeFlag,
+        backgroundColor: System.theme.tabBar.backgroundColor,
+      },
       styles: StyleSheet.create({
-        selectedTitleStyle: {
-          color: themeFlag,
-        },
-        tabBarSelectedIcon: {
-          tintColor: themeFlag,
-        },
         navBar: {
           backgroundColor: themeFlag,
-        }
+        },
       }),
     };
   }

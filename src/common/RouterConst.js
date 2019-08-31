@@ -40,5 +40,7 @@ export default {
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
   RouterMainMeiTuanTabContainer: 'RouterMainMeiTuanTabContainer', // Tab导航器
 
+  // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator -> TabHomeStackNavigator
+  RouterMeiTuanTabHomeStackContainer: 'RouterMeiTuanTabHomeStackContainer', // 首页页面
 
 };

@@ -14,7 +14,7 @@ import {
   COLOR_BACKGROUND_DEFAULT,
 } from '../common/Variables';
 
-import TabHomeScreen from '../screens/meituanfood/tab-home/tab-home';
+import TabHomeStackContainer from '../screens/meituanfood/tab-home/tab-home-navigator';
 
 
 type Props = {};
@@ -58,7 +58,7 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
       >
 
         {/* 首页 */}
-        <TabHomeScreen />
+        <TabHomeStackContainer />
 
         <View tabLabel="page2">
           <Text>

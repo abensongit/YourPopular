@@ -1,10 +1,11 @@
-
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
-  Alert, StyleSheet, TouchableOpacity, View, Image
+  Alert, StyleSheet, TouchableOpacity, View,
 } from 'react-native';
+
 import {
-  System
+  NavigationMeiTuanService, RouterConst, System,
 } from '../../../common';
 import {
   NavigationBarItem
@@ -14,49 +15,74 @@ import {
 } from '../../../common/Variables';
 
 
-type Props = {
-
-}
-
-type State = {
-
-}
-
-export default class HomeMainScreen extends Component<Props, State> {
+type Props = {}
+class TabHomeMainScreen extends Component<Props> {
   /**
-   *
+   * 配置导航栏
    * @param navigation
-   * @returns {{headerLeft: *, headerTitle: *}}
+   * @returns {{*:*}}
    */
-  static navigationOptions = ({ navigation }) => ({
-    headerStyle: {
-      backgroundColor: '#fcc',
-    },
-    headerTitle: (
-      <TouchableOpacity
-        style={styles.searchBar}
-        onPress={() => {
-          Alert.alert('搜索');
-        }}
-      />
-    ),
-    headerLeft: (
-      <NavigationBarItem
-        title="福州"
-        titleStyle={{ color: System.theme.nav.headerTintColor }}
-        onPress={() => {
-          Alert.alert('定位');
-        }}
-      />
-    ),
-  });
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const headerTitleColor = navigation.getParam('headerTitleColor', System.theme.navBar.titleColor);
+    const headerBackgroundColor = navigation.getParam('headerBackgroundColor', System.theme.navBar.backgroundColor);
+    return {
+      headerStyle: {
+        backgroundColor: headerBackgroundColor,
+      },
+      headerTitle: (
+        <TouchableOpacity
+          style={styles.searchBar}
+          onPress={() => {
+            Alert.alert('搜索');
+          }}
+        />
+      ),
+      headerLeft: (
+        <NavigationBarItem
+          title="福州"
+          titleStyle={{ color: headerTitleColor }}
+          onPress={() => {
+            Alert.alert('定位');
+          }}
+        />
+      ),
+    };
+  };
 
+  /**
+   * 构造函数
+   * @param props
+   */
+  constructor(props) {
+    super(props);
+    const { theme } = this.props;
+    this.props.navigation.setParams({
+      headerBackgroundColor: theme.tintColor,
+      headerTitleColor: theme.navBar.titleColor,
+    });
+  }
+
+  /**
+   * 渲染页面
+   * @returns {*}
+   */
   render() {
     return (
       <View style={styles.container} />
     );
   }
 }
+
+
+const AppMapStateToProps = state => ({
+  theme: state.theme.theme,
+});
+
+const AppMapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(TabHomeMainScreen);
 
 
 const styles = StyleSheet.create({
