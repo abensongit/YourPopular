@@ -2,6 +2,7 @@ import BackHandlerComponent from './BackHandlerComponent';
 import * as EventTypes from './EventTypes';
 import * as EventDeviceTypes from './EventDeviceTypes';
 import FetchService from './FetchService';
+import NavDrawerSideMenu from './NavDrawerSideMenu';
 import NavigationMainService from './NavigationMainService';
 import NavigationMeiTuanService from './NavigationMeiTuanService';
 import NavigationPopularService from './NavigationPopularService';
@@ -15,6 +16,7 @@ export {
   EventTypes,
   EventDeviceTypes,
   FetchService,
+  NavDrawerSideMenu,
   NavigationMainService,
   NavigationMeiTuanService,
   NavigationPopularService,

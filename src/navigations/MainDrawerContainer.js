@@ -12,6 +12,9 @@ import {
 } from 'react-navigation';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
+  NavDrawerSideMenu,
+} from '../common';
+import {
   NavigationBar,
 } from '../components';
 import MainPopularStackContainer from './MainPopularStackContainer';
@@ -65,19 +68,34 @@ class MainDrawerContainer extends Component<Props> {
               ),
             },
           },
+          RouterDrawerOtherNavigator: {
+            screen: MainMeiTuanStackContainer,
+            navigationOptions: {
+              drawerLabel: '其它',
+              drawerIcon: ({ tintColor, focused }) => (
+                <AntDesign
+                  name={focused ? 'google' : 'google'}
+                  size={24}
+                  style={{ color: tintColor }}
+                />
+              ),
+            },
+          },
         }, {
           overlayColor: 'rgba(0,0,0,0.6)',
           contentOptions: {
             activeTintColor: this.props.theme.themeColor,
           },
           useNativeAnimations: true,
-          drawerLockMode: 'locked-closed',
+          drawerLockMode: 'unlocked',
+          // contentComponent: NavDrawerSideMenu,
           contentComponent: props => (
             <View style={{ backgroundColor: '#e9e9ee', flex: 1 }}>
               {navigationBar}
               <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
                 <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
                   <DrawerItems {...props} />
+                  <NavDrawerSideMenu {...props} />
                 </SafeAreaView>
               </ScrollView>
             </View>

@@ -5,7 +5,7 @@ import {
 import { System } from '../../../common';
 
 const SEARCH_BAR_HEIGHT = Platform.select({
-  ios: System.window.navigationBarHeight * 0.64,
+  ios: System.window.navigationBarHeight * 0.7,
   android: System.window.navigationBarHeight * 0.58
 });
 

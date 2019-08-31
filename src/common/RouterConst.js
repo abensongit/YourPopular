@@ -12,7 +12,7 @@ export default {
   // SwitchNavigator -> DrawerNavigator
   RouterDrawerPopularNavigator: 'RouterDrawerPopularNavigator', // 最热栈导航器
   RouterDrawerMeiTuanNavigator: 'RouterDrawerMeiTuanNavigator', // 美团栈导航器
-  RouterDrawerYourTrackNavigator: 'RouterDrawerMeiTuanNavigator', // 其它栈导航器
+  RouterDrawerOtherNavigator: 'RouterDrawerOtherNavigator', // 其它栈导航器
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator
   RouterMainPopularStackContainer: 'RouterMainPopularStackContainer', // 主导航容器
