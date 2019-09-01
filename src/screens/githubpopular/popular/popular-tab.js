@@ -92,23 +92,27 @@ class PopularTabScreen extends Component<Props> {
   keyExtractor = (item: any, index: number) => index.toString();
 
   // 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
-  renderItem = (rowData: Object) => (
-    <PopularTabCell
-      projectModel={rowData.item}
-      onSelect={(callback) => {
-        NavigationPopularService.navigate(
-          RouterConst.RouterPopularTabDetaiScreen,
-          {
-            projectModel: rowData.item,
-            callback, // 详情页面更新 ItemCell 的收藏状态
-          }
-        );
-      }}
-      onFavourite={(item, isFavourite) => {
-        SysUtil.onFavouritePopular(item, isFavourite, POPULAR_FAVOURITE_DAO);
-      }}
-    />
-  );
+  renderItem = (rowData: Object) => {
+    const { theme } = this.props;
+    return (
+      <PopularTabCell
+        theme={theme}
+        projectModel={rowData.item}
+        onSelect={(callback) => {
+          NavigationPopularService.navigate(
+            RouterConst.RouterPopularTabDetaiScreen,
+            {
+              projectModel: rowData.item,
+              callback, // 详情页面更新 ItemCell 的收藏状态
+            }
+          );
+        }}
+        onFavourite={(item, isFavourite) => {
+          SysUtil.onFavouritePopular(item, isFavourite, POPULAR_FAVOURITE_DAO);
+        }}
+      />
+    );
+  };
 
   genFetchUrl(key) {
     return NETWORK_URL + key + NETWORK_QUERY_CONDITION;

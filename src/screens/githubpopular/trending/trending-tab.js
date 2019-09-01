@@ -110,23 +110,27 @@ class TrendingTabScreen extends Component<Props> {
   keyExtractor = (item: any, index: number) => index.toString();
 
   // 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
-  renderItem = (rowData: Object) => (
-    <TrendingTabCell
-      projectModel={rowData.item}
-      onSelect={(callback) => {
-        NavigationPopularService.navigate(
-          RouterConst.RouterTrendingTabDetaiScreen,
-          {
-            projectModel: rowData.item,
-            callback, // 详情页面更新 ItemCell 的收藏状态
-          }
-        );
-      }}
-      onFavourite={(item, isFavourite) => {
-        SysUtil.onFavouriteTrending(item, isFavourite, TRENDING_FAVOURITE_DAO);
-      }}
-    />
-  );
+  renderItem = (rowData: Object) => {
+    const { theme } = this.props;
+    return (
+      <TrendingTabCell
+        theme={theme}
+        projectModel={rowData.item}
+        onSelect={(callback) => {
+          NavigationPopularService.navigate(
+            RouterConst.RouterTrendingTabDetaiScreen,
+            {
+              projectModel: rowData.item,
+              callback, // 详情页面更新 ItemCell 的收藏状态
+            }
+          );
+        }}
+        onFavourite={(item, isFavourite) => {
+          SysUtil.onFavouriteTrending(item, isFavourite, TRENDING_FAVOURITE_DAO);
+        }}
+      />
+    );
+  };
 
   genFetchUrl(key) {
     return `${NETWORK_URL + key}?${this.timeSpan.searchText}`;

@@ -6,6 +6,7 @@ import ProgressWebView from './progress-webview/webview';
 import ProgressImageView from './progress-imageview/image-view';
 import RefreshListView, { RefreshState } from './refresh-list-view/refresh-list-view';
 import ScrollableTabbar from './scrollable-tabbar/scrollable-tabbar';
+import SpacingView from './spacing-view/spacing-view';
 import SeparatorLineView from './spearator-line-view/spearator-line-view';
 
 export {
@@ -18,5 +19,6 @@ export {
   RefreshState,
   RefreshListView,
   ScrollableTabbar,
+  SpacingView,
   SeparatorLineView,
 };

@@ -126,10 +126,12 @@ class FavouriteTabScreen extends Component<Props> {
    * @returns {*}
    */
   renderItem = (rowData: Object) => {
+    const { theme } = this.props;
     const TabItem = FAVOURITE_FLAGS.FLAG_POPULEAR === this.storeName ? PopularTabCell : TrendingTabCell;
     const routerScreen = FAVOURITE_FLAGS.FLAG_POPULEAR === this.storeName ? RouterConst.RouterPopularTabDetaiScreen : RouterConst.RouterTrendingTabDetaiScreen;
     return (
       <TabItem
+        theme={theme}
         projectModel={rowData.item}
         onSelect={(callback) => {
           NavigationPopularService.navigate(routerScreen, {
