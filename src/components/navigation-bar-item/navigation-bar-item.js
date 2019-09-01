@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   title: {
-    fontSize: 15,
+    fontSize: 14,
     color: '#000',
     margin: 8,
   }

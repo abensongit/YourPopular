@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationMeiTuanService, RouterConst, System,
+  NavigationMeiTuanService, Paragraph, RouterConst, System,
 } from '../../../common';
 import {
   NavigationBarItem,
@@ -40,6 +40,7 @@ class TabHomeMainScreen extends Component<Props> {
           }}
         >
           <Image source={Images.home.ic_nav_search} style={styles.searchIcon} />
+          <Paragraph>搜索</Paragraph>
         </TouchableOpacity>
       ),
       headerLeft: (

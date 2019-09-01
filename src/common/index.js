@@ -10,6 +10,10 @@ import RouterConst from './RouterConst';
 import System from './System';
 import SystemIPhone from './SystemIPhone';
 import Variables from './Variables';
+import {
+ Heading1, Heading2, Heading3, Paragraph, ToastTip
+} from './TextWordStyle';
+
 
 export {
   BackHandlerComponent,
@@ -24,4 +28,9 @@ export {
   System,
   SystemIPhone,
   Variables,
+  Heading1,
+  Heading2,
+  Heading3,
+  Paragraph,
+  ToastTip,
 };
