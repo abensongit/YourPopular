@@ -3,8 +3,6 @@ import {
   ScrollView, StyleSheet, Text, View, TouchableOpacity
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import RouterConst from './RouterConst';
 import System from './System';
 import { COLOR_BACKGROUND_WHITE } from './Variables';
 
@@ -21,26 +19,6 @@ class NavDrawerSideMenu extends Component<Props> {
     this.state = {
       routeIndex: 0,
     };
-    this.items = [
-      {
-        navOptionName: '主页',
-        navOptionIconType: AntDesign,
-        navOptionThumb: 'github',
-        screenToNavigate: RouterConst.RouterDrawerPopularNavigator,
-      },
-      {
-        navOptionName: '美团',
-        navOptionIconType: AntDesign,
-        navOptionThumb: 'alipay-circle',
-        screenToNavigate: RouterConst.RouterDrawerMeiTuanNavigator,
-      },
-      {
-        navOptionName: '其它',
-        navOptionIconType: AntDesign,
-        navOptionThumb: 'google',
-        screenToNavigate: RouterConst.RouterDrawerOtherNavigator,
-      },
-    ];
   }
 
   /**
@@ -65,11 +43,11 @@ class NavDrawerSideMenu extends Component<Props> {
    * @returns {*}
    */
   render() {
-    const { theme } = this.props;
+    const { items, theme } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView>
-          {this.items.map((item, index) => {
+          {items.map((item, index) => {
             const focused = this.state.routeIndex === index;
             return (
               <View
@@ -78,11 +56,11 @@ class NavDrawerSideMenu extends Component<Props> {
               >
                 <TouchableOpacity
                   style={styles.item}
-                  onPress={this.navigateToScreen(item.screenToNavigate, index)}
+                  onPress={this.navigateToScreen(item.route, index)}
                 >
-                  <item.navOptionIconType
+                  <item.iconType
                     size={28}
-                    name={item.navOptionThumb}
+                    name={item.iconName}
                     style={[styles.icon, { color: focused ? theme.tintColor : '#767676' }]}
                   />
                   <Text
@@ -92,7 +70,7 @@ class NavDrawerSideMenu extends Component<Props> {
                       color: focused ? theme.tintColor : '#262626',
                     }}
                   >
-                    {item.navOptionName}
+                    {item.title}
                   </Text>
                 </TouchableOpacity>
                 <View style={styles.line} />
