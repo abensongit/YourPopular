@@ -46,7 +46,7 @@ class MainPopularTabRootContainer extends Component<Props> {
    */
   onHardwareBackPressAction = () => {
     const { dispatch, nav } = this.props;
-    if (nav.routes[nav.index].routeName === RouterConst.RouterMainStackNavigator) {
+    if (nav.routes[nav.index].routeName === RouterConst.RouterMainDrawerContainer) {
       BackHandler.exitApp();
     } else {
       dispatch(NavigationActions.back());

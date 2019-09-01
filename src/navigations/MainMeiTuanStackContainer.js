@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
-  StatusBar
+  BackHandler,
+  StatusBar,
 } from 'react-native';
 import {
   createAppContainer,
   createStackNavigator,
-  getActiveChildNavigationOptions,
+  getActiveChildNavigationOptions, NavigationActions,
 } from 'react-navigation';
 import {
   StackViewStyleInterpolator
 } from 'react-navigation-stack';
 import {
+  System,
+  RouterConst,
+  BackHandlerComponent,
   NavigationMainService,
   NavigationMeiTuanService,
-  RouterConst,
-  System
 } from '../common';
 import MainMeiTuanTabRootContainer from './MainMeiTuanTabRootContainer';
 
@@ -74,7 +77,37 @@ class MainMeiTuanStackContainer extends Component<Props> {
   constructor(props) {
     super(props);
     console.disableYellowBox = true;
+    this.backPressComponent = new BackHandlerComponent({ hardwareBackPressAction: this.onHardwareBackPressAction });
   }
+
+  /**
+   * 组件渲染完成
+   */
+  componentDidMount() {
+    // 处理 Android 中的物理返回键
+    this.backPressComponent.componentDidMount();
+  }
+
+  /**
+   * 组件将要销毁
+   */
+  componentWillUnmount() {
+    // 处理 Android 中的物理返回键
+    this.backPressComponent.componentWillUnmount();
+  }
+
+  /**
+   * 处理 Android 中的物理返回键
+   */
+  onHardwareBackPressAction = () => {
+    const { dispatch, nav } = this.props;
+    if (nav.routes[nav.index].routeName === RouterConst.RouterMainDrawerContainer) {
+      BackHandler.exitApp();
+    } else {
+      dispatch(NavigationActions.back());
+    }
+    return true;
+  };
 
   /**
    * 动态创建堆栈容器
@@ -120,4 +153,12 @@ class MainMeiTuanStackContainer extends Component<Props> {
   }
 }
 
-export default MainMeiTuanStackContainer;
+const AppMapStateToProps = state => ({
+  nav: state.nav,
+});
+
+const AppMapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(MainMeiTuanStackContainer);
