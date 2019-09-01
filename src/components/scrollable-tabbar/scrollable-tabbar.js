@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, TouchableOpacity, Text,
+  Platform, StyleSheet, View, TouchableOpacity, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import SeparatorLineView from '../spearator-line-view/spearator-line-view';
@@ -70,7 +70,16 @@ export default class ScrollableTabbar extends Component<Props> {
               />
             )
           }
-          <Text style={{ color, fontSize: 11, paddingTop: 3, }}>
+          <Text
+            style={{
+              color,
+              fontSize: 11,
+              paddingTop: Platform.select({
+                ios: 5,
+                android: 3,
+              }),
+            }}
+          >
             {this.props.tabNames[index]}
           </Text>
         </View>
@@ -103,7 +112,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabItem: {
-    paddingTop: 2,
+    paddingTop: Platform.select({
+      ios: 4,
+      android: 3,
+    }),
     flexDirection: 'column',
     alignItems: 'center',
   },
