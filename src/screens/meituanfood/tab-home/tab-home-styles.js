@@ -5,7 +5,7 @@ import {
 import { System } from '../../../common';
 
 const SEARCH_BAR_HEIGHT = Platform.select({
-  ios: System.window.navigationBarHeight * 0.7,
+  ios: System.window.navigationBarHeight * 0.65,
   android: System.window.navigationBarHeight * 0.58
 });
 
@@ -17,7 +17,7 @@ export default StyleSheet.create({
   searchBar: {
     width: System.window.width * 0.7,
     height: SEARCH_BAR_HEIGHT,
-    borderRadius: SEARCH_BAR_HEIGHT * 0.5,
+    borderRadius: SEARCH_BAR_HEIGHT * 0.6,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

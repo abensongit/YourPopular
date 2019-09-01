@@ -93,7 +93,7 @@ export default {
       backgroundColor: COLOR_DEFAULT,
       buttonBackTitle: '返回',
       buttonTextColor: '#FFFFFF',
-      buttonTextFontSize: 16,
+      buttonTextFontSize: 15,
       buttonTextFontWeight: 'normal',
       titleColor: '#FFFFFF',
       titleFontSize: 18,
