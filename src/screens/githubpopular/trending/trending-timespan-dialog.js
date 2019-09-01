@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Modal, Text, TouchableOpacity, StyleSheet, View
+  Modal, Platform, Text, TouchableOpacity, StyleSheet, View
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
@@ -84,7 +84,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.6)',
-    paddingTop: System.window.statusBarHeight + System.window.navigationBarHeight * 0.5,
+    paddingTop: Platform.select({
+      ios: System.window.statusBarHeight + System.window.navigationBarHeight * 0.5,
+      android: System.window.navigationBarHeight * 0.5
+    }),
   },
   arrow: {
     color: 'white',

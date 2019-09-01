@@ -3,7 +3,6 @@ import {
   ScrollView, StyleSheet, Text, View, TouchableOpacity
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import System from './System';
 import { COLOR_BACKGROUND_WHITE } from './Variables';
 
 
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   line: {
-    height: System.layout.onePixel,
+    height: 0.5,
     opacity: 0.5,
     backgroundColor: 'darkgray',
   },
