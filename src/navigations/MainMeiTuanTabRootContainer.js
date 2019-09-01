@@ -8,6 +8,9 @@ import IconOfAntDesign from 'react-native-vector-icons/AntDesign';
 import IconOfFontAwesome from 'react-native-vector-icons/FontAwesome';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import {
+  NavigationMeiTuanService,
+} from '../common';
+import {
   ScrollableTabbar,
 } from '../components';
 import {
@@ -39,6 +42,7 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
   render() {
     const { theme } = this.props;
     const { tabNames, tabIconTypes, tabIconNames } = this.state;
+    NavigationMeiTuanService.topLevelNavigator = this.props.navigation;
     return (
       <ScrollableTabView
         style={{ flex: 1, backgroundColor: COLOR_BACKGROUND_DEFAULT, }}

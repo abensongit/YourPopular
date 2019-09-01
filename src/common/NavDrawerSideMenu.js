@@ -4,9 +4,7 @@ import {
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
-import {
-  RouterConst,
-} from '.';
+import RouterConst from './RouterConst';
 
 
 type Props = {}

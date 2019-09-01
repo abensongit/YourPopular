@@ -1,3 +1,5 @@
+import { NavigationActions } from 'react-navigation';
+
 /**
  * 全局导航跳转工具类
  */
@@ -39,7 +41,7 @@ export default class NavigationMeiTuanService {
         console.log('navigation can not be null');
         return;
       }
-      navigation.navigate(page);
+      navigation.push(page);
       return;
     }
     if (topLevelNavigator) {
@@ -66,6 +68,32 @@ export default class NavigationMeiTuanService {
       topLevelNavigator.goBack();
     }
   }
+
+
+  /**
+   * 路由导航指定页面
+   * @param page
+   * @param params
+   * @returns {Function}
+   */
+  static dispatch = (page, params = {}) => () => {
+    const navigateAction = NavigationActions.navigate({
+      routeName: page
+    });
+    const { topLevelNavigator } = NavigationMeiTuanService;
+    if (!topLevelNavigator) {
+      const { navigation } = params;
+      if (!navigation) {
+        console.log('navigation can not be null');
+        return;
+      }
+      navigation.dispatch(navigateAction);
+      return;
+    }
+    if (topLevelNavigator) {
+      topLevelNavigator.dispatch(navigateAction);
+    }
+  };
 
   /**
    * 打开抽屉页面

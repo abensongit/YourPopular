@@ -39,7 +39,7 @@ export default class NavigationMainService {
         console.log('navigation can not be null');
         return;
       }
-      navigation.navigate(page);
+      navigation.push(page);
       return;
     }
     if (topLevelNavigator) {
