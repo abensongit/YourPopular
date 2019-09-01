@@ -13,7 +13,7 @@ import {
 import {
   Images
 } from '../../../resources';
-import styles from './tab-home-styles';
+import styles from './home-styles';
 
 
 type Props = {}

@@ -11,7 +11,7 @@ import {
   RouterConst, System
 } from '../../../common';
 
-import TabHomeMainScreen from './tab-home';
+import TabHomeMainScreen from './home';
 
 
 /**

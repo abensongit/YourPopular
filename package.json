@@ -18,6 +18,7 @@
     "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-htmlview": "^0.15.0",
+    "react-native-page-control": "^1.1.1",
     "react-native-reanimated": "^1.2.0",
     "react-native-root-toast": "^3.1.2",
     "react-native-scrollable-tab-view": "^0.10.0",

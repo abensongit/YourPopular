@@ -3,7 +3,7 @@ import {
 } from 'react-native';
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 import SystemIPhone from './SystemIPhone';
-import { COLOR_DEFAULT } from './Variables';
+import { COLOR_DEFAULT, COLOR_BACKGROUND_WHITE } from './Variables';
 
 // String
 export const IOS = 'ios';
@@ -93,6 +93,9 @@ export default {
 
   theme: {
     tintColor: COLOR_DEFAULT,
+    borderColor: '#e0e0e0',
+    separatorColor: '#f3f3f3',
+    backgroundColor: COLOR_BACKGROUND_WHITE,
     navBar: {
       tintColor: COLOR_DEFAULT,
       backgroundColor: COLOR_DEFAULT,
