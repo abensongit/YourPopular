@@ -48,10 +48,15 @@ export default {
   isIPhoneXsMax: SystemIPhone.isIPhoneXsMax,
   isIPhoneXsOrGreater: SystemIPhone.isIPhoneXsOrGreater,
 
-  window: {
+  layout: {
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     onePixel: 1 / PixelRatio.get(),
+  },
+
+  window: {
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
     statusBarHeight: Platform.select({
       ios: IPHONE_STATUS_BAR_HEIGHT,
       android: ANDROID_STATUS_BAR_HEIGHT,

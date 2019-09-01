@@ -12,7 +12,7 @@ import {
 } from 'react-navigation';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
-  NavDrawerSideMenu,
+  NavDrawerSideMenu, System
 } from '../common';
 import {
   NavigationBar,
@@ -88,14 +88,20 @@ class MainDrawerContainer extends Component<Props> {
           },
           useNativeAnimations: true,
           drawerLockMode: 'unlocked',
-          // contentComponent: NavDrawerSideMenu,
+          drawerWidth: System.window.width * 0.75,
           contentComponent: props => (
             <View style={{ backgroundColor: '#e9e9ee', flex: 1 }}>
               {navigationBar}
               <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
                 <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
-                  <DrawerItems {...props} />
-                  <NavDrawerSideMenu {...props} />
+                  {!navigationBar
+                    ? (
+                      <DrawerItems {...props} />
+                    )
+                    : (
+                      <NavDrawerSideMenu {...props} theme={this.theme} />
+                    )
+                  }
                 </SafeAreaView>
               </ScrollView>
             </View>
