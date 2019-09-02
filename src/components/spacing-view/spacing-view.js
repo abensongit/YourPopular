@@ -17,7 +17,7 @@ class SpacingView extends Component<Props> {
 
 const styles = StyleSheet.create({
   spacing: {
-    height: 1 / PixelRatio.get() * 30,
+    height: 1 / PixelRatio.get() * 25,
     backgroundColor: '#e9e9ee',
   },
 });
