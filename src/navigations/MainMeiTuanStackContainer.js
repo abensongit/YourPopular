@@ -19,7 +19,12 @@ import {
   NavigationMainService,
   NavigationMeiTuanService,
 } from '../common';
+
+// 根容器
 import MainMeiTuanTabRootContainer from './MainMeiTuanTabRootContainer';
+
+// 网页控件
+import WebBrowserScreen from '../screens/meituanfood/browser/web-browser';
 
 
 /**
@@ -32,6 +37,12 @@ const AppMainMeiTuanStackNavigator = createStackNavigator(
       screen: MainMeiTuanTabRootContainer,
       navigationOptions: ({ navigation }) => ({
         header: null
+      }),
+    },
+    RouterMeiTuanWebBrowserScreen: {
+      screen: WebBrowserScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
       }),
     },
   },

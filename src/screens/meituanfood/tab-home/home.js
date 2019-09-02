@@ -173,7 +173,15 @@ class TabHomeMainScreen extends Component<Props> {
    * @param index
    */
   onSelectedCellGrid = (grid: Object, index: number) => {
-    Alert.alert(`${grid.title}[${index}]`);
+    const { title, tplurl } = grid;
+    const location = tplurl.indexOf('http');
+    const url = tplurl.slice(location);
+    NavigationMeiTuanService.navigate(
+      RouterConst.RouterMeiTuanWebBrowserScreen, {
+        url,
+        title,
+      }
+    );
   };
 
   /**
@@ -181,8 +189,12 @@ class TabHomeMainScreen extends Component<Props> {
    * @param goods
    */
   onSelectedCellGoods = (goods: Object) => {
-    Alert.alert(`${goods.title}`);
-    NavigationMeiTuanService.navigate(RouterConst.RouterIntroduceScreen, { goods });
+    NavigationMeiTuanService.navigate(
+      RouterConst.RouterMeiTuanWebBrowserScreen, {
+        title: '教程',
+        url: 'https://coding.m.imooc.com/classindex.html?cid=304',
+      }
+    );
   };
 
   /**
