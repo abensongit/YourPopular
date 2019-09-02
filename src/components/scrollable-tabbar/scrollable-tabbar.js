@@ -104,7 +104,10 @@ const styles = StyleSheet.create({
   tabs: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    height: System.window.tabBarDangerHeight,
+    height: Platform.select({
+      ios: System.isIPhoneXsOrGreater ? System.window.tabBarDangerHeight : System.window.tabBarHeight,
+      android: System.window.tabBarDangerHeight,
+    }),
   },
   tab: {
     flex: 1,
