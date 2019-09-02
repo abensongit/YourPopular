@@ -28,7 +28,8 @@ class WelcomeScreen extends Component<Props> {
     super(props);
     console.disableYellowBox = true;
     this.state = {
-      fill: '跳过'
+      fill: 0,
+      text: '跳过'
     };
     // 初始化主题
     this.onThemeInit();
@@ -133,7 +134,7 @@ class WelcomeScreen extends Component<Props> {
               {
                 progress => (
                   <Text style={styles.circleTitle}>
-                    { this.state.fill }
+                    { this.state.text }
                   </Text>
                 )
               }

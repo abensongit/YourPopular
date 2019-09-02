@@ -142,7 +142,13 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
     }
   }
   // 加载更多数据
-  const showItems = pageSize > fixItems.length ? fixItems : fixItems.slice(0, pageSize);
+  let number = 0;
+  if (pageSize * pageIndex > fixItems.length) {
+    number = fixItems.length - pageSize * (pageIndex - 1);
+  } else {
+    number = pageSize;
+  }
+  const showItems = fixItems.splice(dataModels.length, number);
   doGoodsModels(showItems, (itemModels) => {
     if (itemModels.length <= 0) {
       if (typeof callBack === 'function') {

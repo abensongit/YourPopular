@@ -1,6 +1,4 @@
-import {
-  AsyncStorage,
-} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { JsonLangus } from '../../../../resources';
 
 const STORAGE_LANGUAGES_KEY = 'STORAGE_LANGUAGES_KEY';

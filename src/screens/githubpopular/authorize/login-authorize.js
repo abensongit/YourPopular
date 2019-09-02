@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, AsyncStorage, Image, ScrollView, StatusBar, View
+  Alert, Image, ScrollView, StatusBar, View
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Images } from '../../../resources';
 import {
   NavigationMainService, RouterConst, System,
