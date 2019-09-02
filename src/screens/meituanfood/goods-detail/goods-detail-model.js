@@ -4,7 +4,7 @@
  * @param type
  * @constructor
  */
-export default function HomeModel(data, type = null) {
+export default function GoodsDetailModel(data, type = null) {
   this.data = data;
   this.type = type;
 }

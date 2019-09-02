@@ -191,8 +191,8 @@ class TabHomeMainScreen extends Component<Props> {
   onSelectedCellGoods = (goods: Object) => {
     NavigationMeiTuanService.navigate(
       RouterConst.RouterMeiTuanWebBrowserScreen, {
-        title: '教程',
-        url: 'https://coding.m.imooc.com/classindex.html?cid=304',
+        title: goods.title,
+        goods,
       }
     );
   };

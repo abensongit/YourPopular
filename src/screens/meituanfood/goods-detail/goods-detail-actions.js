@@ -1,7 +1,6 @@
-import FetchService from './home-fetch';
-import HomeModel from './home-model';
-import { FLAST_LIST_SECTION } from './home';
-import * as Types from './home-actions-types';
+import FetchService from './goods-detail-fetch';
+import GoodsDetailModel from './goods-detail-model';
+import * as Types from './goods-detail-actions-types';
 import { JsonMeiTuan } from '../../../resources';
 
 
@@ -11,11 +10,11 @@ import { JsonMeiTuan } from '../../../resources';
  * @param pageSize
  * @returns {Function}
  */
-export function onRefreshMeiTuanHome(url, pageSize) {
+export function onRefreshGoodsDetail(url, pageSize) {
   return (dispatch) => {
     // 开始刷新动画
     dispatch({
-      type: Types.ACTION_MEITUAN_HOME_REFRESH,
+      type: Types.ACTION_MEITUAN_GOODS_DETAIL_REFRESH,
     });
     // 开始获取数据
     const fetchService = new FetchService();
@@ -28,7 +27,7 @@ export function onRefreshMeiTuanHome(url, pageSize) {
         // 获取数据失败
         console.log(error);
         dispatch({
-          type: Types.ACTION_MEITUAN_HOME_REFRESH_FAIL,
+          type: Types.ACTION_MEITUAN_GOODS_DETAIL_REFRESH_FAIL,
           error
         });
       });
@@ -45,11 +44,11 @@ export function onRefreshMeiTuanHome(url, pageSize) {
  * @param callBack 回调函数，可以通过回调函数来向调用页面通信：比如异常信息的展示，没有更多等待
  * @returns {function(*)}
  */
-export function onLoadMoreMeiTuanHome(url, pageIndex, pageSize, dataArray = [], callBack) {
+export function onLoadMoreGoodsDetail(url, pageIndex, pageSize, dataArray = [], callBack) {
   return (dispatch) => {
     // 开始刷新动画
     dispatch({
-      type: Types.ACTION_MEITUAN_HOME_LOAD_MORE,
+      type: Types.ACTION_MEITUAN_GOODS_DETAIL_LOAD_MORE,
     });
     // 开始获取数据
     const fetchService = new FetchService();
@@ -62,7 +61,7 @@ export function onLoadMoreMeiTuanHome(url, pageIndex, pageSize, dataArray = [], 
         // 获取数据失败
         console.log(error);
         dispatch({
-          type: Types.ACTION_MEITUAN_HOME_LOAD_MORE_FAIL,
+          type: Types.ACTION_MEITUAN_GOODS_DETAIL_LOAD_MORE_FAIL,
           error
         });
       });
@@ -80,25 +79,25 @@ function handleDataRefresh(dispatch, jsondata, pageSize) {
   const fixItems = doWithJsonData(jsondata);
   // 第一次加载的数据
   const showItems = pageSize > fixItems.length ? fixItems : fixItems.slice(0, pageSize);
-  doPackageHomeModels(showItems, (itemModels) => {
+  doPackageGoodsDetailModels(showItems, (itemModels) => {
     dispatch({
-      type: Types.ACTION_MEITUAN_HOME_REFRESH_SUCCESS,
-      items: doStaticHomeModels(itemModels, true),
+      type: Types.ACTION_MEITUAN_GOODS_DETAIL_REFRESH_SUCCESS,
+      items: doStaticGoodsDetailModels(itemModels, true),
       pageIndex: 1,
     });
     if (itemModels.length > 0
       && itemModels.length < pageSize) {
       setTimeout(() => {
         dispatch({
-          type: Types.ACTION_MEITUAN_HOME_NO_MORE_DATA,
-          items: doStaticHomeModels(itemModels, true),
+          type: Types.ACTION_MEITUAN_GOODS_DETAIL_NO_MORE_DATA,
+          items: doStaticGoodsDetailModels(itemModels, true),
           pageIndex: 1,
         });
       }, 50);
     } else if (itemModels.length <= 0) {
       dispatch({
-        type: Types.ACTION_MEITUAN_HOME_EMPTY_DATA,
-        items: doStaticHomeModels(itemModels, true),
+        type: Types.ACTION_MEITUAN_GOODS_DETAIL_EMPTY_DATA,
+        items: doStaticGoodsDetailModels(itemModels, true),
         pageIndex: 1,
       });
     }
@@ -126,21 +125,21 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
     number = pageSize;
   }
   const showItems = fixItems.splice(dataModels.length, number);
-  doPackageHomeModels(showItems, (itemModels) => {
+  doPackageGoodsDetailModels(showItems, (itemModels) => {
     if (itemModels.length <= 0) {
       if (typeof callBack === 'function') {
         callBack('no more');
       }
       dispatch({
-        type: Types.ACTION_MEITUAN_HOME_NO_MORE_DATA,
+        type: Types.ACTION_MEITUAN_GOODS_DETAIL_NO_MORE_DATA,
         error: 'no more',
         pageIndex: --pageIndex,
-        items: doStaticHomeModels(dataModels, false),
+        items: doStaticGoodsDetailModels(dataModels, false),
       });
     } else {
       dispatch({
-        type: Types.ACTION_MEITUAN_HOME_LOAD_MORE_SUCCESS,
-        items: doStaticHomeModels([...dataModels, ...itemModels], false),
+        type: Types.ACTION_MEITUAN_GOODS_DETAIL_LOAD_MORE_SUCCESS,
+        items: doStaticGoodsDetailModels([...dataModels, ...itemModels], false),
         pageIndex,
       });
     }
@@ -176,11 +175,11 @@ function doWithJsonData(jsondata) {
  * @param callback
  * @returns {Promise<void>}
  */
-function doPackageHomeModels(showItems, callback) {
+function doPackageGoodsDetailModels(showItems, callback) {
   const itemModels = [];
   for (let i = 0, { length } = showItems; i < length; i++) {
     itemModels.push(
-      new HomeModel(showItems[i], FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS)
+      new GoodsDetailModel(showItems[i])
     );
   }
   doCallBack(callback, itemModels);
@@ -192,14 +191,7 @@ function doPackageHomeModels(showItems, callback) {
  * @param isAdd
  * @returns {*[]}
  */
-function doStaticHomeModels(items, isAdd = false) {
-  if (isAdd) {
-    return [
-      new HomeModel(JsonMeiTuan.menuInfo, FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU),
-      new HomeModel(JsonMeiTuan.gridInfo.data, FLAST_LIST_SECTION.FLAST_LIST_SECTION_GRID),
-      ...items
-    ];
-  }
+function doStaticGoodsDetailModels(items, isAdd = false) {
   return items;
 }
 
