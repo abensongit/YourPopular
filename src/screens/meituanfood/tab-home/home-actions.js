@@ -1,6 +1,9 @@
 import HomeFetch from './home-fetch';
+import HomeModel from './home-model';
+import { FLAST_LIST_SECTION } from './home';
 import * as Types from './home-actions-types';
-import { GoodsModel } from '../../../general';
+import { JsonMeiTuan } from '../../../resources';
+
 
 /**
  * 获取数据
@@ -77,10 +80,10 @@ function handleDataRefresh(dispatch, jsondata, pageSize) {
   const fixItems = doWithJsonData(jsondata);
   // 第一次加载的数据
   const showItems = pageSize > fixItems.length ? fixItems : fixItems.slice(0, pageSize);
-  doGoodsModels(showItems, (itemModels) => {
+  doPackageHomeModels(showItems, (itemModels) => {
     dispatch({
       type: Types.ACTION_MEITUAN_HOME_REFRESH_SUCCESS,
-      items: itemModels,
+      items: doStaticHomeModels(itemModels, true),
       pageIndex: 1,
     });
     if (itemModels.length > 0
@@ -88,14 +91,14 @@ function handleDataRefresh(dispatch, jsondata, pageSize) {
       setTimeout(() => {
         dispatch({
           type: Types.ACTION_MEITUAN_HOME_NO_MORE_DATA,
-          items: itemModels,
+          items: doStaticHomeModels(itemModels, true),
           pageIndex: 1,
         });
       }, 50);
     } else if (itemModels.length <= 0) {
       dispatch({
         type: Types.ACTION_MEITUAN_HOME_EMPTY_DATA,
-        items: itemModels,
+        items: doStaticHomeModels(itemModels, true),
         pageIndex: 1,
       });
     }
@@ -123,7 +126,7 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
     number = pageSize;
   }
   const showItems = fixItems.splice(dataModels.length, number);
-  doGoodsModels(showItems, (itemModels) => {
+  doPackageHomeModels(showItems, (itemModels) => {
     if (itemModels.length <= 0) {
       if (typeof callBack === 'function') {
         callBack('no more');
@@ -132,12 +135,12 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
         type: Types.ACTION_MEITUAN_HOME_NO_MORE_DATA,
         error: 'no more',
         pageIndex: --pageIndex,
-        items: dataModels,
+        items: doStaticHomeModels(dataModels, false),
       });
     } else {
       dispatch({
         type: Types.ACTION_MEITUAN_HOME_LOAD_MORE_SUCCESS,
-        items: [...dataModels, ...itemModels],
+        items: doStaticHomeModels([...dataModels, ...itemModels], false),
         pageIndex,
       });
     }
@@ -168,19 +171,35 @@ function doWithJsonData(jsondata) {
 }
 
 /**
- * 通过本地的收藏状态包装Item
+ * 包装数据
  * @param showItems
  * @param callback
  * @returns {Promise<void>}
  */
-function doGoodsModels(showItems, callback) {
-  const goodsModels = [];
+function doPackageHomeModels(showItems, callback) {
+  const itemModels = [];
   for (let i = 0, { length } = showItems; i < length; i++) {
-    goodsModels.push(
-      new GoodsModel(showItems[i])
+    itemModels.push(
+      new HomeModel(showItems[i], FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS)
     );
   }
-  doCallBack(callback, goodsModels);
+  doCallBack(callback, itemModels);
+}
+
+/**
+ * 处理静态数据
+ * @param items
+ * @param isAdd
+ * @returns {*[]}
+ */
+function doStaticHomeModels(items, isAdd = false) {
+  if (isAdd) {
+    return [
+      new HomeModel(JsonMeiTuan.menuInfo, FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU),
+      ...items
+    ];
+  }
+  return items;
 }
 
 /**

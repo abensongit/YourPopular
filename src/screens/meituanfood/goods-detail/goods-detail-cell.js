@@ -13,7 +13,7 @@ export default class GoodsDetailCell extends Component<Props> {
   render() {
     const { theme } = this.props;
     const { goodsModel } = this.props;
-    const imageUrl = goodsModel.item.imageUrl.replace('w.h', '160.0');
+    const imageUrl = goodsModel.imageUrl.replace('w.h', '160.0');
     return (
       <TouchableOpacity
         style={styles.container}
@@ -24,11 +24,11 @@ export default class GoodsDetailCell extends Component<Props> {
           source={{ uri: imageUrl }}
         />
         <View style={styles.content}>
-          <Heading2>{goodsModel.item.title}</Heading2>
-          <Paragraph numberOfLines={0} style={{ marginTop: 8 }}>{goodsModel.item.subtitle}</Paragraph>
+          <Heading2>{goodsModel.title}</Heading2>
+          <Paragraph numberOfLines={0} style={{ marginTop: 8 }}>{goodsModel.subtitle}</Paragraph>
           <View style={{ flex: 1, justifyContent: 'flex-end' }}>
             <Heading2 style={[styles.price, { color: theme.tintColor }]}>
-              {goodsModel.item.price}
+              {goodsModel.price}
               元
             </Heading2>
           </View>

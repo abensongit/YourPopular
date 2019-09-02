@@ -16,10 +16,16 @@ import {
 } from '../../../resources';
 import styles from './home-styles';
 import * as actions from './home-actions';
+import HomeMenuCell from './home-menu-cell';
 import GoodsDetailCell from '../goods-detail/goods-detail-cell';
 
 
 const PAGE_SIZE = 10;
+export const FLAST_LIST_SECTION = {
+  FLAST_LIST_SECTION_MENU: 'FLAST_LIST_SECTION_MENU',
+  FLAST_LIST_SECTION_GRID: 'FLAST_LIST_SECTION_GRID',
+  FLAST_LIST_SECTION_GOODS: 'FLAST_LIST_SECTION_GOODS',
+};
 
 
 type Props = {}
@@ -152,6 +158,14 @@ class TabHomeMainScreen extends Component<Props> {
   };
 
   /**
+   * 事件 - 菜单
+   * @param info
+   */
+  onPressMenuItemSelected = (info: Object, index: number) => {
+    Alert.alert(`${info.title}[${index}]`);
+  };
+
+  /**
    * 渲染表格 => 主键
    */
   keyExtractor = (item: any, index: number) => index.toString();
@@ -161,15 +175,27 @@ class TabHomeMainScreen extends Component<Props> {
    */
   renderItem = (rowData: Object) => {
     const { theme } = this.props;
-    return (
-      <GoodsDetailCell
-        theme={theme}
-        goodsModel={rowData.item}
-        onSelect={(goods: Object) => {
-          NavigationMeiTuanService.navigate(RouterConst.RouterIntroduceScreen, { goods });
-        }}
-      />
-    );
+    const itemModel = rowData.item;
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU === itemModel.type) {
+      return (
+        <HomeMenuCell
+          theme={theme}
+          menuInfos={itemModel.data}
+          onSelect={this.onPressMenuItemSelected}
+        />
+      );
+    } else if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS === itemModel.type) {
+      return (
+        <GoodsDetailCell
+          theme={theme}
+          goodsModel={itemModel.data}
+          onSelect={(goods: Object) => {
+            NavigationMeiTuanService.navigate(RouterConst.RouterIntroduceScreen, { goods });
+          }}
+        />
+      );
+    }
+    return null;
   };
 
   /**

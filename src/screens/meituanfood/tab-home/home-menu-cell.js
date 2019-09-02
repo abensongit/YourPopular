@@ -4,18 +4,18 @@ import {
 } from 'react-native';
 import PageControl from 'react-native-page-control';
 import { System } from '../../../common';
-import HomeMenuItem from './home-menu-item';
+import HomeMenuCellItem from './home-menu-cell-item';
 
 type Props = {
   menuInfos: Array<Object>,
-  onMenuItemSelected: Function,
+  onSelect: Function,
 }
 
 type State = {
   currentPage: number
 }
 
-class HomeMenuView extends Component<Props, State> {
+class HomeMenuCell extends Component<Props, State> {
   /**
    * 构造函数
    */
@@ -31,7 +31,7 @@ class HomeMenuView extends Component<Props, State> {
    */
   onScroll(event: any) {
     const { x } = event.nativeEvent.contentOffset;
-    const currentPage = Math.round(x / Layout.window.width);
+    const currentPage = Math.round(x / System.window.width);
 
     console.log(`onScroll  ${event.nativeEvent.contentOffset.x}  page ${currentPage}  current ${this.state.currentPage}`);
 
@@ -63,16 +63,16 @@ class HomeMenuView extends Component<Props, State> {
    * @returns {*}
    */
   render() {
-    const { menuInfos, onMenuItemSelected } = this.props;
+    const { menuInfos, onSelect } = this.props;
     // 菜单Item列表
     const menuItems = menuInfos.map(
       (info, index) => (
-        <HomeMenuItem
+        <HomeMenuCellItem
           key={info.title}
           title={info.title}
           icon={info.icon}
           onPress={() => {
-            onMenuItemSelected && onMenuItemSelected(info, index);
+            onSelect && onSelect(info, index);
           }}
         />
       )
@@ -138,10 +138,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   pageControlIndicator: {
-    width: 8,
-    height: 8,
+    width: 6,
+    height: 6,
   }
 });
 
 
-export default HomeMenuView;
+export default HomeMenuCell;
