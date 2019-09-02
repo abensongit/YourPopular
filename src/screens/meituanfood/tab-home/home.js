@@ -18,7 +18,7 @@ import styles from './home-styles';
 import * as actions from './home-actions';
 import HomeMenuCell from './home-menu-cell';
 import HomeGridCell from './home-grid-cell';
-import GoodsDetailCell from '../goods-detail/goods-detail-cell';
+import GoodsTableItemCell from '../goods-detail/goods-table-item-cell';
 
 
 const PAGE_SIZE = 10;
@@ -233,7 +233,7 @@ class TabHomeMainScreen extends Component<Props> {
     // 类型 => 商品
     if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS === itemModel.type) {
       return (
-        <GoodsDetailCell
+        <GoodsTableItemCell
           theme={theme}
           goodsModel={itemModel.data}
           onSelect={this.onSelectedCellGoods}

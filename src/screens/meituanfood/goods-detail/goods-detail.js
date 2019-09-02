@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Alert, Image, TouchableOpacity, View,
-} from 'react-native';
+import { Alert, View } from 'react-native';
 import Toast from 'react-native-root-toast';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationMeiTuanService, Paragraph, RouterConst, System,
+  NavigationMeiTuanService, RouterConst, System,
 } from '../../../common';
 import {
-  NavigationBarItem, RefreshListView, RefreshState, SpacingView
+  NavigationBarItem, RefreshListView, RefreshState
 } from '../../../components';
 import {
-  Images, JsonMeiTuan, JsonMeiTuanGoodsUrlWithId
+  JsonMeiTuanGoodsUrlWithId
 } from '../../../resources';
 import styles from './goods-detail-styles';
-import GoodsDetailCell from './goods-detail-cell';
+import GoodsTableInfoCell from './goods-table-info-cell';
+import GoodsTableItemCell from './goods-table-item-cell';
 import * as actions from './goods-detail-actions';
 
 
 const PAGE_SIZE = 10;
+export const FLAST_LIST_SECTION = {
+  FLAST_LIST_SECTION_DETAIL: 'FLAST_LIST_SECTION_MENU',
+  FLAST_LIST_SECTION_GOODS: 'FLAST_LIST_SECTION_GOODS',
+};
 
 
 type Props = {}
@@ -141,14 +144,29 @@ class TabHomeMainScreen extends Component<Props> {
    */
   renderItem = (rowData: Object) => {
     const { theme } = this.props;
+    const { goodsInfo } = this.props.navigation.state.params;
     const itemModel = rowData.item;
-    return (
-      <GoodsDetailCell
-        theme={theme}
-        goodsModel={itemModel.data}
-        onSelect={this.onSelectedCellGoods}
-      />
-    );
+    // 类型 => 详情
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_DETAIL === itemModel.type) {
+      return (
+        <GoodsTableInfoCell
+          theme={theme}
+          goodsModel={goodsInfo}
+          onSelect={this.onSelectedCellGoods}
+        />
+      );
+    }
+    // 类型 => 商品
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS === itemModel.type) {
+      return (
+        <GoodsTableItemCell
+          theme={theme}
+          goodsModel={itemModel.data}
+          onSelect={this.onSelectedCellGoods}
+        />
+      );
+    }
+    return null;
   };
 
   /**

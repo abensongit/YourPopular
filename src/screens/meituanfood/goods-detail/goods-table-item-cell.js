@@ -9,7 +9,7 @@ type Props = {
   onSelect: Function,
 }
 
-export default class GoodsDetailCell extends Component<Props> {
+export default class GoodsTableItemCell extends Component<Props> {
   render() {
     const { theme } = this.props;
     const { goodsModel } = this.props;

@@ -1,4 +1,5 @@
 import FetchService from './goods-detail-fetch';
+import { FLAST_LIST_SECTION } from './goods-detail';
 import GoodsDetailModel from './goods-detail-model';
 import * as Types from './goods-detail-actions-types';
 
@@ -178,7 +179,7 @@ function doPackageGoodsDetailModels(showItems, callback) {
   const itemModels = [];
   for (let i = 0, { length } = showItems; i < length; i++) {
     itemModels.push(
-      new GoodsDetailModel(showItems[i])
+      new GoodsDetailModel(showItems[i], FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS)
     );
   }
   doCallBack(callback, itemModels);
@@ -191,6 +192,12 @@ function doPackageGoodsDetailModels(showItems, callback) {
  * @returns {*[]}
  */
 function doStaticGoodsDetailModels(items, isAdd = false) {
+  if (isAdd) {
+    return [
+      new GoodsDetailModel(null, FLAST_LIST_SECTION.FLAST_LIST_SECTION_DETAIL),
+      ...items
+    ];
+  }
   return items;
 }
 
