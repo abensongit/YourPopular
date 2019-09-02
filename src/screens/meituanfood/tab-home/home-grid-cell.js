@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { System } from '../../../common';
-import HomeGridItem from './home-grid-item';
+import HomeGridCellItem from './home-grid-cell-item';
 
 type Props = {
   gridInfos: Array<Object>,
-  onGridItemSelected: Function,
+  onSelect: Function,
 }
 
-class HomeGridView extends Component<Props> {
+class HomeGridCell extends Component<Props> {
   render() {
-    const { gridInfos } = this.props;
+    const { gridInfos, onSelect } = this.props;
     return (
       <View style={styles.container}>
         {gridInfos.map((info, index) => (
-          <HomeGridItem
+          <HomeGridCellItem
             info={info}
             key={info.title}
-            onPress={() => this.props.onGridItemSelected(index)}
+            onPress={() => {
+              onSelect && onSelect(info, index);
+            }}
           />
         ))}
       </View>
@@ -32,8 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderTopWidth: System.layout.onePixel,
     borderLeftWidth: System.layout.onePixel,
+    borderBottomWidth: System.layout.onePixel,
     borderColor: System.theme.borderColor
   },
 });
 
-export default HomeGridView;
+export default HomeGridCell;

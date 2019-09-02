@@ -17,6 +17,7 @@ import {
 import styles from './home-styles';
 import * as actions from './home-actions';
 import HomeMenuCell from './home-menu-cell';
+import HomeGridCell from './home-grid-cell';
 import GoodsDetailCell from '../goods-detail/goods-detail-cell';
 
 
@@ -124,7 +125,7 @@ class TabHomeMainScreen extends Component<Props> {
     */
   onHeaderRefresh = () => {
     const { onRefreshMeiTuanHome } = this.props;
-    onRefreshMeiTuanHome(JsonMeiTuan.recommend, PAGE_SIZE);
+    onRefreshMeiTuanHome(JsonMeiTuan.url, PAGE_SIZE);
   };
 
   /**
@@ -133,7 +134,7 @@ class TabHomeMainScreen extends Component<Props> {
   onFooterRefresh = () => {
     const { onLoadMoreMeiTuanHome } = this.props;
     const store = this.store();
-    onLoadMoreMeiTuanHome(JsonMeiTuan.recommend, ++store.pageIndex, PAGE_SIZE, store.items, () => {
+    onLoadMoreMeiTuanHome(JsonMeiTuan.url, ++store.pageIndex, PAGE_SIZE, store.items, () => {
       Toast.show('没有更多数据了', {
         duration: Toast.durations.LONG,
         position: Toast.positions.CENTER,
@@ -159,10 +160,29 @@ class TabHomeMainScreen extends Component<Props> {
 
   /**
    * 事件 - 菜单
-   * @param info
+   * @param menu
+   * @param index
    */
-  onPressMenuItemSelected = (info: Object, index: number) => {
-    Alert.alert(`${info.title}[${index}]`);
+  onSelectedCellMenu = (menu: Object, index: number) => {
+    Alert.alert(`${menu.title}[${index}]`);
+  };
+
+  /**
+   * 事件 - 栅格
+   * @param grid
+   * @param index
+   */
+  onSelectedCellGrid = (grid: Object, index: number) => {
+    Alert.alert(`${grid.title}[${index}]`);
+  };
+
+  /**
+   * 事件 - 商品
+   * @param goods
+   */
+  onSelectedCellGoods = (goods: Object) => {
+    Alert.alert(`${goods.title}`);
+    NavigationMeiTuanService.navigate(RouterConst.RouterIntroduceScreen, { goods });
   };
 
   /**
@@ -176,22 +196,33 @@ class TabHomeMainScreen extends Component<Props> {
   renderItem = (rowData: Object) => {
     const { theme } = this.props;
     const itemModel = rowData.item;
+    // 类型 => 菜单
     if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU === itemModel.type) {
       return (
         <HomeMenuCell
           theme={theme}
           menuInfos={itemModel.data}
-          onSelect={this.onPressMenuItemSelected}
+          onSelect={this.onSelectedCellMenu}
         />
       );
-    } else if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS === itemModel.type) {
+    }
+    // 类型 => 栅格
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GRID === itemModel.type) {
+      return (
+        <HomeGridCell
+          theme={theme}
+          gridInfos={itemModel.data}
+          onSelect={this.onSelectedCellGrid}
+        />
+      );
+    }
+    // 类型 => 商品
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS === itemModel.type) {
       return (
         <GoodsDetailCell
           theme={theme}
           goodsModel={itemModel.data}
-          onSelect={(goods: Object) => {
-            NavigationMeiTuanService.navigate(RouterConst.RouterIntroduceScreen, { goods });
-          }}
+          onSelect={this.onSelectedCellGoods}
         />
       );
     }

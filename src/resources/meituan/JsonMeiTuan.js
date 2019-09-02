@@ -1,9 +1,11 @@
-
+/**
+ * 美团数据
+ */
 export default {
 
-  recommend: 'http://api.meituan.com/group/v1/recommend/homepage/city/1',
+  url: 'http://api.meituan.com/group/v1/recommend/homepage/city/1',
 
-  discount: {
+  gridInfo: {
     stid: '836121754643660800',
     server: { time: 1492267134 },
     paging: { count: 4 },

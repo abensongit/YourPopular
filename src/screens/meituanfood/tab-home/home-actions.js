@@ -196,6 +196,7 @@ function doStaticHomeModels(items, isAdd = false) {
   if (isAdd) {
     return [
       new HomeModel(JsonMeiTuan.menuInfo, FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU),
+      new HomeModel(JsonMeiTuan.gridInfo.data, FLAST_LIST_SECTION.FLAST_LIST_SECTION_GRID),
       ...items
     ];
   }

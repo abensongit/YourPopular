@@ -9,14 +9,13 @@ type Props = {
   onPress: Function,
 }
 
-class HomeGridItem extends Component<Props> {
+class HomeGridCellItem extends Component<Props> {
   render() {
     const { info } = this.props;
     const title = info.maintitle;
     const color = info.typeface_color;
     const subtitle = info.deputytitle;
     const imageUrl = info.imageurl.replace('w.h', '120.0');
-
     return (
       <TouchableOpacity
         style={styles.container}
@@ -51,4 +50,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default HomeGridItem;
+export default HomeGridCellItem;
