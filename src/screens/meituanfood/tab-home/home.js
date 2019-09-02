@@ -9,7 +9,7 @@ import {
   NavigationMeiTuanService, Paragraph, RouterConst, System,
 } from '../../../common';
 import {
-  NavigationBarItem, RefreshListView, RefreshState
+  NavigationBarItem, RefreshListView, RefreshState, SpacingView
 } from '../../../components';
 import {
   Images, JsonMeiTuan
@@ -199,21 +199,27 @@ class TabHomeMainScreen extends Component<Props> {
     // 类型 => 菜单
     if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU === itemModel.type) {
       return (
-        <HomeMenuCell
-          theme={theme}
-          menuInfos={itemModel.data}
-          onSelect={this.onSelectedCellMenu}
-        />
+        <View>
+          <HomeMenuCell
+            theme={theme}
+            menuInfos={itemModel.data}
+            onSelect={this.onSelectedCellMenu}
+          />
+          <SpacingView />
+        </View>
       );
     }
     // 类型 => 栅格
     if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GRID === itemModel.type) {
       return (
-        <HomeGridCell
-          theme={theme}
-          gridInfos={itemModel.data}
-          onSelect={this.onSelectedCellGrid}
-        />
+        <View>
+          <HomeGridCell
+            theme={theme}
+            gridInfos={itemModel.data}
+            onSelect={this.onSelectedCellGrid}
+          />
+          <SpacingView />
+        </View>
       );
     }
     // 类型 => 商品
