@@ -74,20 +74,7 @@ export function onLoadMoreMeiTuanHome(url, pageIndex, pageSize, dataArray = [], 
  */
 function handleDataRefresh(dispatch, jsondata, pageSize) {
   // 组装数据模型
-  let fixItems = [];
-  if (jsondata && jsondata.data && jsondata.data.data) {
-    if (Array.isArray(jsondata.data.data)) {
-      fixItems = jsondata.data.data.map(
-        info => ({
-          id: info.id,
-          imageUrl: info.squareimgurl,
-          title: info.mname,
-          subtitle: `[${info.range}]${info.title}`,
-          price: info.price
-        })
-      );
-    }
-  }
+  const fixItems = doWithJsonData(jsondata);
   // 第一次加载的数据
   const showItems = pageSize > fixItems.length ? fixItems : fixItems.slice(0, pageSize);
   doGoodsModels(showItems, (itemModels) => {
@@ -127,20 +114,7 @@ function handleDataRefresh(dispatch, jsondata, pageSize) {
  */
 function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels = [], callBack) {
   // 组装数据模型
-  let fixItems = [];
-  if (jsondata && jsondata.data && jsondata.data.data) {
-    if (Array.isArray(jsondata.data.data)) {
-      fixItems = jsondata.data.data.map(
-        info => ({
-          id: info.id,
-          imageUrl: info.squareimgurl,
-          title: info.mname,
-          subtitle: `[${info.range}]${info.title}`,
-          price: info.price
-        })
-      );
-    }
-  }
+  const fixItems = doWithJsonData(jsondata);
   // 加载更多数据
   let number = 0;
   if (pageSize * pageIndex > fixItems.length) {
@@ -171,12 +145,35 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
 }
 
 /**
+ * 处理JSON数据
+ * @param jsondata
+ * @returns {Array}
+ */
+function doWithJsonData(jsondata) {
+  let items = [];
+  if (jsondata && jsondata.data && jsondata.data.data) {
+    if (Array.isArray(jsondata.data.data)) {
+      items = jsondata.data.data.map(
+        info => ({
+          id: info.id,
+          imageUrl: info.squareimgurl,
+          title: info.mname,
+          subtitle: `[${info.range}]${info.title}`,
+          price: info.price
+        })
+      );
+    }
+  }
+  return items;
+}
+
+/**
  * 通过本地的收藏状态包装Item
  * @param showItems
  * @param callback
  * @returns {Promise<void>}
  */
-async function doGoodsModels(showItems, callback) {
+function doGoodsModels(showItems, callback) {
   const goodsModels = [];
   for (let i = 0, { length } = showItems; i < length; i++) {
     goodsModels.push(
