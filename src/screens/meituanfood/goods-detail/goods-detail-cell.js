@@ -1,9 +1,8 @@
-
 import React, { Component } from 'react';
 import {
   View, StyleSheet, TouchableOpacity, Image
 } from 'react-native';
-import { System, Heading2, Paragraph } from '../../../common';
+import { Heading2, Paragraph, System } from '../../../common';
 
 type Props = {
   goodsModel: Object,
@@ -44,8 +43,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 10,
-    borderBottomWidth: System.layout.onePixel,
     borderColor: System.theme.borderColor,
+    borderBottomWidth: System.layout.onePixel * 1.5,
     backgroundColor: System.theme.backgroundColor,
   },
   picture: {

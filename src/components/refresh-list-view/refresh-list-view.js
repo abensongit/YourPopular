@@ -66,7 +66,7 @@ class RefreshListView extends PureComponent<Props, State> {
       log('[RefreshListView]  onHeaderRefresh');
       this.props.onHeaderRefresh(RefreshState.HeaderRefreshing);
     }
-  }
+  };
 
   onFooterRefresh = () => {
     log('[RefreshListView]  onFooterRefresh');
@@ -75,7 +75,7 @@ class RefreshListView extends PureComponent<Props, State> {
       log('[RefreshListView]  onFooterRefresh');
       this.props.onFooterRefresh && this.props.onFooterRefresh(RefreshState.FooterRefreshing);
     }
-  }
+  };
 
   shouldStartHeaderRefreshing = () => {
     log('[RefreshListView]  shouldStartHeaderRefreshing');
@@ -86,7 +86,7 @@ class RefreshListView extends PureComponent<Props, State> {
     }
 
     return true;
-  }
+  };
 
   shouldStartFooterRefreshing = () => {
     log('[RefreshListView]  shouldStartFooterRefreshing');
@@ -97,7 +97,7 @@ class RefreshListView extends PureComponent<Props, State> {
     }
 
     return (refreshState === RefreshState.Idle);
-  }
+  };
 
   renderFooter = () => {
     let footer = null;
@@ -175,7 +175,27 @@ class RefreshListView extends PureComponent<Props, State> {
     }
 
     return footer;
-  }
+  };
+
+  // 事件处理 - 开始拖动
+  onScrollBeginDrag = () => {
+    log('开始拖动');
+  };
+
+  // 事件处理 - 停止拖动
+  onScrollEndDrag = () => {
+    log('停止拖动');
+  };
+
+  // 事件处理 - 滚动开始
+  onMomentumScrollBegin = () => {
+    log('滚动开始');
+  };
+
+  // 事件处理 - 滚动结束
+  onMomentumScrollEnd = () => {
+    log('滚动结束');
+  };
 
   render() {
     log(`[RefreshListView]  render  refreshState:${this.props.refreshState}`);
@@ -188,6 +208,7 @@ class RefreshListView extends PureComponent<Props, State> {
         renderItem={renderItem}
         refreshing={this.props.refreshState === RefreshState.HeaderRefreshing}
         ListFooterComponent={this.renderFooter}
+        showsVerticalScrollIndicator
         onEndReachedThreshold={0.1}
         onEndReached={() => {
           setTimeout(() => {
@@ -197,10 +218,13 @@ class RefreshListView extends PureComponent<Props, State> {
             }
           }, 100);
         }}
+        onScrollBeginDrag={this.onScrollBeginDrag}
+        onScrollEndDrag={this.onScrollEndDrag}
         onMomentumScrollBegin={() => {
           this.canLoadMore = true;
+          this.onMomentumScrollBegin();
         }}
-
+        onMomentumScrollEnd={this.onMomentumScrollEnd}
         refreshControl={(
           <RefreshControl
             colors={[tintColor]}
