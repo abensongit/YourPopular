@@ -1,3 +1,6 @@
+/**
+ * GitPopular
+ */
 import {
   onLoadMarks
 } from '../../screens/githubpopular/mycenter/marks/marks-actions';
@@ -26,6 +29,18 @@ import {
 } from '../../screens/githubpopular/favourite/favourite-actions';
 
 
+/**
+ * MeiTuanFood
+ */
+import {
+  onRefreshMeiTuanHome,
+  onLoadMoreMeiTuanHome,
+} from '../../screens/meituanfood/tab-home/home-actions';
+
+
+/**
+ * 导出
+ */
 export default {
   // 主题
   onThemeInit,
@@ -51,4 +66,8 @@ export default {
   onRefreshFavourite,
   onLoadMoreFavourite,
   onFlushFavourite,
+
+  // 美团 - 主页
+  onRefreshMeiTuanHome,
+  onLoadMoreMeiTuanHome,
 };

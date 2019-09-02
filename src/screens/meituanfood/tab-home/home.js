@@ -3,17 +3,23 @@ import { connect } from 'react-redux';
 import {
   Alert, Image, TouchableOpacity, View,
 } from 'react-native';
+import Toast from 'react-native-root-toast';
 import Feather from 'react-native-vector-icons/Feather';
 import {
   NavigationMeiTuanService, Paragraph, RouterConst, System,
 } from '../../../common';
 import {
-  NavigationBarItem,
+  NavigationBarItem, RefreshListView, RefreshState
 } from '../../../components';
 import {
-  Images
+  Images, JsonMeiTuan
 } from '../../../resources';
 import styles from './home-styles';
+import * as actions from './home-actions';
+import GoodsDetailCell from '../goods-detail/goods-detail-cell';
+
+
+const PAGE_SIZE = 10;
 
 
 type Props = {}
@@ -100,12 +106,111 @@ class TabHomeMainScreen extends Component<Props> {
   }
 
   /**
+   * 组件渲染完成
+   */
+  componentDidMount() {
+    // 首页加载数据
+    this.onHeaderRefresh();
+  }
+
+  /**
+   * 下拉刷新数据
+    */
+  onHeaderRefresh = () => {
+    const { onRefreshMeiTuanHome } = this.props;
+    onRefreshMeiTuanHome(JsonMeiTuan.recommend, PAGE_SIZE);
+  };
+
+  /**
+   * 上拉加载更多
+   */
+  onFooterRefresh = () => {
+    const { onLoadMoreMeiTuanHome } = this.props;
+    const store = this.store();
+    onLoadMoreMeiTuanHome(JsonMeiTuan.recommend, ++store.pageIndex, PAGE_SIZE, store.items, () => {
+      Toast.show('没有更多数据了', {
+        duration: Toast.durations.LONG,
+        position: Toast.positions.CENTER,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+        onShow: () => {
+          // calls on toast is appear animation start
+        },
+        onShown: () => {
+          // calls on toast is appear animation end.
+        },
+        onHide: () => {
+          // calls on toast is hide animation start.
+        },
+        onHidden: () => {
+          // calls on toast is hide animation end.
+        }
+      });
+    });
+  };
+
+  /**
+   * 渲染表格 => 主键
+   */
+  keyExtractor = (item: any, index: number) => index.toString();
+
+  /**
+   * 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
+   */
+  renderItem = (rowData: Object) => {
+    const { theme } = this.props;
+    return (
+      <GoodsDetailCell
+        theme={theme}
+        goodsModel={rowData.item}
+        onSelect={(goods: Object) => {
+          NavigationMeiTuanService.navigate(RouterConst.RouterIntroduceScreen, { goods });
+        }}
+      />
+    );
+  };
+
+  /**
+   * 获取数据容器
+   * @returns {*}
+   */
+  store() {
+    const { store } = this.props;
+    if (!store) {
+      return {
+        items: [],
+        refreshState: RefreshState.HeaderRefreshing,
+      };
+    }
+    return store;
+  }
+
+  /**
    * 渲染页面
    * @returns {*}
    */
   render() {
+    const store = this.store();
+    const { theme } = this.props;
     return (
-      <View style={styles.container} />
+      <View style={styles.container}>
+        <RefreshListView
+          data={store.items}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+          refreshState={store.refreshState}
+          onHeaderRefresh={this.onHeaderRefresh}
+          onFooterRefresh={this.onFooterRefresh}
+          // 可选
+          tintColor={theme.tintColor}
+          footerRefreshingText="玩命加载中 >.<"
+          footerFailureText="我擦嘞，居然失败了 =.=!"
+          footerNoMoreDataText="-我是有底线的-"
+          footerEmptyDataText="-好像什么东西都没有-"
+        />
+      </View>
     );
   }
 }
@@ -113,10 +218,13 @@ class TabHomeMainScreen extends Component<Props> {
 
 const AppMapStateToProps = state => ({
   theme: state.theme.theme,
+  store: state.meiTuanHome,
 });
 
 const AppMapDispatchToProps = dispatch => ({
-
+  // 将 dispatch(onRefreshMeiTuanHome(url, pageSize)) 绑定到 props
+  onRefreshMeiTuanHome: (url, pageSize) => dispatch(actions.onRefreshMeiTuanHome(url, pageSize)),
+  onLoadMoreMeiTuanHome: (url, pageIndex, pageSize, dataArray, callBack) => dispatch(actions.onLoadMoreMeiTuanHome(url, pageIndex, pageSize, dataArray, callBack)),
 });
 
 export default connect(AppMapStateToProps, AppMapDispatchToProps)(TabHomeMainScreen);

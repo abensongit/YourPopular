@@ -2,12 +2,20 @@ import { combineReducers } from 'redux';
 import {
   AppRootContainer, AppInitRouteName
 } from '../../navigations/AppNavigator';
+/**
+ * GitPopular
+ */
 import themeReducer from '../../screens/githubpopular/mycenter/theme/theme-reducers';
 import marksReducer from '../../screens/githubpopular/mycenter/marks/marks-reducers';
 import langusReducer from '../../screens/githubpopular/mycenter/langus/langus-reducers';
 import popularReducer from '../../screens/githubpopular/popular/popular-reducers';
 import trendingReducer from '../../screens/githubpopular/trending/trending-reducers';
 import favouriteReducer from '../../screens/githubpopular/favourite/favourite-reducers';
+/**
+ * MeiTuanFood
+ */
+import meiTuanHomeReducer from '../../screens/meituanfood/tab-home/home-reducers';
+
 
 /**
  * 1.指定默认state
@@ -35,6 +43,7 @@ const reducers = combineReducers({
   popular: popularReducer,
   trending: trendingReducer,
   favourite: favouriteReducer,
+  meiTuanHome: meiTuanHomeReducer,
 });
 
 export default reducers;

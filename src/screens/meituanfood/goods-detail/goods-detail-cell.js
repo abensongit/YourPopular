@@ -6,29 +6,30 @@ import {
 import { System, Heading2, Paragraph } from '../../../common';
 
 type Props = {
-  info: Object,
-  onPress: Function,
+  goodsModel: Object,
+  onSelect: Function,
 }
 
 export default class GoodsDetailCell extends Component<Props> {
   render() {
-    const { info } = this.props;
-    const imageUrl = info.imageUrl.replace('w.h', '160.0');
+    const { theme } = this.props;
+    const { goodsModel } = this.props;
+    const imageUrl = goodsModel.item.imageUrl.replace('w.h', '160.0');
     return (
       <TouchableOpacity
         style={styles.container}
-        onPress={() => this.props.onPress(info)}
+        onPress={() => this.props.onSelect(goodsModel)}
       >
         <Image
           style={styles.picture}
           source={{ uri: imageUrl }}
         />
         <View style={styles.content}>
-          <Heading2>{info.title}</Heading2>
-          <Paragraph numberOfLines={0} style={{ marginTop: 8 }}>{info.subtitle}</Paragraph>
+          <Heading2>{goodsModel.item.title}</Heading2>
+          <Paragraph numberOfLines={0} style={{ marginTop: 8 }}>{goodsModel.item.subtitle}</Paragraph>
           <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-            <Heading2 style={styles.price}>
-              {info.price}
+            <Heading2 style={[styles.price, { color: theme.tintColor }]}>
+              {goodsModel.item.price}
               元
             </Heading2>
           </View>
