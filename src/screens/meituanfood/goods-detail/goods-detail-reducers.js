@@ -1,9 +1,9 @@
-import * as Types from './home-actions-types';
+import * as Types from './goods-detail-actions-types';
 import { RefreshState } from '../../../components/refresh-list-view/refresh-list-view';
 
 const defaultState = {};
 /**
- * meiTuanHome:{
+ * meiTuanGoodsDetail:{
  *     items:[],
  *     refreshState:*,
  * }
@@ -13,14 +13,14 @@ const defaultState = {};
  */
 export default function onAction(state = defaultState, action) {
   switch (action.type) {
-    case Types.ACTION_MEITUAN_HOME_REFRESH: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_REFRESH: {
       // 下拉刷新动画
       return {
         ...state,
         refreshState: RefreshState.HeaderRefreshing,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_REFRESH_SUCCESS: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_REFRESH_SUCCESS: {
       // 下拉刷新成功
       return {
         ...state,
@@ -29,21 +29,21 @@ export default function onAction(state = defaultState, action) {
         refreshState: RefreshState.Idle,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_REFRESH_FAIL: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_REFRESH_FAIL: {
       // 下拉刷新失败
       return {
         ...state,
         refreshState: RefreshState.Failure,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_LOAD_MORE: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_LOAD_MORE: {
       // 上拉加载更多动画
       return {
         ...state,
         refreshState: RefreshState.FooterRefreshing,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_LOAD_MORE_SUCCESS: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_LOAD_MORE_SUCCESS: {
       // 上拉加载更多成功
       return {
         ...state,
@@ -52,7 +52,7 @@ export default function onAction(state = defaultState, action) {
         refreshState: RefreshState.Idle,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_LOAD_MORE_FAIL: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_LOAD_MORE_FAIL: {
       // 上拉加载更多失败
       return {
         ...state,
@@ -60,7 +60,7 @@ export default function onAction(state = defaultState, action) {
         refreshState: RefreshState.NoMoreData,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_NO_MORE_DATA: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_NO_MORE_DATA: {
       // 没有更多数据
       return {
         ...state,
@@ -68,7 +68,7 @@ export default function onAction(state = defaultState, action) {
         refreshState: RefreshState.NoMoreData,
       };
     }
-    case Types.ACTION_MEITUAN_HOME_EMPTY_DATA: {
+    case Types.ACTION_MEITUAN_GOODS_DETAIL_EMPTY_DATA: {
       // 获取数据为空
       return {
         ...state,

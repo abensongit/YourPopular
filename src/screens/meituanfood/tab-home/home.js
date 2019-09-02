@@ -37,13 +37,10 @@ class TabHomeMainScreen extends Component<Props> {
    * @returns {{*:*}}
    */
   static navigationOptions = ({ navigation, navigationOptions }) => {
-    const navBarButtonTextColor = navigation.getParam('navBarButtonTextColor', System.theme.navBar.titleColor);
-    const navBarButtonTextFontSize = navigation.getParam('navBarButtonTextFontSize', System.theme.navBar.buttonTextFontSize);
-    const navBarButtonTextFontWeight = navigation.getParam('navBarButtonTextFontWeight', System.theme.navBar.buttonTextFontWeight);
-    const navBarBackgroundColor = navigation.getParam('navBarBackgroundColor', System.theme.navBar.backgroundColor);
+    const theme = navigation.getParam('theme', System.theme);
     return {
       headerStyle: {
-        backgroundColor: navBarBackgroundColor,
+        backgroundColor: theme.navBar.backgroundColor,
       },
       headerTitle: (
         <TouchableOpacity
@@ -61,9 +58,9 @@ class TabHomeMainScreen extends Component<Props> {
           title="福州"
           titleStyle={{
             paddingLeft: 5,
-            color: navBarButtonTextColor,
-            fontSize: navBarButtonTextFontSize,
-            fontWeight: navBarButtonTextFontWeight,
+            color: theme.navBar.buttonTextColor,
+            fontSize: theme.navBar.buttonTextFontSize,
+            fontWeight: theme.navBar.buttonTextFontWeight,
           }}
           onPress={() => {
             Alert.alert(
@@ -105,10 +102,7 @@ class TabHomeMainScreen extends Component<Props> {
     super(props);
     const { theme } = this.props;
     this.props.navigation.setParams({
-      navBarButtonTextColor: theme.navBar.buttonTextColor,
-      navBarButtonTextFontSize: theme.navBar.buttonTextFontSize,
-      navBarButtonTextFontWeight: theme.navBar.buttonTextFontWeight,
-      navBarBackgroundColor: theme.navBar.backgroundColor,
+      theme,
     });
   }
 
@@ -122,7 +116,7 @@ class TabHomeMainScreen extends Component<Props> {
 
   /**
    * 下拉刷新数据
-    */
+   */
   onHeaderRefresh = () => {
     const { onRefreshMeiTuanHome } = this.props;
     onRefreshMeiTuanHome(JsonMeiTuan.url, PAGE_SIZE);
@@ -189,10 +183,12 @@ class TabHomeMainScreen extends Component<Props> {
    * @param goods
    */
   onSelectedCellGoods = (goods: Object) => {
+    const { theme } = this.props;
     NavigationMeiTuanService.navigate(
-      RouterConst.RouterMeiTuanWebBrowserScreen, {
+      RouterConst.RouterMeiTuanGoodsDetailScreen, {
         title: goods.title,
-        goods,
+        goodsInfo: goods,
+        theme,
       }
     );
   };

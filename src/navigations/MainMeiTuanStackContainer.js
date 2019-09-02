@@ -25,6 +25,8 @@ import MainMeiTuanTabRootContainer from './MainMeiTuanTabRootContainer';
 
 // 网页控件
 import WebBrowserScreen from '../screens/meituanfood/browser/web-browser';
+// 商品详情
+import GoodsDetailScreen from '../screens/meituanfood/goods-detail/goods-detail';
 
 
 /**
@@ -43,6 +45,11 @@ const AppMainMeiTuanStackNavigator = createStackNavigator(
       screen: WebBrowserScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
+      }),
+    },
+    RouterMeiTuanGoodsDetailScreen: {
+      screen: GoodsDetailScreen,
+      navigationOptions: ({ navigation }) => ({
       }),
     },
   },

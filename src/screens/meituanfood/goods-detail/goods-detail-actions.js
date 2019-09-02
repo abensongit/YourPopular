@@ -1,7 +1,6 @@
 import FetchService from './goods-detail-fetch';
 import GoodsDetailModel from './goods-detail-model';
 import * as Types from './goods-detail-actions-types';
-import { JsonMeiTuan } from '../../../resources';
 
 
 /**
@@ -153,13 +152,13 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
  */
 function doWithJsonData(jsondata) {
   let items = [];
-  if (jsondata && jsondata.data && jsondata.data.data) {
-    if (Array.isArray(jsondata.data.data)) {
-      items = jsondata.data.data.map(
+  if (jsondata && jsondata.data && jsondata.data.data && jsondata.data.data.deals) {
+    if (Array.isArray(jsondata.data.data.deals)) {
+      items = jsondata.data.data.deals.map(
         info => ({
           id: info.id,
-          imageUrl: info.squareimgurl,
-          title: info.mname,
+          imageUrl: info.imgurl,
+          title: info.brandname,
           subtitle: `[${info.range}]${info.title}`,
           price: info.price
         })

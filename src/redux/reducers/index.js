@@ -15,7 +15,7 @@ import favouriteReducer from '../../screens/githubpopular/favourite/favourite-re
  * MeiTuanFood
  */
 import meiTuanHomeReducer from '../../screens/meituanfood/tab-home/home-reducers';
-
+import meiTuanGoodsDetailReducer from '../../screens/meituanfood/goods-detail/goods-detail-reducers';
 
 /**
  * 1.指定默认state
@@ -43,7 +43,9 @@ const reducers = combineReducers({
   popular: popularReducer,
   trending: trendingReducer,
   favourite: favouriteReducer,
+
   meiTuanHome: meiTuanHomeReducer,
+  meiTuanGoodsDetail: meiTuanGoodsDetailReducer,
 });
 
 export default reducers;

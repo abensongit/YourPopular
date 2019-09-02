@@ -40,6 +40,8 @@ export default {
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
   RouterMainMeiTuanTabContainer: 'RouterMainMeiTuanTabContainer', // Tab导航器
   RouterMeiTuanWebBrowserScreen: 'RouterMeiTuanWebBrowserScreen', // 网页控件
+  RouterMeiTuanGoodsDetailScreen: 'RouterMeiTuanGoodsDetailScreen', // 商品详情
+
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator -> TabHomeStackNavigator
   RouterMeiTuanTabHomeStackContainer: 'RouterMeiTuanTabHomeStackContainer', // 首页页面
