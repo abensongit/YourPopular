@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, Image, Text, TouchableOpacity, View,
+  Alert, Image, Text, TouchableOpacity,
 } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import {
-  NavigationMeiTuanService, Paragraph, System,
+  Paragraph, System,
 } from '../../../common';
 import {
   Images
 } from '../../../resources';
 import styles from './nearby-styles';
 import NearbyTabScreen from './nearby-tab';
-
 
 const TITLES = ['享美食', '住酒店', '爱玩乐', '全部'];
 const TITLES_TYPES = [
@@ -22,9 +21,8 @@ const TITLES_TYPES = [
   []
 ];
 
-
 type Props = {}
-class TabHomeMainScreen extends Component<Props> {
+class TabNearbyMainScreen extends Component<Props> {
   /**
    * 配置导航栏
    * @param navigation
@@ -128,16 +126,8 @@ class TabHomeMainScreen extends Component<Props> {
   }
 }
 
-
 const AppMapStateToProps = state => ({
   theme: state.theme.theme,
-  store: state.meiTuanHome,
 });
 
-const AppMapDispatchToProps = dispatch => ({
-  // 将 dispatch(onRefreshMeiTuanHome(url, pageSize)) 绑定到 props
-  onRefreshMeiTuanHome: (url, pageSize) => dispatch(actions.onRefreshMeiTuanHome(url, pageSize)),
-  onLoadMoreMeiTuanHome: (url, pageIndex, pageSize, dataArray, callBack) => dispatch(actions.onLoadMoreMeiTuanHome(url, pageIndex, pageSize, dataArray, callBack)),
-});
-
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(TabHomeMainScreen);
+export default connect(AppMapStateToProps)(TabNearbyMainScreen);

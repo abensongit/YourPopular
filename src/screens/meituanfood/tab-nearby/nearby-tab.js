@@ -18,7 +18,7 @@ import GoodsTableItemCell from '../goods-detail/goods-table-item-cell';
 const PAGE_SIZE = 10;
 
 type Props = {}
-class TabOrderMainScreen extends Component<Props> {
+class TabNearbyTabScreen extends Component<Props> {
   /**
    * 构造函数
    * @param props
@@ -190,7 +190,7 @@ const AppMapDispatchToProps = dispatch => ({
   onLoadMoreMeiTuanNearby: (url, pageIndex, pageSize, dataArray, callBack) => dispatch(actions.onLoadMoreMeiTuanNearby(url, pageIndex, pageSize, dataArray, callBack)),
 });
 
-export default connect(AppMapStateToProps, AppMapDispatchToProps)(TabOrderMainScreen);
+export default connect(AppMapStateToProps, AppMapDispatchToProps)(TabNearbyTabScreen);
 
 
 const styles = StyleSheet.create({
