@@ -158,7 +158,14 @@ class TabHomeMainScreen extends Component<Props> {
    * @param index
    */
   onSelectedCellMenu = (menu: Object, index: number) => {
-    Alert.alert(`${menu.title}[${index}]`);
+    Alert.alert(
+      `${menu.title}[${index}]`,
+      '',
+      [
+        { text: '取消', onPress: () => { console.log('cancle action'); } },
+        { text: '确定', onPress: () => { console.log('confirm action'); } },
+      ]
+    );
   };
 
   /**

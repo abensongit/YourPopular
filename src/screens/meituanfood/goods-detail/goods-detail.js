@@ -122,14 +122,31 @@ class TabHomeMainScreen extends Component<Props> {
   };
 
   /**
+   * 事件 - 购买
+   * @param goods
+   */
+  onSelectedCellBuy = (goods: Object) => {
+    Alert.alert(
+      '立即抢购',
+      '',
+      [
+      { text: '取消' },
+      { text: '确定' },
+      ]
+    );
+  };
+
+  /**
    * 事件 - 商品
    * @param goods
    */
   onSelectedCellGoods = (goods: Object) => {
+    const { theme } = this.props;
     NavigationMeiTuanService.push(
-      RouterConst.RouterMeiTuanWebBrowserScreen, {
+      RouterConst.RouterMeiTuanGoodsDetailScreen, {
         title: goods.title,
-        goods,
+        goodsInfo: goods,
+        theme,
       }
     );
   };
@@ -152,7 +169,7 @@ class TabHomeMainScreen extends Component<Props> {
         <GoodsTableInfoCell
           theme={theme}
           goodsModel={goodsInfo}
-          onSelect={this.onSelectedCellGoods}
+          onSelect={this.onSelectedCellBuy}
         />
       );
     }

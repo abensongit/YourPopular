@@ -53,7 +53,14 @@ class LoginAuthorizeScreen extends Component<Props> {
   handleRegisterAction = (completeHandle) => {
     this.timer = setTimeout(() => {
       completeHandle();
-      Alert.alert('注册成功', '', [{ text: '取消' }, { text: '确定' }]);
+      Alert.alert(
+        '注册成功',
+        '',
+        [
+          { text: '取消', onPress: () => { console.log('cancle action'); } },
+          { text: '确定', onPress: () => { console.log('confirm action'); } },
+        ]
+      );
       this.registerAsync();
     }, 500);
   };
