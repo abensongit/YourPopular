@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, Image, TouchableOpacity, View,
+  Alert, Image, Text, TouchableOpacity, View,
 } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import {
   NavigationMeiTuanService, Paragraph, System,
 } from '../../../common';
-import {
-  NavigationBarItem,
-} from '../../../components';
 import {
   Images
 } from '../../../resources';
@@ -27,28 +23,11 @@ class TabHomeMainScreen extends Component<Props> {
     const theme = navigation.getParam('theme', System.theme);
     return {
       headerStyle: {
-        backgroundColor: theme.navBar.backgroundColor,
+        backgroundColor: theme.navBar.titleColor,
       },
-      headerTitle: (
-        <TouchableOpacity
-          style={styles.searchBar}
-          onPress={() => {
-            Alert.alert('搜索', '', [{ text: '取消' }, { text: '确定' }]);
-          }}
-        >
-          <Image source={Images.home.ic_nav_search} style={styles.searchIcon} />
-          <Paragraph>搜索</Paragraph>
-        </TouchableOpacity>
-      ),
       headerLeft: (
-        <NavigationBarItem
-          title="福州"
-          titleStyle={{
-            paddingLeft: 5,
-            color: theme.navBar.buttonTextColor,
-            fontSize: theme.navBar.buttonTextFontSize,
-            fontWeight: theme.navBar.buttonTextFontWeight,
-          }}
+        <TouchableOpacity
+          style={styles.addressButton}
           onPress={() => {
             Alert.alert(
               '定位',
@@ -65,18 +44,21 @@ class TabHomeMainScreen extends Component<Props> {
               { cancelable: false }
             );
           }}
-        />
+        >
+          <Image style={styles.addressButtonIcon} source={Images.nearby.ic_nav_address} />
+          <Text style={styles.addressButtonTitle}> 福州 鼓楼</Text>
+        </TouchableOpacity>
       ),
       headerRight: (
-        <NavigationBarItem
-          iconType={Feather}
-          iconName="menu"
-          iconSize={24}
-          iconStyle={{ alignSelf: 'center', color: 'white', }}
+        <TouchableOpacity
+          style={styles.searchBar}
           onPress={() => {
-            NavigationMeiTuanService.openDrawer();
+            Alert.alert('找附近的吃喝玩乐');
           }}
-        />
+        >
+          <Image source={Images.home.ic_nav_search} style={styles.searchIcon} />
+          <Paragraph>找附近的吃喝玩乐</Paragraph>
+        </TouchableOpacity>
       ),
     };
   };

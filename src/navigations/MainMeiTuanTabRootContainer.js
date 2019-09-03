@@ -56,7 +56,7 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
             activeTextColor={theme.themeColor}
             inactiveTextColor="#979797"
             onPress={(tab, index) => {
-              if (index === 2) {
+              if (index === 1 || index === 2) {
                 StatusBar.setBarStyle('dark-content', false);
               } else {
                 StatusBar.setBarStyle('light-content', false);
