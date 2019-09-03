@@ -18,7 +18,9 @@ import {
 } from '../common/Variables';
 
 import TabHomeStackContainer from '../screens/meituanfood/tab-home/tab-home-navigator';
-
+import TabNearbyStackContainer from '../screens/meituanfood/tab-nearby/tab-nearby-navigator';
+import TabOrderStackContainer from '../screens/meituanfood/tab-order/tab-order-navigator';
+import TabMyCenterStackContainer from '../screens/meituanfood/tab-mycenter/tab-mycenter-navigator';
 
 type Props = {};
 class MainMeiTuanTabRootContainer extends Component<Props> {
@@ -65,22 +67,14 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
         {/* 首页 */}
         <TabHomeStackContainer />
 
-        <View tabLabel="page2">
-          <Text>
-            在 Apple 上构建任何应用
-          </Text>
-        </View>
-        <View tabLabel="page3">
-          <Text>
-            在 android 上构建任何应用
-          </Text>
-        </View>
+        {/* 附近 */}
+        <TabNearbyStackContainer />
 
-        <View tabLabel="page4">
-          <Text>
-            在 html5 上构建任何应用
-          </Text>
-        </View>
+        {/* 订单 */}
+        <TabOrderStackContainer />
+
+        {/* 我的 */}
+        <TabMyCenterStackContainer />
 
       </ScrollableTabView>
     );

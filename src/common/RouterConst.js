@@ -44,6 +44,9 @@ export default {
 
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator -> TabHomeStackNavigator
-  RouterMeiTuanTabHomeStackContainer: 'RouterMeiTuanTabHomeStackContainer', // 首页页面
+  RouterMeiTuanTabHomeStackContainer: 'RouterMeiTuanTabHomeStackContainer', // 首页主页
+  RouterMeiTuanTabNearbyStackContainer: 'RouterMeiTuanTabNearbyStackContainer', // 附近主页
+  RouterMeiTuanTabOrderStackContainer: 'RouterMeiTuanTabOrderStackContainer', // 订单主页
+  RouterMeiTuanTabMyCenterStackContainer: 'RouterMeiTuanTabMyCenterStackContainer', // 我的主页
 
 };
