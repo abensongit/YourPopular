@@ -130,8 +130,8 @@ class TabHomeMainScreen extends Component<Props> {
       '立即抢购',
       '',
       [
-      { text: '取消' },
-      { text: '确定' },
+        { text: '取消', onPress: () => { console.log('cancle action'); } },
+        { text: '确定', onPress: () => { console.log('confirm action'); } },
       ]
     );
   };

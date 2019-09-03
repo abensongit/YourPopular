@@ -23,7 +23,7 @@ type Props = {
 
 export default class GoodsTableItemCell extends Component<Props> {
   render() {
-    const { theme, goodsModel } = this.props;
+    const { theme, goodsModel, onSelect } = this.props;
     return (
       <View style={styles.container}>
 
@@ -42,7 +42,7 @@ export default class GoodsTableItemCell extends Component<Props> {
               title="立即抢购"
               titleStyle={{ color: 'white', fontSize: 17 }}
               style={styles.buyButton}
-              onPress={() => { Alert.alert('开始抢购'); }}
+              onPress={onSelect}
             />
           </View>
         </View>
