@@ -64,10 +64,10 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
             StatusBar.setBarStyle('light-content', false);
           }
         }}
-        locked={false}
+        locked
         initialPage={0}
         tabBarPosition="bottom"
-        scrollWithoutAnimation={false}
+        scrollWithoutAnimation
         prerenderingSiblingsNumber={1}
       >
 

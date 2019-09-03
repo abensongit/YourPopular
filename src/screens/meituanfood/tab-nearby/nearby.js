@@ -113,6 +113,8 @@ class TabNearbyMainScreen extends Component<Props> {
     ));
     return (
       <ScrollableTabView
+        locked
+        scrollWithoutAnimation={false}
         style={styles.container}
         tabBarBackgroundColor="#ffffff"
         tabBarActiveTextColor="#fe566d"
