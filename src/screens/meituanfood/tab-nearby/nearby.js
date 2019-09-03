@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   Alert, Image, Text, TouchableOpacity, View,
 } from 'react-native';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import {
   NavigationMeiTuanService, Paragraph, System,
 } from '../../../common';
@@ -10,6 +11,16 @@ import {
   Images
 } from '../../../resources';
 import styles from './nearby-styles';
+import NearbyTabScreen from './nearby-tab';
+
+
+const TITLES = ['享美食', '住酒店', '爱玩乐', '全部'];
+const TITLES_TYPES = [
+  ['热门', '面包甜点', '小吃快餐', '川菜', '日本料理', '韩国料理', '台湾菜', '东北菜'],
+  ['热门', '商务出行', '公寓民宿', '情侣专享', '高星特惠'],
+  ['热门', 'KTV', '足疗按摩', '洗浴汗蒸', '电影院', '美发', '美甲'],
+  []
+];
 
 
 type Props = {}
@@ -53,7 +64,20 @@ class TabHomeMainScreen extends Component<Props> {
         <TouchableOpacity
           style={styles.searchBar}
           onPress={() => {
-            Alert.alert('找附近的吃喝玩乐');
+            Alert.alert(
+              '找附近的吃喝玩乐',
+              null,
+              [
+                {
+                  text: '取消',
+                  onPress: () => { console.log('Cancel Pressed'); },
+                },
+                {
+                  text: '确定',
+                  onPress: () => { console.log('Confirm Pressed'); },
+                }],
+              { cancelable: false }
+            );
           }}
         >
           <Image source={Images.home.ic_nav_search} style={styles.searchIcon} />
@@ -80,8 +104,26 @@ class TabHomeMainScreen extends Component<Props> {
    * @returns {*}
    */
   render() {
+    // 标签页面
+    const tabItemPages = TITLES.map((title, index) => (
+      <NearbyTabScreen
+        key={`Key${title}`}
+        tabLabel={title}
+        types={TITLES_TYPES[index]}
+        navigation={this.props.navigation}
+      />
+    ));
     return (
-      <View style={styles.container} />
+      <ScrollableTabView
+        style={styles.container}
+        tabBarBackgroundColor="#ffffff"
+        tabBarActiveTextColor="#fe566d"
+        tabBarInactiveTextColor="#555555"
+        tabBarTextStyle={styles.tabBarText}
+        tabBarUnderlineStyle={styles.tabBarUnderline}
+      >
+        {tabItemPages}
+      </ScrollableTabView>
     );
   }
 }

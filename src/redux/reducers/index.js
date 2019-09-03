@@ -15,6 +15,7 @@ import favouriteReducer from '../../screens/githubpopular/favourite/favourite-re
  * MeiTuanFood
  */
 import meiTuanHomeReducer from '../../screens/meituanfood/tab-home/home-reducers';
+import meiTuanNearbyReducer from '../../screens/meituanfood/tab-nearby/nearby-tab-reducers';
 import meiTuanGoodsDetailReducer from '../../screens/meituanfood/goods-detail/goods-detail-reducers';
 
 /**
@@ -45,6 +46,7 @@ const reducers = combineReducers({
   favourite: favouriteReducer,
 
   meiTuanHome: meiTuanHomeReducer,
+  meiTuanNearby: meiTuanNearbyReducer,
   meiTuanGoodsDetail: meiTuanGoodsDetailReducer,
 });
 

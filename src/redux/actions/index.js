@@ -37,6 +37,10 @@ import {
   onLoadMoreMeiTuanHome,
 } from '../../screens/meituanfood/tab-home/home-actions';
 import {
+  onRefreshMeiTuanNearby,
+  onLoadMoreMeiTuanNearby,
+} from '../../screens/meituanfood/tab-nearby/nearby-tab-actions';
+import {
   onRefreshGoodsDetail,
   onLoadMoreGoodsDetail,
 } from '../../screens/meituanfood/goods-detail/goods-detail-actions';
@@ -74,6 +78,10 @@ export default {
   // 美团 - 主页
   onRefreshMeiTuanHome,
   onLoadMoreMeiTuanHome,
+
+  // 美团 - 附近
+  onRefreshMeiTuanNearby,
+  onLoadMoreMeiTuanNearby,
 
   // 美团 - 商品
   onRefreshGoodsDetail,
