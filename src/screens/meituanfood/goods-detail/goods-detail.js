@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Alert, View } from 'react-native';
 import Toast from 'react-native-root-toast';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {
   NavigationMeiTuanService, RouterConst, System, COLOR_BLACK
 } from '../../../common';
@@ -9,7 +10,7 @@ import {
   NavigationBarItem, RefreshListView, RefreshState
 } from '../../../components';
 import {
-  Images, JsonMeiTuanGoodsUrlWithId
+  JsonMeiTuanGoodsUrlWithId
 } from '../../../resources';
 import styles from './goods-detail-styles';
 import GoodsTableInfoCell from './goods-table-info-cell';
@@ -46,7 +47,10 @@ class TabHomeMainScreen extends Component<Props> {
       },
       headerRight: (
         <NavigationBarItem
-          icon={Images.purchase.ic_nav_share}
+          iconType={Entypo}
+          iconName="share-alternative"
+          iconSize={24}
+          iconStyle={{ alignSelf: 'center', color: theme.navBar.backgroundColor, }}
           onPress={() => {
             Alert.alert(
               '立即分享',
