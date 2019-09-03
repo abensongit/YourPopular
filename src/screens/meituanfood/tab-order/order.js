@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 import {
-  COLOR_BLACK, System
+  COLOR_BLACK, System,
 } from '../../../common';
 import styles from './order-styles';
 

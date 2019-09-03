@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationMeiTuanService, Paragraph, RouterConst, System,
+  NavigationMeiTuanService, Paragraph, System,
 } from '../../../common';
 import {
   NavigationBarItem,

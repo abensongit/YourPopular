@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  View, Text,
+  StatusBar,
 } from 'react-native';
 import IconOfOcticons from 'react-native-vector-icons/Octicons';
 import IconOfAntDesign from 'react-native-vector-icons/AntDesign';
@@ -55,6 +55,13 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
             tabIconNames={tabIconNames}
             activeTextColor={theme.themeColor}
             inactiveTextColor="#979797"
+            onPress={(tab, index) => {
+              if (index === 2) {
+                StatusBar.setBarStyle('dark-content', false);
+              } else {
+                StatusBar.setBarStyle('light-content', false);
+              }
+            }}
           />
         )}
         locked
