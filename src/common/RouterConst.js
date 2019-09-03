@@ -41,6 +41,7 @@ export default {
   RouterMainMeiTuanTabContainer: 'RouterMainMeiTuanTabContainer', // Tab导航器
   RouterMeiTuanWebBrowserScreen: 'RouterMeiTuanWebBrowserScreen', // 网页控件
   RouterMeiTuanGoodsDetailScreen: 'RouterMeiTuanGoodsDetailScreen', // 商品详情
+  RouterMeiTuanOrderMainScreen: 'RouterMeiTuanOrderMainScreen', // 订单页面
 
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator -> TabHomeStackNavigator

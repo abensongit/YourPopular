@@ -7,7 +7,6 @@ import SeparatorLineView from '../spearator-line-view/spearator-line-view';
 import { System } from '../../common';
 
 type Props = {
-  onPress: PropTypes.func, // 点击对应tab的方法
   goToPage: PropTypes.func, // 跳转到对应tab的方法
   activeTab: PropTypes.number, // 当前被选中的tab下标
   backgroundColor: PropTypes.string,
@@ -22,7 +21,6 @@ type Props = {
 export default class ScrollableTabbar extends Component<Props> {
   // 属性类型检查
   static propTypes = {
-    onPress: PropTypes.func, // 点击对应tab的方法
     goToPage: PropTypes.func, // 跳转到对应tab的方法
     activeTab: PropTypes.number, // 当前被选中的tab下标
     backgroundColor: PropTypes.string,
@@ -51,10 +49,7 @@ export default class ScrollableTabbar extends Component<Props> {
       <TouchableOpacity
         key={`tabItem${index}`}
         style={styles.tab}
-        onPress={() => {
-          this.props.goToPage(index);
-          this.props.onPress(tab, index);
-        }}
+        onPress={() => this.props.goToPage(index)}
       >
         <View style={styles.tabItem}>
           {IconTypes && IconNames

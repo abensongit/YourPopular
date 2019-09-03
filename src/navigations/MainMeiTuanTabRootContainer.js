@@ -55,19 +55,19 @@ class MainMeiTuanTabRootContainer extends Component<Props> {
             tabIconNames={tabIconNames}
             activeTextColor={theme.themeColor}
             inactiveTextColor="#979797"
-            onPress={(tab, index) => {
-              if (index === 1 || index === 2) {
-                StatusBar.setBarStyle('dark-content', false);
-              } else {
-                StatusBar.setBarStyle('light-content', false);
-              }
-            }}
           />
         )}
-        locked
+        onChangeTab={(obj) => {
+          if (obj.i === 1 || obj.i === 2) {
+            StatusBar.setBarStyle('dark-content', false);
+          } else {
+            StatusBar.setBarStyle('light-content', false);
+          }
+        }}
+        locked={false}
         initialPage={0}
         tabBarPosition="bottom"
-        scrollWithoutAnimation
+        scrollWithoutAnimation={false}
         prerenderingSiblingsNumber={1}
       >
 
