@@ -191,6 +191,8 @@ function doPackageHomeModels(showItems, callback) {
  * @returns {*[]}
  */
 function doStaticHomeModels(items, isAdd = false) {
+  // 偷懒，用同一个测试接口获取数据，然后打乱数组，造成数据来自不同接口的假象 >.<
+  items.sort(() => 0.5 - Math.random());
   return items;
 }
 
