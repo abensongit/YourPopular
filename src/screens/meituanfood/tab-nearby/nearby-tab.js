@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet, View,
+  ActivityIndicator, Platform, StyleSheet, View,
 } from 'react-native';
 import Toast from 'react-native-root-toast';
 import {
-  COLOR_BACKGROUND_WHITE, NavigationMeiTuanService, RouterConst,
+  COLOR_BACKGROUND_WHITE, NavigationMeiTuanService, RouterConst, System
 } from '../../../common';
 import {
   RefreshListView, RefreshState,
@@ -174,6 +174,16 @@ class TabNearbyTabScreen extends Component<Props> {
           footerNoMoreDataText="-我是有底线的-"
           footerEmptyDataText="-好像什么东西都没有-"
         />
+        {
+          store.refreshState === 1 && Platform.OS === System.IOS
+            ? (
+              <View style={styles.activityContainer}>
+                <View style={styles.activityIndicator}>
+                  <ActivityIndicator size="large" color="#ffffff" />
+                </View>
+              </View>
+            ) : null
+        }
       </View>
     );
   }
@@ -197,5 +207,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLOR_BACKGROUND_WHITE,
+  },
+  activityContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  activityIndicator: {
+    width: System.window.width * 0.2,
+    height: System.window.width * 0.2,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.7)',
   },
 });
