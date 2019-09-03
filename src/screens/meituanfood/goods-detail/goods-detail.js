@@ -42,6 +42,8 @@ class TabHomeMainScreen extends Component<Props> {
       },
       headerTintColor: COLOR_BLACK,
       headerTitleStyle: {
+        flex: 1,
+        textAlign: 'center',
         fontSize: theme.navBar.titleFontSize,
         fontWeight: theme.navBar.titleFontWeight,
       },
