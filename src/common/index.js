@@ -9,7 +9,13 @@ import NavigationPopularService from './NavigationPopularService';
 import RouterConst from './RouterConst';
 import System from './System';
 import SystemIPhone from './SystemIPhone';
-import Variables from './Variables';
+import {
+  COLOR_DEFAULT,
+  COLOR_BLACK,
+  COLOR_BACKGROUND_DEFAULT,
+  COLOR_BACKGROUND_WHITE,
+  COLOR_BACKGROUND_LIGHT,
+} from './Variables';
 import {
  Heading1, Heading2, Heading3, Paragraph, ToastTip
 } from './TextWordStyle';
@@ -27,10 +33,15 @@ export {
   RouterConst,
   System,
   SystemIPhone,
-  Variables,
   Heading1,
   Heading2,
   Heading3,
   Paragraph,
   ToastTip,
+
+  COLOR_DEFAULT,
+  COLOR_BLACK,
+  COLOR_BACKGROUND_DEFAULT,
+  COLOR_BACKGROUND_WHITE,
+  COLOR_BACKGROUND_LIGHT,
 };

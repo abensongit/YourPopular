@@ -149,7 +149,7 @@ class MainMeiTuanStackContainer extends Component<Props> {
     NavigationMeiTuanService.topDrawerNavigator = this.props.navigation;
     // 配置状态栏为[dark-content]的页面数组
     const darkContentScreens = [
-      RouterConst.RouterIntroduceScreen,
+      RouterConst.RouterMeiTuanGoodsDetailScreen,
     ];
     // 动态创建堆栈容器
     const AppMainStackContainer = this.dynamicCreateMainStackContainer();

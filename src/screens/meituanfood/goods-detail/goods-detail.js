@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Alert, View } from 'react-native';
 import Toast from 'react-native-root-toast';
-import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationMeiTuanService, RouterConst, System,
+  NavigationMeiTuanService, RouterConst, System, COLOR_BLACK
 } from '../../../common';
 import {
   NavigationBarItem, RefreshListView, RefreshState
 } from '../../../components';
 import {
-  JsonMeiTuanGoodsUrlWithId
+  Images, JsonMeiTuanGoodsUrlWithId
 } from '../../../resources';
 import styles from './goods-detail-styles';
 import GoodsTableInfoCell from './goods-table-info-cell';
@@ -38,21 +37,25 @@ class TabHomeMainScreen extends Component<Props> {
     return {
       title: title || '商品详情',
       headerStyle: {
-        backgroundColor: theme.navBar.backgroundColor,
+        backgroundColor: theme.navBar.titleColor,
       },
-      headerTintColor: theme.navBar.titleColor,
+      headerTintColor: COLOR_BLACK,
       headerTitleStyle: {
         fontSize: theme.navBar.titleFontSize,
         fontWeight: theme.navBar.titleFontWeight,
       },
       headerRight: (
         <NavigationBarItem
-          iconType={Feather}
-          iconName="menu"
-          iconSize={24}
-          iconStyle={{ alignSelf: 'center', color: 'white', }}
+          icon={Images.purchase.ic_nav_share}
           onPress={() => {
-            NavigationMeiTuanService.openDrawer();
+            Alert.alert(
+              '立即分享',
+              '',
+              [
+                { text: '取消', onPress: () => { console.log('cancle action'); } },
+                { text: '确定', onPress: () => { console.log('confirm action'); } },
+              ]
+            );
           }}
         />
       ),
