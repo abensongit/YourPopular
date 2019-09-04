@@ -1,32 +1,14 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
-  COLOR_BACKGROUND_DEFAULT,
+  COLOR_BACKGROUND_WHITE,
 } from '../../../common/Variables';
-import { System } from '../../../common';
-
-const SEARCH_BAR_HEIGHT = Platform.select({
-  ios: System.window.navigationBarHeight * 0.68,
-  android: System.window.navigationBarHeight * 0.58
-});
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLOR_BACKGROUND_DEFAULT,
+    backgroundColor: COLOR_BACKGROUND_WHITE,
   },
-  searchBar: {
-    width: System.window.width * 0.7,
-    height: SEARCH_BAR_HEIGHT,
-    borderRadius: SEARCH_BAR_HEIGHT * 0.6,
+  itemContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    alignSelf: 'center',
-  },
-  searchIcon: {
-    width: SEARCH_BAR_HEIGHT * 0.6,
-    height: SEARCH_BAR_HEIGHT * 0.6,
-    margin: 5,
   },
 });
