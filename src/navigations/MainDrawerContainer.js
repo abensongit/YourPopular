@@ -94,8 +94,10 @@ class MainDrawerContainer extends Component<Props> {
       this.theme = this.props.theme;
       const routeConfigMap = this.routeConfigMaps();
       const navigationBar = this.renderNavigationBar();
+      const initialRouteName = RouterConst.RouterDrawerMeiTuanNavigator;
       this.mainDrawerContainer = createAppContainer(createDrawerNavigator(routeConfigMap,
         {
+          initialRouteName,
           overlayColor: 'rgba(0,0,0,0.6)',
           contentOptions: {
             activeTintColor: this.props.theme.themeColor,
@@ -113,7 +115,7 @@ class MainDrawerContainer extends Component<Props> {
                       <DrawerItems {...props} />
                     )
                     : (
-                      <NavDrawerSideMenu {...props} theme={this.theme} items={ROUTE_ARRAY} />
+                      <NavDrawerSideMenu {...props} theme={this.theme} items={ROUTE_ARRAY} initRoute={initialRouteName} />
                     )
                   }
                 </SafeAreaView>

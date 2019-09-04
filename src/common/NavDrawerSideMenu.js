@@ -15,9 +15,19 @@ class NavDrawerSideMenu extends Component<Props> {
   constructor(props) {
     super(props);
     console.disableYellowBox = true;
-    this.state = {
-      routeIndex: 0,
-    };
+    // 初始化默认选项
+    {
+      const { items, initRoute } = this.props;
+      let routeIndex = 0;
+      items.forEach((item, index) => {
+        if (item.route === initRoute) {
+          routeIndex = index;
+        }
+      });
+      this.state = {
+        routeIndex,
+      };
+    }
   }
 
   /**
