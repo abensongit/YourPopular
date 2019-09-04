@@ -9,8 +9,14 @@ export default StyleSheet.create({
   modalContainer: {
     flex: 1,
     margin: 10,
-    marginTop: Platform.OS === System.IOS ? System.window.dangerAreaTopHeight : 10,
-    marginBottom: Platform.OS === System.IOS ? System.window.dangerAreaBottomHeight : 10,
+    marginTop: Platform.select({
+      ios: System.isIPhoneXsOrGreater ? System.window.dangerAreaTopHeight : System.window.statusBarHeight,
+      android: 10,
+    }),
+    marginBottom: Platform.select({
+      ios: System.isIPhoneXsOrGreater ? System.window.dangerAreaBottomHeight : 10,
+      android: 10,
+    }),
     backgroundColor: 'white',
     borderRadius: 3,
     shadowColor: 'gray',
