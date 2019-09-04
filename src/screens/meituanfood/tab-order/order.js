@@ -203,6 +203,7 @@ class TabOrderMainScreen extends Component<Props, State> {
    * @returns {*}
    */
   render() {
+    const { theme } = this.props;
     return (
       <View style={styles.container}>
         <RefreshListView
@@ -214,6 +215,7 @@ class TabOrderMainScreen extends Component<Props, State> {
           onFooterRefresh={this.onFooterRefresh}
           ListHeaderComponent={this.renderHeader}
           // 可选
+          tintColor={theme.tintColor}
           footerRefreshingText="玩命加载中 >.<"
           footerFailureText="我擦嘞，居然失败了 =.=!"
           footerNoMoreDataText="-我是有底线的-"
