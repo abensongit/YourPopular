@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, InteractionManager, View,
+  Alert, InteractionManager, StyleSheet, View,
 } from 'react-native';
 import {
+  COLOR_BACKGROUND_WHITE,
   COLOR_BLACK, System,
 } from '../../../common';
 import {
@@ -12,7 +13,6 @@ import {
 import {
   Images, JsonMeiTuan,
 } from '../../../resources';
-import styles from './order-styles';
 import { onLoad, onLoadMore } from './order-actions';
 import OrderMenuItem from './order-menu-item';
 import OrderSectionHeader from './order-section-header';
@@ -230,3 +230,14 @@ const AppMapStateToProps = state => ({
 });
 
 export default connect(AppMapStateToProps)(TabOrderMainScreen);
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLOR_BACKGROUND_WHITE,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+  },
+});
