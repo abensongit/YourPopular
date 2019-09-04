@@ -12,7 +12,7 @@ type Props = {
   onPress?: Function,
 }
 
-class OrderMenuItem extends Component<Props> {
+class OrderMenuCellItem extends Component<Props> {
   render() {
     return (
       <TouchableOpacity
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default OrderMenuItem;
+export default OrderMenuCellItem;

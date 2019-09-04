@@ -1,7 +1,11 @@
 import {
   FetchService
 } from '../../../common';
+import {
+  Images,
+} from '../../../resources';
 import OrderModel from './order-model';
+import { FLAST_LIST_SECTION } from './order';
 
 const DEBUG = false;
 const log = (text: string) => { DEBUG && console.log(text); };
@@ -121,7 +125,7 @@ function doPackageModels(showItems, callBack) {
   const itemModels = [];
   for (let i = 0, { length } = showItems; i < length; i++) {
     itemModels.push(
-      new OrderModel(showItems[i])
+      new OrderModel(showItems[i], FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS)
     );
   }
   doCallBack(callBack, itemModels);
@@ -134,6 +138,52 @@ function doPackageModels(showItems, callBack) {
  * @returns {*[]}
  */
 function doStaticModels(items, isAdd = false) {
+  if (isAdd) {
+    return [
+      new OrderModel(
+        {
+          title: '我的订单',
+          subtitle: '全部订单',
+          type: 'MyOrder',
+        },
+        FLAST_LIST_SECTION.FLAST_LIST_SECTION_HEADER
+      ),
+      new OrderModel(
+        [
+          {
+            type: 'NeedPay',
+            title: '待付款',
+            imageUrl: Images.order.ic_need_pay,
+          },
+          {
+            type: 'NeedUse',
+            title: '待使用',
+            imageUrl: Images.order.ic_need_use,
+          },
+          {
+            type: 'NeedReview',
+            title: '待评价',
+            imageUrl: Images.order.ic_need_review,
+          },
+          {
+            type: 'NeedAfterSale',
+            title: '退款/售后',
+            imageUrl: Images.order.ic_need_aftersale,
+          },
+        ],
+        FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU
+      ),
+      new OrderModel(
+        {
+          title: '我的收藏',
+          subtitle: '查看全部',
+          type: 'MyFavourite',
+        },
+        FLAST_LIST_SECTION.FLAST_LIST_SECTION_HEADER
+      ),
+      ...items
+    ];
+  }
   return items;
 }
 

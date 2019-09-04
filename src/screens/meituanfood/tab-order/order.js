@@ -4,19 +4,25 @@ import {
   Alert, InteractionManager, StyleSheet, View,
 } from 'react-native';
 import {
-  COLOR_BACKGROUND_WHITE,
-  COLOR_BLACK, System,
+  COLOR_BACKGROUND_WHITE, COLOR_BLACK, NavigationMeiTuanService, RouterConst, System,
 } from '../../../common';
 import {
   RefreshListView, RefreshState, SpacingView
 } from '../../../components';
 import {
-  Images, JsonMeiTuan,
+  JsonMeiTuan,
 } from '../../../resources';
 import { onLoad, onLoadMore } from './order-actions';
-import OrderMenuItem from './order-menu-item';
+import OrderMenuCell from './order-menu-cell';
 import OrderSectionHeader from './order-section-header';
 import GoodsTableItemCell from '../goods-detail/goods-table-item-cell';
+
+const PAGE_SIZE = 10;
+export const FLAST_LIST_SECTION = {
+  FLAST_LIST_SECTION_HEADER: 'FLAST_LIST_SECTION_HEADER',
+  FLAST_LIST_SECTION_MENU: 'FLAST_LIST_SECTION_MENU',
+  FLAST_LIST_SECTION_GOODS: 'FLAST_LIST_SECTION_GOODS',
+};
 
 type Props = {
   navigation: any,
@@ -64,7 +70,7 @@ class TabOrderMainScreen extends Component<Props, State> {
     });
     this.state = {
       pageIndex: 0,
-      pageSize: 10,
+      pageSize: PAGE_SIZE,
       dataSource: [],
       refreshState: RefreshState.Idle,
     };
@@ -149,6 +155,51 @@ class TabOrderMainScreen extends Component<Props, State> {
   };
 
   /**
+   * 事件 - 分类
+   * @param data
+   */
+  onSelectedSectionHeader = (data: Object) => {
+    Alert.alert(
+      data.title,
+      '',
+      [
+        { text: '取消', onPress: () => { console.log('cancle action'); } },
+        { text: '确定', onPress: () => { console.log('confirm action'); } },
+      ]
+    );
+  };
+
+  /**
+   * 事件 - 菜单
+   * @param data
+   */
+  onSelectedCellMenu = (data: Object) => {
+    Alert.alert(
+      data.title,
+      '',
+      [
+        { text: '取消', onPress: () => { console.log('cancle action'); } },
+        { text: '确定', onPress: () => { console.log('confirm action'); } },
+      ]
+    );
+  };
+
+  /**
+   * 事件 - 商品
+   * @param goods
+   */
+  onSelectedCellGoods = (goods: Object) => {
+    const { theme } = this.props;
+    NavigationMeiTuanService.navigate(
+      RouterConst.RouterMeiTuanGoodsDetailScreen, {
+        title: goods.title,
+        goodsInfo: goods,
+        theme,
+      }
+    );
+  };
+
+  /**
    * 渲染表格 => 主键
    */
   keyExtractor = (item: any, index: number) => index.toString();
@@ -159,44 +210,41 @@ class TabOrderMainScreen extends Component<Props, State> {
   renderItem = (rowData: Object) => {
     const { theme } = this.props;
     const itemModel = rowData.item;
-    return (
-      <GoodsTableItemCell
-        theme={theme}
-        goodsModel={itemModel.data}
-        onSelect={this.onSelectedCellGoods}
-      />
-    );
+    // 类型 => 分类
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_HEADER === itemModel.type) {
+      return (
+        <OrderSectionHeader
+          theme={theme}
+          data={itemModel.data}
+          onSelect={this.onSelectedSectionHeader}
+        />
+      );
+    }
+    // 类型 => 菜单
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_MENU === itemModel.type) {
+      return (
+        <View>
+          <OrderMenuCell
+            theme={theme}
+            data={itemModel.data}
+            onSelect={this.onSelectedCellMenu}
+          />
+          <SpacingView />
+        </View>
+      );
+    }
+    // 类型 => 商品
+    if (FLAST_LIST_SECTION.FLAST_LIST_SECTION_GOODS === itemModel.type) {
+      return (
+        <GoodsTableItemCell
+          theme={theme}
+          goodsModel={itemModel.data}
+          onSelect={this.onSelectedCellGoods}
+        />
+      );
+    }
+    return null;
   };
-
-  /**
-   * 渲染表格 => 表头
-   */
-  renderHeader = () => (
-    <View style={styles.container}>
-      <OrderSectionHeader
-        title="我的订单"
-        subtitle="全部订单"
-        style={{ height: 38 }}
-        onPress={() => { Alert.alert('我的订单 => 全部订单'); }}
-      />
-
-      <View style={styles.itemContainer}>
-        <OrderMenuItem title="待付款" icon={Images.order.ic_need_pay} onPress={() => { Alert.alert('待付款'); }} />
-        <OrderMenuItem title="待使用" icon={Images.order.ic_need_use} onPress={() => { Alert.alert('待使用'); }} />
-        <OrderMenuItem title="待评价" icon={Images.order.ic_need_review} onPress={() => { Alert.alert('待评价'); }} />
-        <OrderMenuItem title="退款/售后" icon={Images.order.ic_need_aftersale} onPress={() => { Alert.alert('退款/售后'); }} />
-      </View>
-
-      <SpacingView />
-
-      <OrderSectionHeader
-        title="我的收藏"
-        subtitle="查看全部"
-        style={{ height: 38 }}
-        onPress={() => { Alert.alert('我的收藏 => 查看全部'); }}
-      />
-    </View>
-  );
 
   /**
    * 渲染页面

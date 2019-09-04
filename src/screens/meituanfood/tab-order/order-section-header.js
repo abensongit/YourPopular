@@ -15,21 +15,26 @@ import {
 type Props = {
   image?: any,
   style?: ViewPropTypes.style,
-  title: string,
-  subtitle?: string,
+  data: Object,
+  onSelect: Function,
 }
 
 class OrderSectionHeader extends Component<Props> {
   render() {
+    const { data, onSelect } = this.props;
     const icon = this.props.image && <Image style={styles.icon} source={this.props.image} />;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.props.onPress}>
+        <TouchableOpacity
+          onPress={() => {
+            onSelect && onSelect(data);
+          }}
+        >
           <View style={[styles.content, this.props.style]}>
             {icon}
-            <Heading3>{this.props.title}</Heading3>
+            <Heading3>{data.title}</Heading3>
             <View style={{ flex: 1, backgroundColor: 'blue' }} />
-            <Paragraph style={{ color: '#999999' }}>{this.props.subtitle}</Paragraph>
+            <Paragraph style={{ color: '#999999' }}>{data.subtitle}</Paragraph>
             <Image style={styles.arrow} source={Images.mine.ic_cell_arrow} />
           </View>
           <SeparatorLineView />

@@ -18,7 +18,7 @@ class SeparatorLineView extends Component<Props> {
 const styles = StyleSheet.create({
   line: {
     width: Dimensions.get('window').width,
-    height: 1 / PixelRatio.get(),
+    height: 1 / PixelRatio.get() * 2,
     backgroundColor: '#e9e9ee',
   },
 });
