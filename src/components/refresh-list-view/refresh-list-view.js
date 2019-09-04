@@ -180,21 +180,25 @@ class RefreshListView extends PureComponent<Props, State> {
   // 事件处理 - 开始拖动
   onScrollBeginDrag = () => {
     log('开始拖动');
+    this.props.onScrollBeginDrag && this.props.onScrollBeginDrag();
   };
 
   // 事件处理 - 停止拖动
   onScrollEndDrag = () => {
     log('停止拖动');
+    this.props.onScrollEndDrag && this.props.onScrollEndDrag();
   };
 
   // 事件处理 - 滚动开始
   onMomentumScrollBegin = () => {
     log('滚动开始');
+    this.props.onMomentumScrollBegin && this.props.onMomentumScrollBegin();
   };
 
   // 事件处理 - 滚动结束
   onMomentumScrollEnd = () => {
     log('滚动结束');
+    this.props.onMomentumScrollEnd && this.props.onMomentumScrollEnd();
   };
 
   render() {
@@ -210,7 +214,19 @@ class RefreshListView extends PureComponent<Props, State> {
         ListFooterComponent={this.renderFooter}
         showsVerticalScrollIndicator
         onEndReachedThreshold={0.1}
+        refreshControl={(
+          <RefreshControl
+            colors={[tintColor]}
+            tintColor={tintColor}
+            onRefresh={() => this.onRefresh(false)}
+            refreshing={this.props.refreshState === RefreshState.HeaderRefreshing}
+          />
+        )}
+
+        {...rest}
+
         onEndReached={() => {
+          this.props.onEndReached && this.props.onEndReached();
           setTimeout(() => {
             if (this.canLoadMore) { // 滚动时两次调用onEndReached
               this.onRefresh(true);
@@ -225,16 +241,6 @@ class RefreshListView extends PureComponent<Props, State> {
           this.onMomentumScrollBegin();
         }}
         onMomentumScrollEnd={this.onMomentumScrollEnd}
-        refreshControl={(
-          <RefreshControl
-            colors={[tintColor]}
-            tintColor={tintColor}
-            onRefresh={() => this.onRefresh(false)}
-            refreshing={this.props.refreshState === RefreshState.HeaderRefreshing}
-          />
-        )}
-
-        {...rest}
       />
     );
   }

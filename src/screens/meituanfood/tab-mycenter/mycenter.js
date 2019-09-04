@@ -201,6 +201,7 @@ class TabMyCenterMainScreen extends Component<Props> {
    * @returns {*}
    */
   render() {
+    const { theme } = this.props;
     return (
       <View style={styles.container}>
         <RefreshListView
@@ -211,6 +212,7 @@ class TabMyCenterMainScreen extends Component<Props> {
           onHeaderRefresh={this.onHeaderRefresh}
           ListHeaderComponent={this.renderHeader}
           // 可选
+          tintColor={theme.tintColor}
           footerRefreshingText="玩命加载中 >.<"
           footerFailureText="我擦嘞，居然失败了 =.=!"
           footerNoMoreDataText="-我是有底线的-"
