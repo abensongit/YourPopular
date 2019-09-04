@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Text, StyleSheet, TouchableOpacity, Image, ViewPropTypes, View,
+  Text, StyleSheet, TouchableOpacity, Image, ViewPropTypes,
 } from 'react-native';
 
 type Props = {

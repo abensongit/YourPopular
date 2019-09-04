@@ -1,32 +1,26 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   COLOR_BACKGROUND_DEFAULT,
 } from '../../../common/Variables';
-import { System } from '../../../common';
-
-const SEARCH_BAR_HEIGHT = Platform.select({
-  ios: System.window.navigationBarHeight * 0.68,
-  android: System.window.navigationBarHeight * 0.58
-});
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLOR_BACKGROUND_DEFAULT,
   },
-  searchBar: {
-    width: System.window.width * 0.7,
-    height: SEARCH_BAR_HEIGHT,
-    borderRadius: SEARCH_BAR_HEIGHT * 0.6,
+  header: {
+    backgroundColor: COLOR_BACKGROUND_DEFAULT,
+    padding: 10,
+    paddingBottom: 20,
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
-    alignSelf: 'center',
   },
-  searchIcon: {
-    width: SEARCH_BAR_HEIGHT * 0.6,
-    height: SEARCH_BAR_HEIGHT * 0.6,
-    margin: 5,
-  },
+  avatar: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#51D3C6'
+  }
 });

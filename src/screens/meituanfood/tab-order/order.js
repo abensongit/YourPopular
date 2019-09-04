@@ -287,7 +287,4 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLOR_BACKGROUND_WHITE,
   },
-  itemContainer: {
-    flexDirection: 'row',
-  },
 });
