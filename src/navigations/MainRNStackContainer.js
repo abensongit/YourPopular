@@ -26,6 +26,8 @@ import ItemNativeToJavaScriptScreen from '../screens/reactnative/tab-home/extend
 // 项目
 import ProReactNativeSwiperScreen from '../screens/reactnative/tab-project/extendpro/react-native-swiper/react-native-swiper';
 import ProReactNativeSnapCarouselScreen from '../screens/reactnative/tab-project/extendpro/react-native-snap-carousel/react-native-snap-carousel';
+import ProReactNativeRootToastScreen from '../screens/reactnative/tab-project/extendpro/react-native-root-toast/react-native-root-toast';
+import ProReactNativeAcionSheetScreen from '../screens/reactnative/tab-project/extendpro/react-native-actionsheet/react-native-acion-sheet';
 
 /**
  * 主导航容器
@@ -44,6 +46,8 @@ const MainStackNavigator = createStackNavigator(
     // 控件
     RouterRNExtendProReactNativeSwiperScreen: ProReactNativeSwiperScreen,
     RouterRNExtendProReactNativeSnapCarouselScreen: ProReactNativeSnapCarouselScreen,
+    RouterRNExtendProReactNativeAcionSheetScreen: ProReactNativeAcionSheetScreen,
+    RouterRNExtendProReactNativeRootToastScreen: ProReactNativeRootToastScreen,
   },
   {
     initialRouteName: RouterConst.RouterMainRNTabContainer,

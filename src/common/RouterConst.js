@@ -64,4 +64,6 @@ export default {
   // 项目
   RouterRNExtendProReactNativeSwiperScreen: 'RouterRNExtendProReactNativeSwiperScreen', // 轮播插件
   RouterRNExtendProReactNativeSnapCarouselScreen: 'RouterRNExtendProReactNativeSnapCarouselScreen', // 特效插件
+  RouterRNExtendProReactNativeRootToastScreen: 'RouterRNExtendProReactNativeRootToastScreen', // 弹框提示控件
+  RouterRNExtendProReactNativeAcionSheetScreen: 'RouterRNExtendProReactNativeAcionSheetScreen', // 选择插件
 };

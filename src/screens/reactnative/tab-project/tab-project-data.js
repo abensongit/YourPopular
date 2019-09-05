@@ -26,13 +26,13 @@ export default
     subtitle: 'React native toast like component, pure javascript solution.',
     arrowurl: 'arrow-right',
     giturl: 'https://github.com/magicismight/react-native-root-toast',
-    router: 'RouterExtendProRootToastScreen',
+    router: 'RouterRNExtendProReactNativeRootToastScreen',
   },
   {
     title: 'react-native-actionsheet',
     subtitle: 'An elegant ActionSheet component for React Native..',
     arrowurl: 'arrow-right',
     giturl: 'https://github.com/beefe/react-native-actionsheet',
-    router: 'RouterExtendProActionSheetScreen',
+    router: 'RouterRNExtendProReactNativeAcionSheetScreen',
   },
 ];
