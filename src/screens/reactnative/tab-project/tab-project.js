@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  InteractionManager,
-  StyleSheet, TouchableOpacity, View,
+  InteractionManager, StyleSheet, TouchableOpacity, View,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {
@@ -39,10 +38,6 @@ class TabProjectScreen extends Component<Props, State> {
   constructor(props) {
     super(props);
     console.disableYellowBox = true;
-    const { theme } = this.props;
-    this.props.navigation.setParams({
-      theme,
-    });
     this.state = {
       pageIndex: 0,
       pageSize: PAGE_SIZE,

@@ -39,10 +39,6 @@ class TabHomeScreen extends Component<Props, State> {
   constructor(props) {
     super(props);
     console.disableYellowBox = true;
-    const { theme } = this.props;
-    this.props.navigation.setParams({
-      theme,
-    });
     this.state = {
       pageIndex: 0,
       pageSize: PAGE_SIZE,
