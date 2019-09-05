@@ -8,7 +8,7 @@ import { TouchableOpacityButton } from '../../../../../components';
 
 
 type Props = {};
-export default class ReactNativeRootToastScreen extends Component<Props> {
+export default class ReactNativePageControlScreen extends Component<Props> {
   /**
    * 配置导航栏
    * @param navigation

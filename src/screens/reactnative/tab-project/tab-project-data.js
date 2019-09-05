@@ -19,7 +19,7 @@ export default
     subtitle: 'Page Control for React Native, like iOS UIPageControl, APIs are same as UIPageControl.',
     arrowurl: 'arrow-right',
     giturl: 'https://github.com/silentcloud/react-native-page-control',
-    router: 'RouterExtendProPageControlScreen',
+    router: 'RouterRNExtendProReactNativePageControlScreen',
   },
   {
     title: 'react-native-root-toast',

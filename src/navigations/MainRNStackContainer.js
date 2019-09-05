@@ -26,6 +26,7 @@ import ItemNativeToJavaScriptScreen from '../screens/reactnative/tab-home/extend
 // 项目
 import ProReactNativeSwiperScreen from '../screens/reactnative/tab-project/extendpro/react-native-swiper/react-native-swiper';
 import ProReactNativeSnapCarouselScreen from '../screens/reactnative/tab-project/extendpro/react-native-snap-carousel/react-native-snap-carousel';
+import ProReactNativePageControlScreen from '../screens/reactnative/tab-project/extendpro/react-native-page-control/react-native-page-control';
 import ProReactNativeRootToastScreen from '../screens/reactnative/tab-project/extendpro/react-native-root-toast/react-native-root-toast';
 import ProReactNativeAcionSheetScreen from '../screens/reactnative/tab-project/extendpro/react-native-actionsheet/react-native-acion-sheet';
 
@@ -46,6 +47,7 @@ const MainStackNavigator = createStackNavigator(
     // 控件
     RouterRNExtendProReactNativeSwiperScreen: ProReactNativeSwiperScreen,
     RouterRNExtendProReactNativeSnapCarouselScreen: ProReactNativeSnapCarouselScreen,
+    RouterRNExtendProReactNativePageControlScreen: ProReactNativePageControlScreen,
     RouterRNExtendProReactNativeAcionSheetScreen: ProReactNativeAcionSheetScreen,
     RouterRNExtendProReactNativeRootToastScreen: ProReactNativeRootToastScreen,
   },
