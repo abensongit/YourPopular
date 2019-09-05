@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import {
   StyleSheet, TouchableOpacity, View,
 } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationReactNativeService
+  NavigationReactNativeService, RouterConst,
 } from '../../../common';
 import {
   COLOR_BACKGROUND_DEFAULT
@@ -12,7 +13,6 @@ import {
 import {
   NavigationBar,
 } from '../../../components';
-import Feather from '../../githubpopular/popular/popular';
 
 
 type Props = {};
@@ -25,6 +25,7 @@ class TabHomeScreen extends Component<Props> {
     super();
     console.disableYellowBox = true;
   }
+
 
   /**
    * 创建导航条按钮（左侧）
@@ -59,11 +60,11 @@ class TabHomeScreen extends Component<Props> {
     // 状态栏
     const statusBar = {
       barStyle: 'light-content',
-      backgroundColor: this.props.theme.tintColor,
+      backgroundColor: this.props.theme.themeColor,
     };
     // 导航条
     const navBar = {
-      backgroundColor: this.props.theme.tintColor,
+      backgroundColor: this.props.theme.themeColor,
     };
     // 标题头
     const titleStyle = {
@@ -72,10 +73,10 @@ class TabHomeScreen extends Component<Props> {
     return (
       <NavigationBar
         title="首页"
-        style={navBar}
         statusBar={statusBar}
+        style={navBar}
         titleStyle={titleStyle}
-        returnBackHandle={() => {}}
+        leftButton={this.renderNavBarLeftButton()}
       />
     );
   }
