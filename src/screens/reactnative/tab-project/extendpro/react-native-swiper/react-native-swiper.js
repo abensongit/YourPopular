@@ -43,6 +43,9 @@ export default class ReactNativeSwiperScreen extends Component<Props> {
         fontSize: theme.navBar.titleFontSize,
         fontWeight: theme.navBar.titleFontWeight,
       },
+      headerRight: (
+        <View />
+      ),
     };
   };
 

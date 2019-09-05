@@ -28,6 +28,9 @@ export default class MyCustomWidgetButtonScreen extends Component<Props> {
         fontSize: theme.navBar.titleFontSize,
         fontWeight: theme.navBar.titleFontWeight,
       },
+      headerRight: (
+        <View />
+      ),
     };
   };
 

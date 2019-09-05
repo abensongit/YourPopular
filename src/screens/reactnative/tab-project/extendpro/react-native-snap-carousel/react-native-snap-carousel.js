@@ -37,6 +37,9 @@ export default class ReactNativeSnapCarouselScreen extends Component<Props> {
         fontSize: theme.navBar.titleFontSize,
         fontWeight: theme.navBar.titleFontWeight,
       },
+      headerRight: (
+        <View />
+      ),
     };
   };
 
@@ -205,11 +208,6 @@ export default class ReactNativeSnapCarouselScreen extends Component<Props> {
 
     return (
       <View style={styles.container}>
-        <StatusBar
-          translucent
-          backgroundColor="rgba(0, 0, 0, 0.3)"
-          barStyle="light-content"
-        />
         { this.gradient }
         <ScrollView
           style={styles.scrollview}
