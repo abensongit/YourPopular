@@ -45,12 +45,14 @@ export default class MyCustomWidgetButtonScreen extends Component<Props> {
   };
 
   render() {
+    const theme = this.props.navigation.getParam('theme', System.theme);
     return (
       <View style={styles.container}>
         <TouchableOpacityButton
           title="提交"
           subTitle="正在提交数据..."
           onPress={this.handleOnPressSubmitAction}
+          backgroundColor={theme.tintColor}
         />
       </View>
     );
