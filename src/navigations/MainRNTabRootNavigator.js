@@ -18,7 +18,7 @@ const TAB_ITEM_ARR = {
   RouterRNTabHomeScreen: {
     screen: TabHomeScreen,
     navigationOptions: ({ navigation }) => ({
-      tabBarLabel: '首页',
+      tabBarLabel: '控件',
       tabBarIcon: ({ tintColor, focused }) => (
         <Ionicons
           name={focused ? 'ios-basketball' : 'ios-basketball'}

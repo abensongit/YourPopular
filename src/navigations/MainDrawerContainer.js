@@ -94,7 +94,7 @@ class MainDrawerContainer extends Component<Props> {
       this.theme = this.props.theme;
       const routeConfigMap = this.routeConfigMaps();
       const navigationBar = this.renderNavigationBar();
-      const initialRouteName = RouterConst.RouterDrawerMeiTuanNavigator;
+      const initialRouteName = RouterConst.RouterDrawerReactNativeNavigator;
       this.mainDrawerContainer = createAppContainer(createDrawerNavigator(routeConfigMap,
         {
           initialRouteName,

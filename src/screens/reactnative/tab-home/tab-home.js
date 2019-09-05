@@ -72,7 +72,7 @@ class TabHomeScreen extends Component<Props> {
     };
     return (
       <NavigationBar
-        title="首页"
+        title="控件"
         statusBar={statusBar}
         style={navBar}
         titleStyle={titleStyle}
