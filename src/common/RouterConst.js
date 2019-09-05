@@ -57,6 +57,7 @@ export default {
   RouterRNTabHomeScreen: 'RouterRNTabHomeScreen', // 首页页面
   RouterRNTabProjectScreen: 'RouterRNTabProjectScreen', // 项目页面
   RouterRNTabSettingScreen: 'RouterRNTabSettingScreen', // 设置页面
-
+  // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
+  RouterRNExtendItemNativeToJavaScriptScreen: 'RouterRNExtendItemNativeToJavaScriptScreen', // 混合开发
 
 };

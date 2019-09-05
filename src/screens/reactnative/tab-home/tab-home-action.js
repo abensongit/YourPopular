@@ -11,8 +11,6 @@ export function onLoad(jsondata, pageSize, callBack = null) {
   // 第一次加载的数据
   const showItems = pageSize > fixItems.length ? fixItems : fixItems.slice(0, pageSize);
   doPackageModels(showItems, (itemModels) => {
-    // 偷懒，用同一个测试接口获取数据，然后打乱数组，造成数据来自不同接口的假象 >.<
-    itemModels.sort(() => 0.5 - Math.random());
     // 更新刷新状态、数据列表、页数
     doCallBack(callBack, doStaticModels(itemModels, true));
   });
@@ -38,8 +36,6 @@ export function onLoadMore(url, pageIndex, pageSize, callBack = null) {
   }
   const showItems = fixItems.splice(pageSize * (pageIndex - 1), number);
   doPackageModels(showItems, (itemModels) => {
-    // 偷懒，用同一个测试接口获取数据，然后打乱数组，造成数据来自不同接口的假象 >.<
-    itemModels.sort(() => 0.5 - Math.random());
     doCallBack(callBack, doStaticModels(itemModels, false));
   });
 }

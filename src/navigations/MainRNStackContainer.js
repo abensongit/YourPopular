@@ -19,6 +19,10 @@ import {
 import MainRNTabRootContainer from './MainRNTabRootContainer';
 
 
+// 控件
+import ItemNativeToJavaScriptScreen from '../screens/reactnative/tab-home/extendpro/native-modules/native-to-javascript';
+
+
 /**
  * 主导航容器
  */
@@ -30,6 +34,8 @@ const MainStackNavigator = createStackNavigator(
         header: null,
       }),
     },
+    // 控件
+    RouterRNExtendItemNativeToJavaScriptScreen: ItemNativeToJavaScriptScreen,
   },
   {
     initialRouteName: RouterConst.RouterMainRNTabContainer,

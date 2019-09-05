@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationReactNativeService, RouterConst,
+  NavigationReactNativeService,
 } from '../../../common';
 import {
   COLOR_BACKGROUND_DEFAULT
@@ -139,12 +139,13 @@ class TabHomeScreen extends Component<Props, State> {
    * 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
    */
   renderItem = (rowData: Object) => {
+    const { theme } = this.props;
     const itemModel = rowData.item;
     return (
       <TabHomeCell
         info={itemModel}
         onPress={() => {
-
+          NavigationReactNativeService.navigate(itemModel.router, { ...itemModel, theme });
         }}
       />
     );
