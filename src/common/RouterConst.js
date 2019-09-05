@@ -63,4 +63,5 @@ export default {
   RouterRNExtendItemNativeToJavaScriptScreen: 'RouterRNExtendItemNativeToJavaScriptScreen', // 混合开发
   // 项目
   RouterRNExtendProReactNativeSwiperScreen: 'RouterRNExtendProReactNativeSwiperScreen', // 轮播插件
+  RouterRNExtendProReactNativeSnapCarouselScreen: 'RouterRNExtendProReactNativeSnapCarouselScreen', // 特效插件
 };

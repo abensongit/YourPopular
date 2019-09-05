@@ -22,7 +22,7 @@ const SwiperSlide = props => (
 
 
 type Props = {}
-export default class MyCustomWidgetButtonScreen extends Component<Props> {
+export default class ReactNativeSwiperScreen extends Component<Props> {
   /**
    * 配置导航栏
    * @param navigation

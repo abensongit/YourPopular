@@ -12,7 +12,7 @@ export default
     subtitle: 'Swiper component for React Native featuring previews, multiple layouts, parallax images, performant handling of huge numbers of items, and RTL support. Compatible with Android & iOS.',
     arrowurl: 'arrow-right',
     giturl: 'https://github.com/archriss/react-native-snap-carousel',
-    router: 'RouterExtendProCarouselScreen',
+    router: 'RouterRNExtendProReactNativeSnapCarouselScreen',
   },
   {
     title: 'react-native-page-control',
