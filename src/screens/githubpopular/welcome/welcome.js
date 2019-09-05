@@ -6,6 +6,7 @@ import {
 import {
   AnimatedCircularProgress
 } from 'react-native-circular-progress';
+import LinearGradient from 'react-native-linear-gradient';
 import {
   NavigationMainService, RouterConst, System
 } from '../../../common';
@@ -15,6 +16,7 @@ import {
 import { Images } from '../../../resources';
 import styles from './welcome-styles';
 import actions from '../../../redux/actions';
+import { colors } from '../../reactnative/tab-project/extendpro/react-native-snap-carousel/index.style';
 
 const TIMEOUT_SECOND_VALUE = 5 * 1000;
 
@@ -111,7 +113,12 @@ class WelcomeScreen extends Component<Props> {
         contentContainerStyle={{ alignItems: 'stretch' }}
       >
         {navigationBar}
-        <View style={styles.container}>
+        <LinearGradient
+          start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
+          locations={[0, 0.5, 0.6]}
+          colors={['#ffffff', '#3b5998', '#192f6a']}
+          style={styles.container}
+        >
 
           {/* 跳过 */}
           <TouchableOpacity
@@ -147,7 +154,7 @@ class WelcomeScreen extends Component<Props> {
             source={Images.logo.ic_logo}
           />
 
-        </View>
+        </LinearGradient>
       </ScrollView>
     );
   }
