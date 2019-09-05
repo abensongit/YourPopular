@@ -1,10 +1,10 @@
 export default
 [
   {
-    title: '自定义控件',
+    title: '自定义控件 - Button',
     subtitle: '常用的一些自定义控件。',
     arrowurl: 'arrow-right',
-    router: 'RouterRNExtendMyCustomWidgetScreen',
+    router: 'RouterRNExtendItemCustomWidgetButtonScreen',
   },
   {
     title: 'React Native 混合开发',

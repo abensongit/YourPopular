@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Alert, StyleSheet, View, Text, NativeModules, NativeEventEmitter, Platform
+  Alert, StyleSheet, View, Text, NativeModules, NativeEventEmitter
 } from 'react-native';
 import { System } from '../../../../../common';
 import { TouchableOpacityButton } from '../../../../../components';

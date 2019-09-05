@@ -17,6 +17,8 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* YourPopularTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* YourPopularTests.m */; };
+		AEBBA7492320E7DD009C1F06 /* NativeToJSPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBBA7472320E7DD009C1F06 /* NativeToJSPresenter.m */; };
+		AEBBA74A2320E7DD009C1F06 /* JSBridgeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBBA7482320E7DD009C1F06 /* JSBridgeModule.m */; };
 		D90ADBBB147878F1118EF1B2 /* libPods-YourPopular.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3798D13A3DEB8A93A1CA9D /* libPods-YourPopular.a */; };
 		DD228788947A17D7B4076163 /* libPods-YourPopular-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 328154C4BB98EF4D2894E4F4 /* libPods-YourPopular-tvOSTests.a */; };
 		EA20FA28C02ECFA4229A7553 /* libPods-YourPopular-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C2F66B59BFCABA216C6D01 /* libPods-YourPopular-tvOS.a */; };
@@ -63,6 +65,10 @@
 		75BED43EDE88F64BA44B64CD /* Pods-YourPopular-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourPopular-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-YourPopular-tvOS/Pods-YourPopular-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9B3049C744A65B80BFD62FE4 /* Pods-YourPopular-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourPopular-tvOS.release.xcconfig"; path = "Target Support Files/Pods-YourPopular-tvOS/Pods-YourPopular-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		A6C2F66B59BFCABA216C6D01 /* libPods-YourPopular-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YourPopular-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEBBA7452320E7DD009C1F06 /* NativeToJSPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeToJSPresenter.h; path = YourPopular/NativeToJSPresenter.h; sourceTree = "<group>"; };
+		AEBBA7462320E7DD009C1F06 /* JSBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSBridgeModule.h; path = YourPopular/JSBridgeModule.h; sourceTree = "<group>"; };
+		AEBBA7472320E7DD009C1F06 /* NativeToJSPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeToJSPresenter.m; path = YourPopular/NativeToJSPresenter.m; sourceTree = "<group>"; };
+		AEBBA7482320E7DD009C1F06 /* JSBridgeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSBridgeModule.m; path = YourPopular/JSBridgeModule.m; sourceTree = "<group>"; };
 		B6AB64209B917BA17982D790 /* libPods-YourPopularTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YourPopularTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F6C3C538EA7C6A16A3E885 /* Pods-YourPopular-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourPopular-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-YourPopular-tvOSTests/Pods-YourPopular-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -125,9 +131,13 @@
 		13B07FAE1A68108700A75B9A /* YourPopular */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				AEBBA7462320E7DD009C1F06 /* JSBridgeModule.h */,
+				AEBBA7482320E7DD009C1F06 /* JSBridgeModule.m */,
+				AEBBA7452320E7DD009C1F06 /* NativeToJSPresenter.h */,
+				AEBBA7472320E7DD009C1F06 /* NativeToJSPresenter.m */,
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -582,7 +592,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				AEBBA7492320E7DD009C1F06 /* NativeToJSPresenter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				AEBBA74A2320E7DD009C1F06 /* JSBridgeModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

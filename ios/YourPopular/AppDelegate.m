@@ -15,17 +15,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  UIViewController *rootViewController = [[UIViewController alloc] init];
+  NSDictionary<NSString *, NSObject *> *param = @{ @"contents": @[
+                                                       @"Native传递数据=>JavaScript",
+                                                       @"初始化RCTRootView的数据传递",
+                                                       ]
+                                                   };
+  
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"YourPopular"
-                                            initialProperties:nil];
+                                            initialProperties:param];
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
+  
+  [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+  [self.window setRootViewController:rootViewController];
+  [self.window setBackgroundColor:[UIColor whiteColor]];
   [self.window makeKeyAndVisible];
   return YES;
 }
