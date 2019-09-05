@@ -131,17 +131,9 @@
 		13B07FAE1A68108700A75B9A /* YourPopular */ = {
 			isa = PBXGroup;
 			children = (
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				AEBBA7462320E7DD009C1F06 /* JSBridgeModule.h */,
-				AEBBA7482320E7DD009C1F06 /* JSBridgeModule.m */,
-				AEBBA7452320E7DD009C1F06 /* NativeToJSPresenter.h */,
-				AEBBA7472320E7DD009C1F06 /* NativeToJSPresenter.m */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
-				13B07FB71A68108700A75B9A /* main.m */,
+				AEBBA74B23212343009C1F06 /* Classes */,
+				AEBBA74C23212357009C1F06 /* Resouce */,
+				AEBBA74D23212369009C1F06 /* Supporting Files */,
 			);
 			name = YourPopular;
 			sourceTree = "<group>";
@@ -190,6 +182,38 @@
 				2D02E4901E0B4A5D006451C7 /* YourPopular-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AEBBA74B23212343009C1F06 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				AEBBA7462320E7DD009C1F06 /* JSBridgeModule.h */,
+				AEBBA7482320E7DD009C1F06 /* JSBridgeModule.m */,
+				AEBBA7452320E7DD009C1F06 /* NativeToJSPresenter.h */,
+				AEBBA7472320E7DD009C1F06 /* NativeToJSPresenter.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		AEBBA74C23212357009C1F06 /* Resouce */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+			);
+			name = Resouce;
+			sourceTree = "<group>";
+		};
+		AEBBA74D23212369009C1F06 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FB71A68108700A75B9A /* main.m */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		ED851AE11C1BDE9BF991C274 /* Pods */ = {
