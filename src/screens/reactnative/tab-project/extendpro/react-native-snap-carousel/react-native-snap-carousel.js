@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Platform, View, ScrollView, Text, StatusBar
+  Platform, View, ScrollView, Text
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
