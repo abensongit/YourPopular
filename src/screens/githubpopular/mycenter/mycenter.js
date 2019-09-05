@@ -74,6 +74,10 @@ class MyCenterScreen extends Component<Props> {
         params.url = 'https://github.com/reactnativecn/react-native-pushy/blob/master/README.md';
         break;
       }
+      case MENUS.ReactNative: {
+        routerName = RouterConst.RouterIntroduceScreen;
+        break;
+      }
       default: {
         routerName = RouterConst.RouterIntroduceScreen;
         break;
@@ -249,13 +253,13 @@ class MyCenterScreen extends Component<Props> {
           {this.renderMenu(MENUS.ThemeSetting)}
           {/* 关于作者 */}
           <View style={styles.spearatorLine} />
-          {this.renderMenu(MENUS.AboutAuthor)}
-          <View style={styles.spearatorLine} />
           {/* 热更新 */}
           {this.renderMenu(MENUS.CodePush)}
-          <View style={styles.spearatorLine} />
-          {/* 反馈 */}
-          {this.renderMenu(MENUS.FeedbackInfo)}
+
+          {/* React */}
+          <Text style={styles.groupTitle}>资源</Text>
+          {/* 关于 React Native */}
+          {this.renderMenu(MENUS.ReactNative)}
 
           {/* 退出 */}
           <View style={styles.buttonLoginOut}>
