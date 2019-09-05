@@ -23,6 +23,9 @@ import MainRNTabRootContainer from './MainRNTabRootContainer';
 import ItemCustomWidgetButtonScreen from '../screens/reactnative/tab-home/extendpro/custom-widget/custom-widget-button';
 import ItemNativeToJavaScriptScreen from '../screens/reactnative/tab-home/extendpro/native-modules/native-to-javascript';
 
+// 项目
+import ProReactNativeSwiperScreen from '../screens/reactnative/tab-project/extendpro/react-native-swiper/react-native-swiper';
+
 
 /**
  * 主导航容器
@@ -38,6 +41,8 @@ const MainStackNavigator = createStackNavigator(
     // 控件
     RouterRNExtendItemNativeToJavaScriptScreen: ItemNativeToJavaScriptScreen,
     RouterRNExtendItemCustomWidgetButtonScreen: ItemCustomWidgetButtonScreen,
+    // 控件
+    RouterRNExtendProReactNativeSwiperScreen: ProReactNativeSwiperScreen,
   },
   {
     initialRouteName: RouterConst.RouterMainRNTabContainer,

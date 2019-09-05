@@ -58,7 +58,9 @@ export default {
   RouterRNTabProjectScreen: 'RouterRNTabProjectScreen', // 项目页面
   RouterRNTabSettingScreen: 'RouterRNTabSettingScreen', // 设置页面
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
+  // 控件
   RouterRNExtendItemCustomWidgetButtonScreen: 'RouterRNExtendItemCustomWidgetButtonScreen', // 自定义控件 - Button
   RouterRNExtendItemNativeToJavaScriptScreen: 'RouterRNExtendItemNativeToJavaScriptScreen', // 混合开发
-
+  // 项目
+  RouterRNExtendProReactNativeSwiperScreen: 'RouterRNExtendProReactNativeSwiperScreen', // 轮播插件
 };

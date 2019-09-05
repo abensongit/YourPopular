@@ -16,7 +16,7 @@ import {
 } from '../../../components';
 import JsonData from './tab-home-data';
 import TabHomeCell from './tab-home-cell';
-import { onLoad, onLoadMore } from './tab-home-action';
+import { onLoad, onLoadMore } from './tab-home-actions';
 
 const PAGE_SIZE = 10;
 

@@ -70,4 +70,13 @@ export default {
     ic_aboutmeituan: require('./images/mine/icon_mine_aboutmeituan.png'),
   },
 
+  // 轮播
+  swiper: {
+    ic_swiper_loading: require('./images/swiper/ic_swiper_loading.gif'),
+    ic_swiper_1: require('./images/swiper/ic_swiper_1.jpg'),
+    ic_swiper_2: require('./images/swiper/ic_swiper_2.jpg'),
+    ic_swiper_3: require('./images/swiper/ic_swiper_3.jpg'),
+    ic_swiper_4: require('./images/swiper/ic_swiper_4.jpg'),
+  },
+
 };

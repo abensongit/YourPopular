@@ -1,25 +1,182 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet, View,
+  InteractionManager,
+  StyleSheet, TouchableOpacity, View,
 } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
+import {
+  NavigationReactNativeService,
+} from '../../../common';
 import {
   COLOR_BACKGROUND_DEFAULT
 } from '../../../common/Variables';
 import {
-  NavigationBar,
+  NavigationBar, RefreshListView, RefreshState,
 } from '../../../components';
+import JsonData from './tab-project-data';
+import TabProjectCell from './tab-project-cell';
+import { onLoad, onLoadMore } from './tab-project-actions';
 
+const PAGE_SIZE = 10;
 
-type Props = {};
-class TabProjectScreen extends Component<Props> {
+type Props = {
+  navigation: any,
+}
+
+type State = {
+  pageSize: number,
+  pageIndex: number,
+  refreshState: number,
+  dataSource: Array<Object>,
+}
+
+class TabProjectScreen extends Component<Props, State> {
   /**
    * 构造函数
    * @param props
    */
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     console.disableYellowBox = true;
+    const { theme } = this.props;
+    this.props.navigation.setParams({
+      theme,
+    });
+    this.state = {
+      pageIndex: 0,
+      pageSize: PAGE_SIZE,
+      dataSource: [],
+      refreshState: RefreshState.Idle,
+    };
+  }
+
+
+  /**
+   * 组件渲染完成
+   */
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.onHeaderRefresh();
+    });
+  }
+
+  /**
+   * 下拉刷新数据
+   */
+  onHeaderRefresh = () => {
+    // 开始动画
+    this.setState({
+      pageIndex: 0,
+      refreshState: RefreshState.HeaderRefreshing,
+    });
+    // 请求数据
+    onLoad(JsonData, this.state.pageSize, (itemModels) => {
+      if (itemModels.length > 0) {
+        if (itemModels.length >= this.state.pageSize) {
+          this.setState({
+            pageIndex: 1,
+            dataSource: itemModels,
+            refreshState: RefreshState.Idle,
+          });
+        } else {
+          this.setState({
+            pageIndex: 1,
+            dataSource: itemModels,
+            refreshState: RefreshState.NoMoreData,
+          });
+        }
+      } else {
+        this.setState({
+          pageIndex: 1,
+          dataSource: itemModels,
+          refreshState: RefreshState.EmptyData,
+        });
+      }
+    });
+  };
+
+  /**
+   * 上拉加载更多
+   */
+  onFooterRefresh = () => {
+    // 开始动画
+    this.setState({
+      refreshState: RefreshState.FooterRefreshing,
+    });
+    // 请求数据
+    const nextPageIndex = this.state.pageIndex + 1;
+    onLoadMore(JsonData, nextPageIndex, this.state.pageSize, (itemModels) => {
+      if (itemModels.length > 0) {
+        const dataSource = [...this.state.dataSource, ...itemModels];
+        if (itemModels.length >= this.state.pageSize) {
+          this.setState({
+            dataSource,
+            pageIndex: nextPageIndex,
+            refreshState: RefreshState.Idle,
+          });
+        } else {
+          this.setState({
+            dataSource,
+            pageIndex: nextPageIndex,
+            refreshState: RefreshState.NoMoreData,
+          });
+        }
+      } else {
+        this.setState({
+          refreshState: RefreshState.EmptyData,
+        });
+      }
+    });
+  };
+
+  /**
+   * 渲染表格 => 主键
+   */
+  keyExtractor = (item: any, index: number) => index.toString();
+
+  /**
+   * 渲染表格 => item 是FlatList中固定的参数名，请阅读FlatList的相关文档
+   */
+  renderItem = (rowData: Object) => {
+    const { theme } = this.props;
+    const itemModel = rowData.item;
+    return (
+      <TabProjectCell
+        info={itemModel}
+        onPress={() => {
+          NavigationReactNativeService.navigate(
+            itemModel.router,
+            { ...itemModel, theme }
+          );
+        }}
+      />
+    );
+  };
+
+  /**
+   * 创建导航条按钮（左侧）
+   * @returns {*}
+   */
+  renderNavBarLeftButton() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity
+          style={{
+            paddingTop: 2, paddingLeft: 10, paddingRight: 5, marginLeft: 0
+          }}
+          onPress={() => {
+            NavigationReactNativeService.openDrawer();
+          }}
+        >
+          <Feather
+            name="menu"
+            size={24}
+            style={{ alignSelf: 'center', color: 'white', }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
   }
 
   /**
@@ -30,11 +187,11 @@ class TabProjectScreen extends Component<Props> {
     // 状态栏
     const statusBar = {
       barStyle: 'light-content',
-      backgroundColor: this.props.theme.tintColor,
+      backgroundColor: this.props.theme.themeColor,
     };
     // 导航条
     const navBar = {
-      backgroundColor: this.props.theme.tintColor,
+      backgroundColor: this.props.theme.themeColor,
     };
     // 标题头
     const titleStyle = {
@@ -43,9 +200,10 @@ class TabProjectScreen extends Component<Props> {
     return (
       <NavigationBar
         title="项目"
-        style={navBar}
         statusBar={statusBar}
+        style={navBar}
         titleStyle={titleStyle}
+        leftButton={this.renderNavBarLeftButton()}
       />
     );
   }
@@ -55,10 +213,26 @@ class TabProjectScreen extends Component<Props> {
    * @returns {*}
    */
   render() {
+    const { theme } = this.props;
     const navigationBar = this.renderNavigationBar();
     return (
       <View style={styles.container}>
         {navigationBar}
+        <RefreshListView
+          data={this.state.dataSource}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+          refreshState={this.state.refreshState}
+          onHeaderRefresh={this.onHeaderRefresh}
+          onFooterRefresh={this.onFooterRefresh}
+          ListHeaderComponent={this.renderHeader}
+          // 可选
+          tintColor={theme.tintColor}
+          footerRefreshingText="玩命加载中 >.<"
+          footerFailureText="我擦嘞，居然失败了 =.=!"
+          footerNoMoreDataText="-我是有底线的-"
+          footerEmptyDataText="-好像什么东西都没有-"
+        />
       </View>
     );
   }
