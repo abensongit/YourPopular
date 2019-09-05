@@ -105,6 +105,7 @@ class WelcomeScreen extends Component<Props> {
    * @returns {*}
    */
   render() {
+    const { theme } = this.props;
     const navigationBar = this.renderNavigationBar();
     NavigationMainService.topLevelNavigator = this.props.navigation;
     return (
@@ -114,9 +115,10 @@ class WelcomeScreen extends Component<Props> {
       >
         {navigationBar}
         <LinearGradient
-          start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-          locations={[0, 0.5, 0.6]}
-          colors={['#ffffff', '#3b5998', '#192f6a']}
+          start={{ x: 0.1, y: 0.4 }}
+          end={{ x: 0.8, y: 1.0 }}
+          locations={[0, 0.6, 0.8]}
+          colors={['#ffffff', theme.tintColor]}
           style={styles.container}
         >
 
@@ -129,7 +131,7 @@ class WelcomeScreen extends Component<Props> {
               size={38}
               width={2}
               fill={this.state.fill}
-              tintColor={this.props.theme.themeColor}
+              tintColor={theme.tintColor}
               ref={(ref) => { this.circularProgress = ref; }}
               backgroundColor="#f5f6f6"
               onAnimationComplete={
