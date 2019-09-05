@@ -12,7 +12,7 @@ export default {
   // SwitchNavigator -> DrawerNavigator
   RouterDrawerPopularNavigator: 'RouterDrawerPopularNavigator', // 最热栈导航器
   RouterDrawerMeiTuanNavigator: 'RouterDrawerMeiTuanNavigator', // 美团栈导航器
-  RouterDrawerOtherNavigator: 'RouterDrawerOtherNavigator', // 其它栈导航器
+  RouterDrawerReactNativeNavigator: 'RouterDrawerReactNativeNavigator', // 仓库栈导航器
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator
   RouterMainPopularStackContainer: 'RouterMainPopularStackContainer', // 主导航容器
@@ -49,5 +49,14 @@ export default {
   RouterMeiTuanTabNearbyStackContainer: 'RouterMeiTuanTabNearbyStackContainer', // 附近主页
   RouterMeiTuanTabOrderStackContainer: 'RouterMeiTuanTabOrderStackContainer', // 订单主页
   RouterMeiTuanTabMyCenterStackContainer: 'RouterMeiTuanTabMyCenterStackContainer', // 我的主页
+
+
+  // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
+  RouterMainRNTabContainer: 'RouterMainRNTabContainer', // Tab导航器
+  // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator -> MainRNTabNavigator
+  RouterRNTabHomeScreen: 'RouterRNTabHomeScreen', // 首页页面
+  RouterRNTabProjectScreen: 'RouterRNTabProjectScreen', // 项目页面
+  RouterRNTabSettingScreen: 'RouterRNTabSettingScreen', // 设置页面
+
 
 };

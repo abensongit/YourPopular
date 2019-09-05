@@ -6,6 +6,7 @@ import NavDrawerSideMenu from './NavDrawerSideMenu';
 import NavigationMainService from './NavigationMainService';
 import NavigationMeiTuanService from './NavigationMeiTuanService';
 import NavigationPopularService from './NavigationPopularService';
+import NavigationReactNativeService from './NavigationReactNativeService';
 import RouterConst from './RouterConst';
 import System from './System';
 import SystemIPhone from './SystemIPhone';
@@ -30,6 +31,7 @@ export {
   NavigationMainService,
   NavigationMeiTuanService,
   NavigationPopularService,
+  NavigationReactNativeService,
   RouterConst,
   System,
   SystemIPhone,

@@ -19,7 +19,7 @@ import {
 } from '../components';
 import MainPopularStackContainer from './MainPopularStackContainer';
 import MainMeiTuanStackContainer from './MainMeiTuanStackContainer';
-
+import MainRNStackContainer from './MainRNStackContainer';
 
 /**
  * 路由配置
@@ -41,11 +41,11 @@ const ROUTE_ARRAY = [
     route: RouterConst.RouterDrawerMeiTuanNavigator,
   },
   {
-    title: '其它',
+    title: '仓库',
     iconName: 'google',
     iconType: AntDesign,
-    screen: MainMeiTuanStackContainer,
-    route: RouterConst.RouterDrawerOtherNavigator,
+    screen: MainRNStackContainer,
+    route: RouterConst.RouterDrawerReactNativeNavigator,
   },
 ];
 
