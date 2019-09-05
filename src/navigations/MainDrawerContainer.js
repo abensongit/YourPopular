@@ -90,7 +90,7 @@ class MainDrawerContainer extends Component<Props> {
    * @returns {NavigationContainer}
    */
   dynamicCreateMainDrawerContainer() {
-    if (!this.mainDrawerContainer || this.props.theme !== this.theme) {
+    if (!this.mainDrawerContainer || this.props.theme.tintColor !== this.theme.tintColor) {
       this.theme = this.props.theme;
       const routeConfigMap = this.routeConfigMaps();
       const navigationBar = this.renderNavigationBar();
@@ -115,7 +115,12 @@ class MainDrawerContainer extends Component<Props> {
                       <DrawerItems {...props} />
                     )
                     : (
-                      <NavDrawerSideMenu {...props} theme={this.theme} items={ROUTE_ARRAY} initRoute={initialRouteName} />
+                      <NavDrawerSideMenu
+                        {...props}
+                        theme={this.theme}
+                        items={ROUTE_ARRAY}
+                        initRoute={initialRouteName}
+                      />
                     )
                   }
                 </SafeAreaView>
