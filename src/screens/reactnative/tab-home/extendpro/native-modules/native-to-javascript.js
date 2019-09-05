@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
   Alert, StyleSheet, View, Text, NativeModules, NativeEventEmitter
 } from 'react-native';
@@ -8,7 +7,7 @@ import { TouchableOpacityButton } from '../../../../../components';
 
 
 type Props = {}
-class NativeToJavaScriptScreen extends Component<Props> {
+export default class NativeToJavaScriptScreen extends Component<Props> {
   /**
    * 配置导航栏
    * @param navigation
@@ -38,10 +37,6 @@ class NativeToJavaScriptScreen extends Component<Props> {
    */
   constructor(props) {
     super(props);
-    const { theme } = this.props;
-    this.props.navigation.setParams({
-      theme,
-    });
     this.state = {
       dataSource: '',
     };
@@ -138,13 +133,6 @@ class NativeToJavaScriptScreen extends Component<Props> {
     );
   }
 }
-
-
-const AppMapStateToProps = state => ({
-  theme: state.theme.theme,
-});
-
-export default connect(AppMapStateToProps)(NativeToJavaScriptScreen);
 
 
 const styles = StyleSheet.create({
