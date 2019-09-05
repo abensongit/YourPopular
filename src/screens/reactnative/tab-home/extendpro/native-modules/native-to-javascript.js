@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Alert, StyleSheet, View, Text, NativeModules, NativeEventEmitter
+  Alert, StyleSheet, View, Text, NativeModules, NativeEventEmitter, Platform
 } from 'react-native';
 import { System } from '../../../../../common';
 import { TouchableOpacityButton } from '../../../../../components';
@@ -107,28 +107,38 @@ export default class NativeToJavaScriptScreen extends Component<Props> {
   };
 
   render() {
-    const content = this.state.dataSource ? this.state.dataSource : '数据为空';
+    const dataSource = Platform.OS === System.IOS ? '数据为空' : 'Android 混合开发';
+    const content = this.state.dataSource ? this.state.dataSource : dataSource;
     const theme = this.props.navigation.getParam('theme', System.theme);
+    if (Platform.OS === System.IOS) {
+      return (
+        <View style={styles.container}>
+          <TouchableOpacityButton
+            title="RN调用OC原生方法"
+            subTitle="RN调用原生方法"
+            onPress={this.handleReactNativeToObjectCAction}
+            backgroundColor={theme.tintColor}
+          />
+          <TouchableOpacityButton
+            title="RN调用OC原生方法并回调"
+            subTitle="RN调用OC并回调"
+            onPress={this.handleReactNativeToObjectCThenCallbackAction}
+            backgroundColor={theme.tintColor}
+          />
+          <TouchableOpacityButton
+            title="RN调用OC方法，OC方法调用RN方法"
+            subTitle="RN调用OC方法，OC方法调用RN方法"
+            onPress={this.handleObjectCToJavaScriptAction}
+            backgroundColor={theme.tintColor}
+          />
+          <View style={styles.content}>
+            <Text style={styles.p}>{content}</Text>
+          </View>
+        </View>
+      );
+    }
     return (
-      <View style={styles.container}>
-        <TouchableOpacityButton
-          title="RN调用OC原生方法"
-          subTitle="RN调用原生方法"
-          onPress={this.handleReactNativeToObjectCAction}
-          backgroundColor={theme.tintColor}
-        />
-        <TouchableOpacityButton
-          title="RN调用OC原生方法并回调"
-          subTitle="RN调用OC并回调"
-          onPress={this.handleReactNativeToObjectCThenCallbackAction}
-          backgroundColor={theme.tintColor}
-        />
-        <TouchableOpacityButton
-          title="RN调用OC方法，OC方法调用RN方法"
-          subTitle="RN调用OC方法，OC方法调用RN方法"
-          onPress={this.handleObjectCToJavaScriptAction}
-          backgroundColor={theme.tintColor}
-        />
+      <View style={styles.container} >
         <View style={styles.content}>
           <Text style={styles.p}>{content}</Text>
         </View>
