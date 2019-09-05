@@ -31,6 +31,10 @@ import MarksSortedScreen from '../screens/githubpopular/mycenter/marks/marks-sor
 import LanguagesCustomScreen from '../screens/githubpopular/mycenter/langus/langus-custom';
 // 语言排序
 import LanguagesSortedScreen from '../screens/githubpopular/mycenter/langus/langus-sorted';
+// 关于程序
+import AboutScreen from '../screens/githubpopular/mycenter/about/about';
+// 关于作者
+import AboutAuthorScreen from '../screens/githubpopular/mycenter/about/about-author';
 // 最热详情
 import PopularTabDetaiScreen from '../screens/githubpopular/popular/popular-tab-detail';
 // 趋势详情
@@ -80,6 +84,18 @@ const AppMainStackNavigator = createStackNavigator(
     },
     RouterLanguagesSortedScreen: {
       screen: LanguagesSortedScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterAboutScreen: {
+      screen: AboutScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+      }),
+    },
+    RouterAboutAuthorScreen: {
+      screen: AboutAuthorScreen,
       navigationOptions: ({ navigation }) => ({
         header: null,
       }),

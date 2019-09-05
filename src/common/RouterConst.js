@@ -33,6 +33,8 @@ export default {
   RouterMarksSortedScreen: 'RouterMarksSortedScreen', // 标签排序
   RouterLanguagesCustomScreen: 'RouterLanguagesCustomScreen', // 语言设置
   RouterLanguagesSortedScreen: 'RouterLanguagesSortedScreen', // 语言排序
+  RouterAboutScreen: 'RouterAboutScreen', // 关于程序
+  RouterAboutAuthorScreen: 'RouterAboutAuthorScreen', // 关于作者
   RouterPopularTabDetaiScreen: 'RouterPopularTabDetaiScreen', // 最热详情
   RouterTrendingTabDetaiScreen: 'RouterTrendingTabDetaiScreen', // 趋势详情
 

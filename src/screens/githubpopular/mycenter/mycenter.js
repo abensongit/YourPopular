@@ -31,7 +31,7 @@ class MyCenterScreen extends Component<Props> {
     const params = { theme };
     switch (menu) {
       case MENUS.About: {
-        routerName = RouterConst.RouterIntroduceScreen;
+        routerName = RouterConst.RouterAboutScreen;
         break;
       }
       case MENUS.Tutorial: {
