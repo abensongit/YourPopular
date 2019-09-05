@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View
+  StyleSheet, ScrollView, View
 } from 'react-native';
-import Toast from 'react-native-root-toast';
-import { System } from '../../../../../common';
-import { TouchableOpacityButton } from '../../../../../components';
+import PageControl from 'react-native-page-control';
+import {
+  Heading1, System
+} from '../../../../../common';
+import {
+  COLOR_BACKGROUND_DEFAULT
+} from '../../../../../common/Variables';
 
 
 type Props = {};
@@ -35,90 +39,100 @@ export default class ReactNativePageControlScreen extends Component<Props> {
     };
   };
 
-  componentWillUnmount() {
-    this.timer && clearTimeout(this.timer);
+  /**
+   * 构造函数
+   */
+  constructor(props: Object) {
+    super(props);
+    this.state = {
+      currentPage: 0
+    };
   }
 
-  handleOnPressSubmit = (completeHandle) => {
-    // Add a Toast on screen.
-    const toast = Toast.show('正在提交数据', {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.CENTER,
-      shadow: true,
-      animation: true,
-      hideOnPress: true,
-      delay: 0,
-      onShow: () => {
-        // calls on toast\`s appear animation start
-      },
-      onShown: () => {
-        // calls on toast\`s appear animation end.
-      },
-      onHide: () => {
-        // calls on toast\`s hide animation start.
-      },
-      onHidden: () => {
-        // calls on toast\`s hide animation end.
-      }
-    });
+  /**
+   * 滚动事件 => ScrollView
+   */
+  onScroll(event: any) {
+    const { x } = event.nativeEvent.contentOffset;
+    const currentPage = Math.round(x / System.window.width);
 
-    // You can manually hide the Toast, or it will automatically disappear after a `duration` ms timeout.
-    this.timer = setTimeout(() => {
-      Toast.hide(toast);
-      completeHandle();
-      console.log('button enable');
-    }, 1500);
-  };
+    console.log(`onScroll  ${event.nativeEvent.contentOffset.x}  page ${currentPage}  current ${this.state.currentPage}`);
 
-  handleOnPressCancle = (completeHandle) => {
-    // Add a Toast on screen.
-    const toast = Toast.show('正在取消操作', {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.CENTER,
-      shadow: true,
-      animation: true,
-      hideOnPress: true,
-      delay: 0,
-      onShow: () => {
-        // calls on toast\`s appear animation start
-      },
-      onShown: () => {
-        // calls on toast\`s appear animation end.
-      },
-      onHide: () => {
-        // calls on toast\`s hide animation start.
-      },
-      onHidden: () => {
-        // calls on toast\`s hide animation end.
-      }
-    });
+    if (this.state.currentPage !== currentPage) {
+      this.setState({
+        currentPage
+      });
+    }
+  }
 
-    // You can manually hide the Toast, or it will automatically disappear after a `duration` ms timeout.
-    this.timer = setTimeout(() => {
-      Toast.hide(toast);
-      completeHandle();
-    }, 1500);
-  };
+  /**
+   * 标识事件 => pageControl
+   */
+  onPageIndicatorTap(index:number) {
+    console.log(`currentPage ${this.state.currentPage} Index ${index}  `);
+    if (this.state.currentPage !== index) {
+      this.setState({
+        currentPage: index
+      });
+    }
+    const offSetX = index * System.window.width;
+    this.myScrollView.scrollTo({ x: offSetX, y: 0, animated: true });
+  }
 
+  /**
+   * 颜色随机颜色
+   */
+  randomColor() {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    const color = `rgba(${r},${g},${b},0.8)`;
+    return color;
+  }
+
+  /**
+   * 渲染页面
+   * @returns {*}
+   */
   render() {
     const theme = this.props.navigation.getParam('theme', System.theme);
+    const pageCount = 5;
+    const itemScrollPages = [];
+    for (let index = 0; index < pageCount; index++) {
+      const itemScrollPage = (
+        <View style={[styles.menuItemPage, { backgroundColor: this.randomColor() }]} key={index}>
+          <Heading1>{index}</Heading1>
+        </View>
+      );
+      itemScrollPages.push(itemScrollPage);
+    }
+
     return (
-      <View style={styles.container}>
-        <TouchableOpacityButton
-          title="提交"
-          subTitle="正在提交数据"
-          onPress={this.handleOnPressSubmit}
-          style={[styles.button]}
-          backgroundColor={theme.tintColor}
+      <ScrollView style={styles.container}>
+        {/* 列表 */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          onScroll={event => this.onScroll(event)}
+          ref={(view) => { this.myScrollView = view; }}
+        >
+          <View style={styles.menuContainer}>
+            {itemScrollPages}
+          </View>
+        </ScrollView>
+        {/* 指示标识 */}
+        <PageControl
+          style={styles.pageControl}
+          numberOfPages={pageCount}
+          currentPage={this.state.currentPage}
+          hidesForSinglePage
+          pageIndicatorTintColor="gray"
+          currentPageIndicatorTintColor={theme.tintColor}
+          indicatorSize={styles.pageControlIndicator}
+          onPageIndicatorPress={index => this.onPageIndicatorTap(index)}
         />
-        <TouchableOpacityButton
-          title="取消"
-          subTitle="正在取消操作"
-          onPress={this.handleOnPressCancle}
-          style={[styles.button]}
-          backgroundColor={theme.tintColor}
-        />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -127,15 +141,23 @@ export default class ReactNativePageControlScreen extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    backgroundColor: '#ffffff',
-    padding: 10,
+    backgroundColor: COLOR_BACKGROUND_DEFAULT,
   },
-  button: {
+  menuContainer: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+  },
+  menuItemPage: {
     justifyContent: 'center',
     alignItems: 'center',
+    width: System.window.width,
+    height: 180,
+  },
+  pageControl: {
     margin: 10,
   },
+  pageControlIndicator: {
+    width: 7,
+    height: 7,
+  }
 });

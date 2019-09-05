@@ -54,7 +54,7 @@ class HomeMenuCell extends Component<Props, State> {
     }
     // X是水平方向
     // Y是垂直方向
-    const offSetX = index * Layout.window.width;
+    const offSetX = index * System.window.width;
     this.myScrollView.scrollTo({ x: offSetX, y: 0, animated: true });
   }
 

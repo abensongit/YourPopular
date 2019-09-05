@@ -100,6 +100,10 @@ export default class ReactNativeRootToastScreen extends Component<Props> {
     }, 1500);
   };
 
+  /**
+   * 渲染页面
+   * @returns {*}
+   */
   render() {
     const theme = this.props.navigation.getParam('theme', System.theme);
     return (
