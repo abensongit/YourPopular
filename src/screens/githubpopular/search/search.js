@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet, View, TextInput, TouchableOpacity, Text
+  StyleSheet, View, TextInput, TouchableOpacity, Text, Platform, StatusBar
 } from 'react-native';
 import Toast from 'react-native-root-toast';
 import {
@@ -153,18 +153,6 @@ class SearchModalScreen extends Component<Props> {
         animation: true,
         hideOnPress: true,
         delay: 0,
-        onShow: () => {
-          // calls on toast is appear animation start
-        },
-        onShown: () => {
-          // calls on toast is appear animation end.
-        },
-        onHide: () => {
-          // calls on toast is hide animation start.
-        },
-        onHidden: () => {
-          // calls on toast is hide animation end.
-        }
       });
     });
   };
@@ -213,12 +201,16 @@ class SearchModalScreen extends Component<Props> {
     const { inputKey } = this.props.search;
     const placeholder = inputKey || '请输入';
     return (
-      <TextInput
-        ref={(input) => { this.textInput = input; }}
-        placeholder={placeholder}
-        onChangeText={(text) => { this.inputKey = text; }}
-        style={styles.textInput}
-      />
+      <View style={styles.searchBar}>
+        <TextInput
+          style={styles.textInput}
+          placeholder={placeholder}
+          placeholderTextColor="#777777"
+          underlineColorAndroid="transparent"
+          ref={(input) => { this.textInput = input; }}
+          onChangeText={(text) => { this.inputKey = text; }}
+        />
+      </View>
     );
   }
 
@@ -275,7 +267,7 @@ class SearchModalScreen extends Component<Props> {
         style={navBar}
         titleView={this.renderNavTitleView()}
         titleLayoutStyle={styles.titleLayoutStyle}
-        returnBackHandle={() => this.onHandlerNavGoBackAction()}
+        leftButton={NavigationBar.renderNavBackButton(() => this.onHandlerNavGoBackAction(), 'white')}
         rightButton={this.renderNavBarRightButton()}
       />
     );
@@ -302,7 +294,7 @@ class SearchModalScreen extends Component<Props> {
           onHeaderRefresh={this.onHeaderRefresh}
           onFooterRefresh={this.onFooterRefresh}
           // 可选
-          tintColor={theme.themeColor}
+          tintColor={theme.tintColor}
           footerRefreshingText="玩命加载中 >.<"
           footerFailureText="我擦嘞，居然失败了 =.=!"
           footerNoMoreDataText="-我是有底线的-"
@@ -331,13 +323,18 @@ const AppMapStateToProps = state => ({
 
 const AppMapDispatchToProps = dispatch => ({
   onRefreshSearch: (input, pageSize, token, favoriteDao, popularKeys, callBack) => dispatch(actions.onRefreshSearch(input, pageSize, token, favoriteDao, popularKeys, callBack)),
-  onLoadMoreSearch: (pageIndex, pageSize, dataArray = [], favouriteDao, callBack) => dispatch(actions.onLoadMoreSearch(pageIndex, pageSize, dataArray, favouriteDao, callBack)),
+  onLoadMoreSearch: (pageIndex, pageSize, dataArray, favouriteDao, callBack) => dispatch(actions.onLoadMoreSearch(pageIndex, pageSize, dataArray, favouriteDao, callBack)),
   onCancelSearch: token => dispatch(actions.onCancelSearch(token)),
   onLoadMarks: () => dispatch(actions.onLoadMarks()),
 });
 
 export default connect(AppMapStateToProps, AppMapDispatchToProps)(SearchModalScreen);
 
+
+const SEARCH_BAR_HEIGHT = Platform.select({
+  ios: System.window.navigationBarHeight * 0.68,
+  android: System.window.navigationBarHeight * 0.58
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -350,15 +347,23 @@ const styles = StyleSheet.create({
     bottom: 5,
     right: 55,
   },
+  searchBar: {
+    width: System.window.width * 0.7,
+    height: SEARCH_BAR_HEIGHT,
+    borderRadius: SEARCH_BAR_HEIGHT * 0.5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    alignSelf: 'center',
+  },
   textInput: {
     flex: 1,
     height: (Platform.OS === System.IOS) ? 15 : 36,
-    borderWidth: (Platform.OS === System.IOS) ? 1 : 0,
-    borderColor: 'white',
-    paddingLeft: 5,
-    borderRadius: 3,
-    opacity: 0.7,
-    color: 'white'
+    paddingHorizontal: 10,
+    fontSize: 15,
+    opacity: 0.8,
+    color: '#222222'
   },
   navBtnSearch: {
     color: 'white',

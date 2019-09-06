@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import System from './System';
-import Toast from "react-native-root-toast";
-
 
 export function Heading1({ style, ...props }: Object) {
   return <Text style={[styles.h1, style]} {...props} />;
