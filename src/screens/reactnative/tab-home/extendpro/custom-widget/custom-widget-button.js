@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Alert, StyleSheet, View,
+  Alert, StyleSheet, View, ScrollView
 } from 'react-native';
 import { System } from '../../../../../common';
 import { TouchableOpacityButton } from '../../../../../components';
@@ -50,14 +50,14 @@ export default class MyCustomWidgetButtonScreen extends Component<Props> {
   render() {
     const theme = this.props.navigation.getParam('theme', System.theme);
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <TouchableOpacityButton
           title="提交"
           subTitle="正在提交数据..."
           onPress={this.handleOnPressSubmitAction}
           backgroundColor={theme.tintColor}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -66,8 +66,6 @@ export default class MyCustomWidgetButtonScreen extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
     backgroundColor: '#ffffff',
     paddingVertical: 15,
     paddingHorizontal: 10,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Alert, StyleSheet, View, Text, NativeModules, NativeEventEmitter, Platform
+  Alert, StyleSheet, ScrollView, View, Text, NativeModules, NativeEventEmitter, Platform
 } from 'react-native';
 import { System } from '../../../../../common';
 import { TouchableOpacityButton } from '../../../../../components';
@@ -112,7 +112,7 @@ export default class NativeToJavaScriptScreen extends Component<Props> {
     const theme = this.props.navigation.getParam('theme', System.theme);
     if (Platform.OS === System.IOS) {
       return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <TouchableOpacityButton
             title="RN调用OC原生方法"
             subTitle="RN调用原生方法"
@@ -134,15 +134,15 @@ export default class NativeToJavaScriptScreen extends Component<Props> {
           <View style={styles.content}>
             <Text style={styles.p}>{content}</Text>
           </View>
-        </View>
+        </ScrollView>
       );
     }
     return (
-      <View style={styles.container} >
+      <ScrollView style={styles.container} >
         <View style={styles.content}>
           <Text style={styles.p}>{content}</Text>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -151,10 +151,8 @@ export default class NativeToJavaScriptScreen extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
     backgroundColor: '#ffffff',
-    padding: 15,
+    padding: 10,
   },
   content: {
     justifyContent: 'center',
