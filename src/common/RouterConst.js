@@ -63,6 +63,7 @@ export default {
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator
   // 控件
   RouterRNExtendItemCustomWidgetButtonScreen: 'RouterRNExtendItemCustomWidgetButtonScreen', // 自定义控件 - Button
+  RouterRNExtendItemCustomWidgetTextInputScreen: 'RouterRNExtendItemCustomWidgetTextInputScreen', // 自定义控件 - TextInput
   RouterRNExtendItemNativeToJavaScriptScreen: 'RouterRNExtendItemNativeToJavaScriptScreen', // 混合开发
   // 项目
   RouterRNExtendProReactNativeSwiperScreen: 'RouterRNExtendProReactNativeSwiperScreen', // 轮播插件

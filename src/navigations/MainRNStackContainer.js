@@ -21,6 +21,7 @@ import MainRNTabRootContainer from './MainRNTabRootContainer';
 
 // 控件
 import ItemCustomWidgetButtonScreen from '../screens/reactnative/tab-home/extendpro/custom-widget/custom-widget-button';
+import ItemCustomWidgetTextInputScreen from '../screens/reactnative/tab-home/extendpro/custom-widget/custom-widget-textinput';
 import ItemNativeToJavaScriptScreen from '../screens/reactnative/tab-home/extendpro/native-modules/native-to-javascript';
 
 // 项目
@@ -44,6 +45,7 @@ const MainStackNavigator = createStackNavigator(
     // 控件
     RouterRNExtendItemNativeToJavaScriptScreen: ItemNativeToJavaScriptScreen,
     RouterRNExtendItemCustomWidgetButtonScreen: ItemCustomWidgetButtonScreen,
+    RouterRNExtendItemCustomWidgetTextInputScreen: ItemCustomWidgetTextInputScreen,
     // 控件
     RouterRNExtendProReactNativeSwiperScreen: ProReactNativeSwiperScreen,
     RouterRNExtendProReactNativeSnapCarouselScreen: ProReactNativeSnapCarouselScreen,
