@@ -16,7 +16,7 @@ const log = (text: string) => { DEBUG && console.log(text); };
  * @param pageSize
  * @param callBack 回调函数，可以通过回调函数来向调用页面通信：比如异常信息的展示，没有更多等待
  */
-export function onLoad(url, pageSize, callBack = null) {
+export function onLoad(url, pageSize, callBack = (obj) => {}) {
   const fetchService = new FetchService();
   fetchService.fetch(url)
     .then((data) => {
@@ -36,7 +36,7 @@ export function onLoad(url, pageSize, callBack = null) {
  * @param callBack 回调函数，可以通过回调函数来向调用页面通信：比如异常信息的展示，没有更多等待
  * @returns {function(*)}
  */
-export function onLoadMore(url, pageIndex, pageSize, callBack = null) {
+export function onLoadMore(url, pageIndex, pageSize, callBack = (obj) => {}) {
   const fetchService = new FetchService();
   fetchService.fetch(url)
     .then((data) => {
@@ -54,7 +54,7 @@ export function onLoadMore(url, pageIndex, pageSize, callBack = null) {
  * @param pageSize
  * @param callBack 回调函数，可以通过回调函数来向调用页面通信：比如异常信息的展示，没有更多等待
  */
-function handleDataLoad(jsondata, pageSize, callBack = null) {
+function handleDataLoad(jsondata, pageSize, callBack = (obj) => {}) {
   // 组装数据模型
   const fixItems = doWithJsonData(jsondata);
   // 第一次加载的数据
@@ -74,7 +74,7 @@ function handleDataLoad(jsondata, pageSize, callBack = null) {
  * @param pageSize 每页展示条数
  * @param callBack 回调函数，可以通过回调函数来向调用页面通信：比如异常信息的展示，没有更多等待
  */
-function handleDataLoadMore(jsondata, pageIndex, pageSize, callBack = null) {
+function handleDataLoadMore(jsondata, pageIndex, pageSize, callBack = (obj) => {}) {
   // 组装数据模型
   const fixItems = doWithJsonData(jsondata);
   // 加载更多数据
@@ -121,7 +121,7 @@ function doWithJsonData(jsondata) {
  * @param callBack
  * @returns {Promise<void>}
  */
-function doPackageModels(showItems, callBack) {
+function doPackageModels(showItems, callBack = (obj) => {}) {
   const itemModels = [];
   for (let i = 0, { length } = showItems; i < length; i++) {
     itemModels.push(

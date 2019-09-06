@@ -119,7 +119,9 @@ class TabHomeMainScreen extends Component<Props> {
    */
   onHeaderRefresh = () => {
     const { onRefreshMeiTuanHome } = this.props;
-    onRefreshMeiTuanHome(JsonMeiTuan.url, PAGE_SIZE);
+    onRefreshMeiTuanHome(JsonMeiTuan.url, PAGE_SIZE, (items) => {
+
+    });
   };
 
   /**
@@ -128,8 +130,8 @@ class TabHomeMainScreen extends Component<Props> {
   onFooterRefresh = () => {
     const { onLoadMoreMeiTuanHome } = this.props;
     const store = this.store();
-    onLoadMoreMeiTuanHome(JsonMeiTuan.url, ++store.pageIndex, PAGE_SIZE, store.items, () => {
-      Toast.show('没有更多数据了', {
+    onLoadMoreMeiTuanHome(JsonMeiTuan.url, ++store.pageIndex, PAGE_SIZE, store.items, (message) => {
+      Toast.show(message, {
         duration: Toast.durations.LONG,
         position: Toast.positions.CENTER,
         shadow: true,
@@ -301,7 +303,7 @@ const AppMapStateToProps = state => ({
 
 const AppMapDispatchToProps = dispatch => ({
   // 将 dispatch(onRefreshMeiTuanHome(url, pageSize)) 绑定到 props
-  onRefreshMeiTuanHome: (url, pageSize) => dispatch(actions.onRefreshMeiTuanHome(url, pageSize)),
+  onRefreshMeiTuanHome: (url, pageSize, callBack) => dispatch(actions.onRefreshMeiTuanHome(url, pageSize, callBack)),
   onLoadMoreMeiTuanHome: (url, pageIndex, pageSize, dataArray, callBack) => dispatch(actions.onLoadMoreMeiTuanHome(url, pageIndex, pageSize, dataArray, callBack)),
 });
 

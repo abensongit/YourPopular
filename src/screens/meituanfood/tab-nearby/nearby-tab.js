@@ -48,7 +48,7 @@ class TabNearbyTabScreen extends Component<Props> {
    */
   onHeaderRefresh = () => {
     const { onRefreshMeiTuanNearby } = this.props;
-    onRefreshMeiTuanNearby(JsonMeiTuan.url, PAGE_SIZE, (message) => {
+    onRefreshMeiTuanNearby(JsonMeiTuan.url, PAGE_SIZE, (items) => {
       // 不显示菊花
       this.setState({
         typeLoading: false,
