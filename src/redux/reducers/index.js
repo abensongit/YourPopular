@@ -8,9 +8,11 @@ import {
 import themeReducer from '../../screens/githubpopular/theme/theme-reducers';
 import marksReducer from '../../screens/githubpopular/mycenter/marks/marks-reducers';
 import langusReducer from '../../screens/githubpopular/mycenter/langus/langus-reducers';
+import searchReducer from '../../screens/githubpopular/search/search-reducers';
 import popularReducer from '../../screens/githubpopular/popular/popular-reducers';
 import trendingReducer from '../../screens/githubpopular/trending/trending-reducers';
 import favouriteReducer from '../../screens/githubpopular/favourite/favourite-reducers';
+
 /**
  * MeiTuanFood
  */
@@ -41,6 +43,7 @@ const reducers = combineReducers({
   theme: themeReducer,
   marks: marksReducer,
   langus: langusReducer,
+  search: searchReducer,
   popular: popularReducer,
   trending: trendingReducer,
   favourite: favouriteReducer,

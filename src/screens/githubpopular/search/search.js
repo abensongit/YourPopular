@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button, StatusBar, StyleSheet, View
+  StyleSheet, View
 } from 'react-native';
+import Toast from 'react-native-root-toast';
 import {
-  COLOR_BACKGROUND_DEFAULT
-} from '../../../common/Variables';
+  NavigationPopularService, RouterConst, COLOR_BACKGROUND_DEFAULT
+} from '../../../common';
 import {
-  NavigationBar
+  RefreshListView, RefreshState, NavigationBar
 } from '../../../components';
+import {
+  SysUtil
+} from '../../../expand';
+import actions from '../../../redux/actions';
+import SearchTableCell from './search-table-cell';
+import PopularFavouriteDao from '../popular/popular-favourite-dao';
+
+const PAGE_SIZE = 10;
 
 
 type Props = {};
@@ -28,7 +37,6 @@ class SearchModalScreen extends Component<Props> {
   componentWillUnmount() {
     this.navListener.remove();
   }
-
 
   /**
    * 创建导航条控件
@@ -67,12 +75,7 @@ class SearchModalScreen extends Component<Props> {
     return (
       <View style={styles.container}>
         {navigationBar}
-        <View style={styles.content}>
-          <Button
-            onPress={() => this.props.navigation.goBack()}
-            title="搜索"
-          />
-        </View>
+        <View style={styles.content} />
       </View>
     );
   }

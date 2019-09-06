@@ -116,7 +116,7 @@ export function onFlushPopularFavourite(storeName, pageIndex, pageSize, dataArra
  * @param pageSize
  * @param favouriteDao
  */
-export function handleData(actionType, dispatch, storeName, data, pageSize, favouriteDao) {
+function handleData(actionType, dispatch, storeName, data, pageSize, favouriteDao) {
   let fixItems = [];
   if (data && data.data && data.data.items) {
     if (Array.isArray(data.data.items)) {
@@ -163,7 +163,7 @@ export function handleData(actionType, dispatch, storeName, data, pageSize, favo
  * @param callback
  * @returns {Promise<void>}
  */
-export async function doProjectModels(showItems, favouriteDao, callback) {
+async function doProjectModels(showItems, favouriteDao, callback) {
   let keys = [];
   try {
     keys = await favouriteDao.getFavouriteKeys();
@@ -186,7 +186,7 @@ export async function doProjectModels(showItems, favouriteDao, callback) {
  * @param callBack
  * @param object
  */
-export const doCallBack = (callBack, object) => {
+const doCallBack = (callBack, object) => {
   if (typeof callBack === 'function') {
     callBack(object);
   }

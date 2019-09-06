@@ -17,7 +17,7 @@ import {
   System
 } from '../common';
 import MainPopularTabRootContainer from './MainPopularTabRootContainer';
-import SearchModalScreen from '../screens/githubpopular/search/search-modal';
+import SearchModalScreen from '../screens/githubpopular/search/search';
 import ThemeCustomModalScreen from '../screens/githubpopular/theme/theme-custom-modal';
 
 // 官网介绍

@@ -27,6 +27,11 @@ import {
   onLoadMoreFavourite,
   onFlushFavourite
 } from '../../screens/githubpopular/favourite/favourite-actions';
+import {
+  onRefreshSearch,
+  onLoadMoreSearch,
+  onCancelSearch
+} from '../../screens/githubpopular/search/search-actions';
 
 
 /**
@@ -74,6 +79,11 @@ export default {
   onRefreshFavourite,
   onLoadMoreFavourite,
   onFlushFavourite,
+
+  // 搜索
+  onRefreshSearch,
+  onLoadMoreSearch,
+  onCancelSearch,
 
   // 美团 - 主页
   onRefreshMeiTuanHome,

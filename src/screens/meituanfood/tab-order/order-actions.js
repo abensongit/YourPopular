@@ -1,5 +1,5 @@
 import {
-  FetchService
+  FetchService, log
 } from '../../../common';
 import {
   Images,
@@ -7,8 +7,6 @@ import {
 import OrderModel from './order-model';
 import { FLAST_LIST_SECTION } from './order';
 
-const DEBUG = false;
-const log = (text: string) => { DEBUG && console.log(text); };
 
 /**
  * 获取数据

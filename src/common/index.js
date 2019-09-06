@@ -10,6 +10,8 @@ import NavigationReactNativeService from './NavigationReactNativeService';
 import RouterConst from './RouterConst';
 import System from './System';
 import SystemIPhone from './SystemIPhone';
+import { log } from './SysLog';
+
 import {
   COLOR_DEFAULT,
   COLOR_BLACK,
@@ -35,11 +37,14 @@ export {
   RouterConst,
   System,
   SystemIPhone,
+
   Heading1,
   Heading2,
   Heading3,
   Paragraph,
   ToastTip,
+
+  log,
 
   COLOR_DEFAULT,
   COLOR_BLACK,
