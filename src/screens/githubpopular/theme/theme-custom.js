@@ -5,7 +5,7 @@ import {
 import { connect } from 'react-redux';
 import {
   NavigationBar,
-} from '../../../../components';
+} from '../../../components';
 import ThemeDao from './theme-dao';
 import * as actions from './theme-actions';
 import styles from './theme-custom-styles';

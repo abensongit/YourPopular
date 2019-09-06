@@ -5,10 +5,10 @@ import {
 } from 'react-native';
 import {
   COLOR_BACKGROUND_DEFAULT
-} from '../../../../common/Variables';
+} from '../../../common/Variables';
 import {
   NavigationBar
-} from '../../../../components';
+} from '../../../components';
 
 
 type Props = {};
@@ -50,7 +50,7 @@ class ThemeCustomModalScreen extends Component<Props> {
     };
     return (
       <NavigationBar
-        title="我的"
+        title="自定义主题"
         statusBar={statusBar}
         style={navBar}
         titleStyle={titleStyle}
@@ -70,7 +70,7 @@ class ThemeCustomModalScreen extends Component<Props> {
         <View style={styles.content}>
           <Button
             onPress={() => this.props.navigation.goBack()}
-            title="关闭"
+            title="自定义主题-关闭"
           />
         </View>
       </View>

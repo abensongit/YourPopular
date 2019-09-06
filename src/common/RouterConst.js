@@ -16,6 +16,7 @@ export default {
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator
   RouterMainPopularStackContainer: 'RouterMainPopularStackContainer', // 主导航容器
+  RouterSearchModalScreen: 'RouterSearchModalScreen', // 搜索页面
   RouterThemeCustomModalScreen: 'RouterThemeCustomModalScreen', // 主题页面
 
   // SwitchNavigator -> DrawerNavigator -> DrawerStackNavigator -> MainStackNavigator

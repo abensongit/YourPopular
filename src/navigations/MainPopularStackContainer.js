@@ -17,7 +17,8 @@ import {
   System
 } from '../common';
 import MainPopularTabRootContainer from './MainPopularTabRootContainer';
-import ThemeCustomModalScreen from '../screens/githubpopular/mycenter/theme/theme-custom-modal';
+import SearchModalScreen from '../screens/githubpopular/search/search-modal';
+import ThemeCustomModalScreen from '../screens/githubpopular/theme/theme-custom-modal';
 
 // 官网介绍
 import IntroduceScreen from '../screens/githubpopular/introduce/introduce';
@@ -135,6 +136,7 @@ const AppMainStackNavigator = createStackNavigator(
 const MainPopularStackNavigator = createStackNavigator(
   {
     RouterMainPopularStackContainer: AppMainStackNavigator,
+    RouterSearchModalScreen: SearchModalScreen,
     RouterThemeCustomModalScreen: ThemeCustomModalScreen,
   },
   {

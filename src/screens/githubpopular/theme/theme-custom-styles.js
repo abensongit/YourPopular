@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { System } from '../../../../common';
+import { System } from '../../../common';
 
 export default StyleSheet.create({
   container: {

@@ -11,7 +11,7 @@ import {
   ACTION_THEME_INIT,
   ACTION_THEME_CHANGE,
   ACTION_THEME_SHOW_CHOICE_VIEW
-} from '../../screens/githubpopular/mycenter/theme/theme-actions-types';
+} from '../../screens/githubpopular/theme/theme-actions-types';
 import {
   ACTION_POPULAR_REFRESH,
   ACTION_POPULAR_REFRESH_FAIL,

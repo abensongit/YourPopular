@@ -5,7 +5,7 @@ import {
 /**
  * GitPopular
  */
-import themeReducer from '../../screens/githubpopular/mycenter/theme/theme-reducers';
+import themeReducer from '../../screens/githubpopular/theme/theme-reducers';
 import marksReducer from '../../screens/githubpopular/mycenter/marks/marks-reducers';
 import langusReducer from '../../screens/githubpopular/mycenter/langus/langus-reducers';
 import popularReducer from '../../screens/githubpopular/popular/popular-reducers';

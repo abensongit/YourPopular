@@ -11,7 +11,7 @@ import {
   onThemeInit,
   onThemeChange,
   onShowThemeChoiceView
-} from '../../screens/githubpopular/mycenter/theme/theme-actions';
+} from '../../screens/githubpopular/theme/theme-actions';
 import {
   onRefreshPopular,
   onLoadMorePopular,

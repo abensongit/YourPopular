@@ -10,7 +10,7 @@ import {
   BackHandlerComponent,
 } from '../common';
 import MainTabRootNavigator from './MainPopularTabRootNavigator';
-import ThemeCustomScreen from '../screens/githubpopular/mycenter/theme/theme-custom';
+import ThemeCustomScreen from '../screens/githubpopular/theme/theme-custom';
 
 
 type Props = {};

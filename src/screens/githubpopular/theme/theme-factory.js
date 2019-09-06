@@ -1,7 +1,7 @@
 import { StyleSheet, } from 'react-native';
 import {
   System,
-} from '../../../../common';
+} from '../../../common';
 
 export const ThemeFlags = {
   Default: '#54B1DE',

@@ -119,7 +119,7 @@ class PopularScreen extends Component<Props> {
             paddingTop: 2, paddingLeft: 5, paddingRight: 10, marginRight: 0
           }}
           onPress={() => {
-            NavigationPopularService.navigate(RouterConst.RouterThemeCustomModalScreen);
+            NavigationPopularService.navigate(RouterConst.RouterSearchModalScreen);
           }}
         >
           <Feather
