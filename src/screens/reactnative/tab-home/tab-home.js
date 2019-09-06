@@ -47,7 +47,6 @@ class TabHomeScreen extends Component<Props, State> {
     };
   }
 
-
   /**
    * 组件渲染完成
    */

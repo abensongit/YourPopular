@@ -7,7 +7,7 @@ import { TouchableOpacityButton } from '../../../../../components';
 
 
 type Props = {}
-export default class MyCustomWidgetButtonScreen extends Component<Props> {
+export default class MyCustomWidgetGeolocationScreen extends Component<Props> {
   /**
    * 配置导航栏
    * @param navigation
@@ -38,19 +38,14 @@ export default class MyCustomWidgetButtonScreen extends Component<Props> {
    * 组件渲染完成
    */
   componentWillUnmount() {
-    this.timer && clearTimeout(this.timer);
+
   }
 
   /**
    * 事件 - 点击按钮
    */
   handleOnPressSubmitAction = (completeHandle) => {
-    // 模拟延时处理
-    this.timer = setTimeout(() => {
-      completeHandle();
-      Alert.alert('提交成功', '', [{ text: '取消' }, { text: '确定' }]);
-      console.log('button enable');
-    }, 1500);
+
   };
 
   /**
