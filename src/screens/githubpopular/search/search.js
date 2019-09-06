@@ -201,16 +201,14 @@ class SearchModalScreen extends Component<Props> {
     const { inputKey } = this.props.search;
     const placeholder = inputKey || '请输入';
     return (
-      <View style={styles.searchBar}>
-        <TextInput
-          style={styles.textInput}
-          placeholder={placeholder}
-          placeholderTextColor="#777777"
-          underlineColorAndroid="transparent"
-          ref={(input) => { this.textInput = input; }}
-          onChangeText={(text) => { this.inputKey = text; }}
-        />
-      </View>
+      <TextInput
+        style={styles.textInput}
+        placeholder={placeholder}
+        placeholderTextColor="#777777"
+        underlineColorAndroid="transparent"
+        ref={(input) => { this.textInput = input; }}
+        onChangeText={(text) => { this.inputKey = text; }}
+      />
     );
   }
 
@@ -347,23 +345,15 @@ const styles = StyleSheet.create({
     bottom: 5,
     right: 55,
   },
-  searchBar: {
-    width: System.window.width * 0.7,
-    height: SEARCH_BAR_HEIGHT,
-    borderRadius: SEARCH_BAR_HEIGHT * 0.5,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    alignSelf: 'center',
-  },
   textInput: {
     flex: 1,
-    height: (Platform.OS === System.IOS) ? 15 : 36,
+    height: SEARCH_BAR_HEIGHT,
+    borderRadius: SEARCH_BAR_HEIGHT * 0.5,
+    backgroundColor: 'white',
     paddingHorizontal: 10,
     fontSize: 15,
     opacity: 0.8,
-    color: '#222222'
+    color: '#222222',
   },
   navBtnSearch: {
     color: 'white',
