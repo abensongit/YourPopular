@@ -346,7 +346,6 @@ const styles = StyleSheet.create({
     right: 55,
   },
   textInput: {
-    flex: 1,
     height: SEARCH_BAR_HEIGHT,
     borderRadius: SEARCH_BAR_HEIGHT * 0.5,
     backgroundColor: 'white',
