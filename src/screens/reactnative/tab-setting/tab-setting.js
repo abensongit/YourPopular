@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet, TouchableOpacity, View,
+  AsyncStorage, StyleSheet, TouchableOpacity, View,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {
-  NavigationReactNativeService,
+  NavigationMainService, NavigationReactNativeService, RouterConst,
 } from '../../../common';
 import {
   COLOR_BACKGROUND_DEFAULT
@@ -52,6 +52,32 @@ class TabSettingScreen extends Component<Props> {
   }
 
   /**
+   * 创建导航条按钮（右侧）
+   * @returns {*}
+   */
+  renderNavBarRightButton() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity
+          style={{
+            paddingTop: 2, paddingLeft: 5, paddingRight: 10, marginRight: 0
+          }}
+          onPress={() => {
+            AsyncStorage.removeItem('userToken'); // 清除token
+            NavigationMainService.navigate(RouterConst.RouterLoginAuthorizeScreen, this.props);
+          }}
+        >
+          <Feather
+            name="settings"
+            size={22}
+            style={{ alignSelf: 'center', color: 'white', }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  /**
    * 创建导航条控件
    * @returns {*}
    */
@@ -76,6 +102,7 @@ class TabSettingScreen extends Component<Props> {
         style={navBar}
         titleStyle={titleStyle}
         leftButton={this.renderNavBarLeftButton()}
+        rightButton={this.renderNavBarRightButton()}
       />
     );
   }
