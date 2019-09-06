@@ -31,6 +31,7 @@ class TabNearbyTabScreen extends Component<Props> {
     });
     this.state = {
       typeIndex: 0,
+      typeLoading: false,
     };
   }
 
@@ -47,7 +48,12 @@ class TabNearbyTabScreen extends Component<Props> {
    */
   onHeaderRefresh = () => {
     const { onRefreshMeiTuanNearby } = this.props;
-    onRefreshMeiTuanNearby(JsonMeiTuan.url, PAGE_SIZE);
+    onRefreshMeiTuanNearby(JsonMeiTuan.url, PAGE_SIZE, (message) => {
+      // 不显示菊花
+      this.setState({
+        typeLoading: false,
+      });
+    });
   };
 
   /**
@@ -56,8 +62,8 @@ class TabNearbyTabScreen extends Component<Props> {
   onFooterRefresh = () => {
     const { onLoadMoreMeiTuanNearby } = this.props;
     const store = this.store();
-    onLoadMoreMeiTuanNearby(JsonMeiTuan.url, ++store.pageIndex, PAGE_SIZE, store.items, () => {
-      Toast.show('没有更多数据了', {
+    onLoadMoreMeiTuanNearby(JsonMeiTuan.url, ++store.pageIndex, PAGE_SIZE, store.items, (message) => {
+      Toast.show(message, {
         duration: Toast.durations.LONG,
         position: Toast.positions.CENTER,
         shadow: true,
@@ -126,7 +132,8 @@ class TabNearbyTabScreen extends Component<Props> {
         if (index !== this.state.typeIndex) {
           // 更新选中标签状态
           this.setState({
-            typeIndex: index
+            typeIndex: index,
+            typeLoading: true,
           });
           // 刷新请求数据
           this.onHeaderRefresh();
@@ -175,7 +182,7 @@ class TabNearbyTabScreen extends Component<Props> {
           footerEmptyDataText="-好像什么东西都没有-"
         />
         {
-          store.refreshState === 1 && Platform.OS === System.IOS
+          store.refreshState === RefreshState.HeaderRefreshing && Platform.OS === System.IOS && this.state.typeLoading
             ? (
               <View style={styles.activityContainer}>
                 <View style={styles.activityIndicator}>
@@ -196,7 +203,7 @@ const AppMapStateToProps = state => ({
 });
 
 const AppMapDispatchToProps = dispatch => ({
-  onRefreshMeiTuanNearby: (url, pageSize) => dispatch(actions.onRefreshMeiTuanNearby(url, pageSize)),
+  onRefreshMeiTuanNearby: (url, pageSize, callBack) => dispatch(actions.onRefreshMeiTuanNearby(url, pageSize, callBack)),
   onLoadMoreMeiTuanNearby: (url, pageIndex, pageSize, dataArray, callBack) => dispatch(actions.onLoadMoreMeiTuanNearby(url, pageIndex, pageSize, dataArray, callBack)),
 });
 

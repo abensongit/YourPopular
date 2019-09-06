@@ -8,8 +8,9 @@ import * as Types from './nearby-tab-actions-types';
  * @param url
  * @param pageSize
  * @returns {Function}
+ * @param callBack 回调函数，可以通过回调函数来向调用页面通信
  */
-export function onRefreshMeiTuanNearby(url, pageSize) {
+export function onRefreshMeiTuanNearby(url, pageSize, callBack) {
   return (dispatch) => {
     // 开始刷新动画
     dispatch({
@@ -20,7 +21,7 @@ export function onRefreshMeiTuanNearby(url, pageSize) {
     fetchService.fetch(url)
       .then((data) => {
         // 获取数据成功
-        handleDataRefresh(dispatch, data, pageSize);
+        handleDataRefresh(dispatch, data, pageSize, callBack);
       })
       .catch((error) => {
         // 获取数据失败
@@ -72,13 +73,15 @@ export function onLoadMoreMeiTuanNearby(url, pageIndex, pageSize, dataArray = []
  * @param dispatch
  * @param jsondata
  * @param pageSize
+ * @param callBack 回调函数，可以通过回调函数来向调用页面通信
  */
-function handleDataRefresh(dispatch, jsondata, pageSize) {
+function handleDataRefresh(dispatch, jsondata, pageSize, callBack) {
   // 组装数据模型
   const fixItems = doWithJsonData(jsondata);
   // 第一次加载的数据
   const showItems = pageSize > fixItems.length ? fixItems : fixItems.slice(0, pageSize);
   doPackageHomeModels(showItems, (itemModels) => {
+    doCallBack(callBack, '请求成功');
     // 偷懒，用同一个测试接口获取数据，然后打乱数组，造成数据来自不同接口的假象 >.<
     itemModels.sort(() => 0.5 - Math.random());
     dispatch({
@@ -130,9 +133,7 @@ function handleDataLoadMore(dispatch, jsondata, pageSize, pageIndex, dataModels 
     // 偷懒，用同一个测试接口获取数据，然后打乱数组，造成数据来自不同接口的假象 >.<
     itemModels.sort(() => 0.5 - Math.random());
     if (itemModels.length <= 0) {
-      if (typeof callBack === 'function') {
-        callBack('no more');
-      }
+      doCallBack(callBack, '没有更多数据了');
       dispatch({
         type: Types.ACTION_MEITUAN_NEARBY_TAB_NO_MORE_DATA,
         error: 'no more',
