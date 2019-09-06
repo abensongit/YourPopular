@@ -56,7 +56,7 @@ export default class MyCustomWidgetGeolocationScreen extends Component<Props> {
   /**
    * 组件渲染完成
    */
-  componentWillUnmount() {
+  componentDidMount() {
     RNLocation.configure({
       distanceFilter: 5.0
     }).then(() => RNLocation.requestPermission({
@@ -107,7 +107,8 @@ export default class MyCustomWidgetGeolocationScreen extends Component<Props> {
     return (
       <ScrollView style={styles.container}>
         <SafeAreaView style={styles.innerContainer}>
-          <View style={{ alignItems: 'center', marginTop: 30 }}>
+
+          <View style={{ alignItems: 'center', marginTop: 10 }}>
             <Text style={styles.title}>react-native-location</Text>
             <TouchableHighlight
               onPress={this.openRepoUrl}
