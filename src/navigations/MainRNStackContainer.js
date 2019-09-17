@@ -32,6 +32,8 @@ import ProReactNativeSnapCarouselScreen from '../screens/reactnative/tab-project
 import ProReactNativePageControlScreen from '../screens/reactnative/tab-project/extendpro/react-native-page-control/react-native-page-control';
 import ProReactNativeRootToastScreen from '../screens/reactnative/tab-project/extendpro/react-native-root-toast/react-native-root-toast';
 import ProReactNativeAcionSheetScreen from '../screens/reactnative/tab-project/extendpro/react-native-actionsheet/react-native-acion-sheet';
+import ProReactNativeModalScreen from '../screens/reactnative/tab-project/extendpro/react-native-modal/react-native-modal';
+
 
 /**
  * 主导航容器
@@ -55,6 +57,7 @@ const MainStackNavigator = createStackNavigator(
     RouterRNExtendProReactNativePageControlScreen: ProReactNativePageControlScreen,
     RouterRNExtendProReactNativeAcionSheetScreen: ProReactNativeAcionSheetScreen,
     RouterRNExtendProReactNativeRootToastScreen: ProReactNativeRootToastScreen,
+    RouterRNExtendProReactNativeModalScreen: ProReactNativeModalScreen,
   },
   {
     initialRouteName: RouterConst.RouterMainRNTabContainer,

@@ -71,4 +71,5 @@ export default {
   RouterRNExtendProReactNativePageControlScreen: 'RouterRNExtendProReactNativePageControlScreen', // PageControl插件
   RouterRNExtendProReactNativeRootToastScreen: 'RouterRNExtendProReactNativeRootToastScreen', // 弹框提示控件
   RouterRNExtendProReactNativeAcionSheetScreen: 'RouterRNExtendProReactNativeAcionSheetScreen', // 选择插件
+  RouterRNExtendProReactNativeModalScreen: 'RouterRNExtendProReactNativeModalScreen', // 模态弹框
 };

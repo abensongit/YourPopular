@@ -30,9 +30,16 @@ export default
   },
   {
     title: 'react-native-actionsheet',
-    subtitle: 'An elegant ActionSheet component for React Native..',
+    subtitle: 'An elegant ActionSheet component for React Native.',
     arrowurl: 'arrow-right',
     giturl: 'https://github.com/beefe/react-native-actionsheet',
     router: 'RouterRNExtendProReactNativeAcionSheetScreen',
+  },
+  {
+    title: 'react-native-modal',
+    subtitle: 'An enhanced, animated and customizable react-native modal.',
+    arrowurl: 'arrow-right',
+    giturl: 'https://github.com/react-native-community/react-native-modal',
+    router: 'RouterRNExtendProReactNativeModalScreen',
   },
 ];
